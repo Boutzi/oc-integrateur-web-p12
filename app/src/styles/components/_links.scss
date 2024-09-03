@@ -1,0 +1,16 @@
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  &__link {
+    background: none;
+  }
+  &__logo {
+    height: 32px;
+  }
+  &__link-logo {
+    height: 32px;
+  }
+}

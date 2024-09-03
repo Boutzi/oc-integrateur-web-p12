@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1440px;
+    height: 68px;
+    margin-bottom: 50px;
+    &__logo {
+        height: 64px;
+    }
+    @media (max-width: 1240px) {
+    }
+}

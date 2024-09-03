@@ -1,0 +1,55 @@
+@use "../utils/" as *;
+
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 64px;
+    &__link {
+        display: flex;
+        align-items: center;
+        height: 24px;
+        font-weight: $font-weight-medium;
+        &:hover {
+            text-decoration: none;
+        }
+        &__send-icon {
+            height: 24px;
+            margin-right: 8px;
+        }
+        &--black {
+            padding: 8px 16px;
+            border-radius: $border-radius-s;
+            background: $color-primary;
+            color: $color-text-inverted;
+            &:hover {
+                background: $color-secondary;
+            }
+            &.is-dark-mode {
+                background: $color-canvas;
+                color: $color-text;
+                &:hover {
+                    background: $color-tertiary;
+                }
+            }
+        }
+    }
+    .active {
+        font-weight: $font-weight-bold;
+        border-bottom: 2px solid $color-primary;
+        &.is-dark-mode {
+            border-bottom: 2px solid $color-tertiary;
+        }
+    }
+    .active-contact {
+        background: none;
+        color: $color-primary;
+        border: 2px solid $color-primary;
+        &.is-dark-mode {
+            background: none;
+            color: $color-canvas;
+            border: 1px solid $color-canvas;
+        }
+    }
+}
