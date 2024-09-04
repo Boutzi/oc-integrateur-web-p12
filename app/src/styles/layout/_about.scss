@@ -1,0 +1,15 @@
+@use "../utils/" as *;
+
+.about-content {
+    width: 100%;
+    background: $color-pure;
+    min-height: 100vh;
+    border: 1px solid $color-tertiary;
+    &__inner-text {
+        padding: 128px 128px;
+    }
+    &.is-dark-mode {
+        background: $color-pure-inverted;
+        border: 1px solid $color-secondary;
+    }
+}

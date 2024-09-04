@@ -1,0 +1,17 @@
+@use "../utils/" as *;
+
+.contact-form {
+    display: flex;
+    margin: 64px auto 0 auto;
+    flex-direction: column;
+    gap: 8px;
+    width: 50%;
+    &__input {
+        padding: 12px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid $color-tertiary;
+        margin-bottom: 16px;
+        margin-top: 8px;
+    }
+}

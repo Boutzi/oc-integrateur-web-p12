@@ -1,3 +1,5 @@
+@use "../utils/" as *;
+
 .footer-links {
   display: flex;
   flex-direction: row;
@@ -9,8 +11,22 @@
   }
   &__logo {
     height: 32px;
+    fill: $color-tertiary;
+    &.is-dark-mode {
+      fill: $color-text-middle;
+    }
   }
   &__link-logo {
     height: 32px;
+    fill: $color-tertiary;
+    &.is-dark-mode {
+      fill: $color-text-middle;
+    }
+    &:hover {
+      fill: $color-primary;
+      &.is-dark-mode {
+        fill: $color-tertiary;
+      }
+    }
   }
 }

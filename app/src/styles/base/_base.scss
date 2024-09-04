@@ -31,15 +31,59 @@ footer {
   font-family: $font-primary;
 }
 
-
 a {
-	color: inherit;
+  color: inherit;
   text-decoration: none;
-	&:hover {
-		color: inherit;
+  &:hover {
+    color: inherit;
     text-decoration: underline;
-	}
-	&:active {
-		color: inherit;
-	}
+  }
+  &:active {
+    color: inherit;
+  }
+}
+
+q {
+  font-family: "ZillaSlab", serif;
+  font-size: $font-size-l;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: nth(
+      $list:
+        $font-size-giant
+        $font-size-xxxl
+        $font-size-xxl
+        $font-size-xl
+        $font-size-l
+        $font-size-l,
+      $n: $i
+    );
+    font-weight: nth($list: 800 300 400 900 900 700, $n: $i);
+    font-style: nth($list: normal normal italic normal regular italic, $n: $i);
+    line-height: nth($list: 5rem 4rem 3rem 3rem 2rem 2rem, $n: $i);
+    color: nth(
+      $list:
+        $color-primary
+        $color-primary
+        $color-selector
+        $color-primary
+        $color-primary
+        $color-selector,
+      $n: $i
+    );
+    &.is-dark-mode {
+      color: nth(
+        $list:
+          $color-text-inverted
+          $color-text-inverted
+          $color-selector
+          $color-text-inverted
+          $color-text-inverted
+          $color-selector,
+        $n: $i
+      );
+    }
+  }
 }

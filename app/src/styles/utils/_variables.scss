@@ -1,24 +1,26 @@
+@forward "fonts";
 @import "@fontsource/montserrat/400.css";
 @import "@fontsource/montserrat/500.css";
 @import "@fontsource/montserrat/700.css";
-$font-primary: 'Montserrat', sans-serif;
+
+$font-primary: "Proxima Nova", 'Montserrat', sans-serif;
 
 $color-primary: #16191F;
-$color-secondary: #2f2f2f;
+$color-secondary: #3d3d3d;
 $color-tertiary: #bcbcbc;
 
-$color-pure: #ffffff;
-$color-pure-inverted: #000000;
+$color-pure: #f4f4f4;
+$color-pure-inverted: #1e2229;
 
 $color-canvas: #eaeaea;
 $color-canvas-inverted: #16191F;
 
 $color-text: #000000;
-$color-text-middle: #616161;
+$color-text-middle: #4b4b4b;
 $color-text-light: #adadad;
 $color-text-inverted: #ffffff;
 
-$color-selector: #2a6cd7;
+$color-selector: #0e88a4;
 $color-danger: #d93936;
 $color-success: #3ba55c;
 $color-sun: rgb(255, 222, 114);
@@ -63,6 +65,7 @@ $font-weight-regular: 400;
 $font-weight-light: 300;
 $font-weight-thin: 100;
 
+$font-size-giant:4.5rem; 
 $font-size-xxxl: 3.5rem; // 40px
 $font-size-xxl: 1.875rem; // 30px
 $font-size-xl: 1.75rem; // 28px

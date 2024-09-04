@@ -1,0 +1,16 @@
+@use "../utils/" as *;
+
+.quote {
+    display: flex;
+    width: 70%;
+    flex-direction: row;
+    gap: 10px;
+    &__icon {
+        fill: $color-text-light;
+        width: 38px;
+
+    }
+    &__text {
+        fill: $color-secondary;
+    }
+}

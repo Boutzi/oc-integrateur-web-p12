@@ -1,26 +1,29 @@
-"use client"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+"use client";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
+import CustomButton from "../Theme/Button";
+import PageTitle from "../Theme/PageTitle";
+import Quote from "../Theme/Quote";
+import RedHairHero from "../../../public/600K-redhair.png";
+import Image from "next/image";
 
 export default function Hero() {
-  const darkMode:boolean = useSelector((state: RootState) => state.local.darkMode);
+  const darkMode: boolean = useSelector((state: RootState) => state.local.darkMode);
   return (
-    <section className="hero">
-      <h1 className="hero__title">
-        Precision. <span className={darkMode ? "hero__title--variant is-dark-mode" : "hero__title--variant"}>In every pixel.</span>
-      </h1>
-      <h2 className="hero__subtitle">
-        Hi there! My name is Joe.
-        <br />
-        I’m a Front-End developer.
-      </h2>
-      
-      <h3 className={darkMode ? "hero__location is-dark-mode" : "hero__location"}>
-      <FontAwesomeIcon icon={faLocationDot} className={darkMode ? "hero__location__font-awesome is-dark-mode" : "hero__location__font-awesome"}/>
-        Bordeaux, France.
-      </h3>
+    <section className="hero-content">
+      <article className="hero-content__layout">
+        <div className="hero">
+          <PageTitle main="Precision. " secondary="In every pixel." />
+          <div className="hero__subtitle">
+            <Quote content="Hi there! My name is Joe. I’m a Front-End developer based in Bordeaux, France." />
+          </div>
+        </div>
+        <Image src={RedHairHero} alt="RedHair Digital Painting" height={550} />
+      </article>
+      <div className="hero-content__cta">
+      <CustomButton url="/work" content="Discover" reverse />
+      <CustomButton url="/contact" content="Get Started" />
+      </div>
     </section>
   );
 }

@@ -1,25 +1,36 @@
 @use "../utils/" as *;
 
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    &__layout {
+        display: flex;
+        flex-direction: row;
+    }
+    &__cta {
+        display: flex;
+        position: absolute;
+        bottom: 32px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        left: 50%; 
+        transform: translateX(-50%); 
+    }
+}
+
 .hero {
     display: flex;
-    margin-top: 100px;
+    margin-top: 80px;
     flex-direction: column;
     line-height: $spacing-xl;
-    &__title {
-        font-size: $font-size-xxxl;
-        margin-bottom: 100px;
-        &--variant {
-            color: $color-text-middle;
-            &.is-dark-mode {
-                color: $color-text-light;
-            }
-        }
-    }
     &__subtitle {
-        font-size: $font-size-l;
-        font-weight: $font-weight-thin;
+        margin-top: 40px;
     }
     &__location {
+        margin-top: 12px;
         font-size: $font-size-s;
         font-weight: $font-weight-regular;
         color: $color-text-middle;
@@ -31,5 +42,12 @@
             height: 16px;
             margin-right: 8px;
         }
+    }
+    &__cta {
+        margin-top: 70px;
+        gap: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

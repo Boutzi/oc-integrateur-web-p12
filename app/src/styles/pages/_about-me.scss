@@ -1,0 +1,22 @@
+@use "../utils/" as *;
+
+.about-me-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 32px;
+    &__text {
+        line-height: $spacing-xl;
+        width: 58%;
+    }
+    &__image {
+        margin-right: 64px;
+    }
+    &__cta {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}

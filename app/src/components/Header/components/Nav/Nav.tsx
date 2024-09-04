@@ -36,7 +36,7 @@ export default function Nav() {
         Home
       </StyledLink>
       <StyledLink
-        className={`main-nav__link ${pathname === "/about" ? "active" : ""}${
+        className={`main-nav__link ${pathname === "/about/me" || pathname === "/about/skills" || pathname === "/about/credentials" ? "active" : ""}${
           darkMode ? " is-dark-mode" : ""
         }`}
         href={"/about"}

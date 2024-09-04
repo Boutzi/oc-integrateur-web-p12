@@ -1,0 +1,51 @@
+@use "../utils/" as *;
+
+.custom-button {
+    margin-block: 32px;
+    background: $color-primary;
+    @include vertical-gradient-inverted;
+    color: $color-text-inverted;
+    border-radius: $border-radius-s;
+    border: 2px solid transparent;
+    width: fit-content;
+    height: fit-content;
+    padding: 12px 24px;
+    line-height: normal;
+    &:hover {
+        background: $color-text-middle;
+        color: $color-text-inverted;
+        text-decoration: none;
+        &.is-dark-mode {
+            background: $color-tertiary;
+            color: $color-primary;
+            text-decoration: none;
+        }
+    }
+    &.is-dark-mode {
+        background: $color-canvas;
+        @include vertical-gradient;
+        font-weight: $font-weight-medium;
+        color: $color-primary;
+    }
+    &--reverse {
+        background: none;
+        color: $color-primary;
+        border: 2px solid $color-primary;
+        &:hover {
+            background: $color-text-middle;
+            color: $color-text-inverted;
+            border: 2px solid transparent;
+            text-decoration: none;
+            &.is-dark-mode {
+                background: $color-text-light;
+                color: $color-primary;
+                border: 2px solid transparent;
+            }
+        }
+        &.is-dark-mode {
+            background: none;
+            color: $color-tertiary;
+            border: 2px solid $color-tertiary;
+        }
+    }
+}
