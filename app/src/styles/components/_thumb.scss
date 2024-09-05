@@ -37,6 +37,9 @@
     top: 130px;
     left: 24px;
     width: calc(100% - 48px);
+    & > * {
+        color: $color-text-inverted;
+    }
   }
   &__description {
     position: absolute;

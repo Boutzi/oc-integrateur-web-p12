@@ -16,7 +16,7 @@ const Latest: React.FC = () => {
     <>
       <div className="latest">
         <PageTitle main="My latest work" type={2} tiny />
-        <div className="latest__thumb-galery">
+        <div className="latest__thumb-gallery">
           <Thumb
             title="The Black Pearl"
             imageSrc={Thumb1}
@@ -38,7 +38,7 @@ const Latest: React.FC = () => {
             description="This is a description of the thumb. Contains the complete description of the work. And it can be a very long description aswel."
           />
           <Thumb
-            title="Rivendell"
+            title="Hogwarts"
             imageSrc={Thumb5}
             description="This is a description of the thumb. Contains the complete description of the work. And it can be a very long description aswel."
           />

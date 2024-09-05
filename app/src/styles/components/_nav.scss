@@ -12,6 +12,18 @@
         height: 24px;
         font-weight: $font-weight-bold;
         transition: all 200ms ease-in-out;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: $color-primary;
+            transition: all 200ms ease;
+            transform: translateX(-50%);
+        }
         &:hover {
             text-decoration: none;
             color: $color-primary;
@@ -28,6 +40,7 @@
             font-weight: $font-weight-bold;
             &:hover {
                 background: $color-primary-hover;
+                color: $color-canvas;
             }
             &.is-dark-mode {
                 color: $color-text-inverted;
@@ -35,10 +48,10 @@
         }
     }
     .active {
-        font-weight: $font-weight-bold;
-        border-bottom: 2px solid $color-primary;
-        &.is-dark-mode {
-            border-bottom: 2px solid $color-primary;
+        color:  $color-primary;
+        // border-bottom: 2px solid $color-primary;
+        &::after {
+            width: 100%;
         }
     }
     .active-contact {

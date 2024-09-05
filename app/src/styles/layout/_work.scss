@@ -1,0 +1,23 @@
+@use "../utils/" as *;
+
+.work {
+  max-width: 1152px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  &__gallery {
+    margin-top: 32px;
+    flex-direction: column;
+    display: flex;
+    gap: 16px;
+    &__item {
+      display: flex;
+      border: 1px solid $color-text-middle;
+      padding: 16px;
+      flex-direction: row;
+      width: 100%;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -7,19 +7,31 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
 
 export default function Links() {
-  const darkMode:boolean = useSelector((state: RootState) => state.local.darkMode);
+  const darkMode: boolean = useSelector((state: RootState) => state.local.darkMode);
   return (
     <div className="footer-links">
-      <Link className="footer-links__link" href={"https://github.com/Boutzi"} target="_blank">
-        <GitHubLogo alt="Logo" className={`footer-links__link-logo ${darkMode ? "is-dark-mode" : ""}`} />
+      <Link
+        className="footer-links__link"
+        href={"https://github.com/Boutzi"}
+        target="_blank"
+        aria-label="Visit my GitHub account"
+      >
+        <GitHubLogo
+          alt="Logo"
+          className={`footer-links__link-logo ${darkMode ? "is-dark-mode" : ""}`}
+        />
       </Link>
       <MainLogo alt="Logo" className={`footer-links__logo ${darkMode ? "is-dark-mode" : ""}`} />
       <Link
         className="footer-links__link"
         href={"https://www.linkedin.com/in/joseph-girardi/"}
         target="_blank"
+        aria-label="Visit my Linkedin account"
       >
-        <LinkedinLogo alt="Logo" className={`footer-links__link-logo ${darkMode ? "is-dark-mode" : ""}`} />
+        <LinkedinLogo
+          alt="Logo"
+          className={`footer-links__link-logo ${darkMode ? "is-dark-mode" : ""}`}
+        />
       </Link>
     </div>
   );

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer/Footer";
 import StoreProvider from "./StoreProvider";
 import "@/styles/main.scss";
 import ThemeManager from "@/components/Theme/ThemeManager";
+import Loader from "@/components/Theme/Loader";
 
 export const metadata = {
   title: {

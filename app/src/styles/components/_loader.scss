@@ -21,8 +21,8 @@
     height: 65px;
     animation: spin 1s cubic-bezier(0.2, 0.4, 0.9, 1) infinite;
     &.is-dark-mode {
-      border: 6px solid $color-primary;
-      border-top: 6px solid $color-tertiary;
+      border: 6px solid $color-secondary;
+      border-top: 6px solid $color-primary;
     }
   }
   

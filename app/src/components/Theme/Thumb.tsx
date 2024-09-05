@@ -17,9 +17,9 @@ const Thumb: React.FC<CustomThumb> = ({title, description, imageSrc}) => {
       <div className="thumb">
         <div className="thumb__overlay"></div>
         <Image className="thumb__image" src={imageSrc} alt={`Project ${title}`} />
-        <p className="thumb__title">
+        <div className="thumb__title">
           <PageTitle main={title} type={3} tiny />
-        </p>
+        </div>
         <p className="thumb__description">{description}</p>
       </div>
     </>
