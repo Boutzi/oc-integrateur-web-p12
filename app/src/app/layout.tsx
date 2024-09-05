@@ -18,11 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <StoreProvider>
           <ThemeManager />
-          <div className="container">
+          {/* <div className="container"> */}
             <Header />
             {children}
             <Footer />
-          </div>
+          {/* </div> */}
         </StoreProvider>
       </body>
     </html>

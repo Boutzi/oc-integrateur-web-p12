@@ -10,28 +10,27 @@
         display: flex;
         align-items: center;
         height: 24px;
-        font-weight: $font-weight-medium;
+        font-weight: $font-weight-bold;
+        transition: all 200ms ease-in-out;
         &:hover {
             text-decoration: none;
+            color: $color-primary;
         }
         &__send-icon {
             height: 24px;
             margin-right: 8px;
         }
         &--black {
-            padding: 8px 16px;
+            padding: 8.5px 17px;
             border-radius: $border-radius-s;
             background: $color-primary;
             color: $color-text-inverted;
+            font-weight: $font-weight-bold;
             &:hover {
-                background: $color-secondary;
+                background: $color-primary-hover;
             }
             &.is-dark-mode {
-                background: $color-canvas;
-                color: $color-text;
-                &:hover {
-                    background: $color-tertiary;
-                }
+                color: $color-text-inverted;
             }
         }
     }
@@ -39,12 +38,12 @@
         font-weight: $font-weight-bold;
         border-bottom: 2px solid $color-primary;
         &.is-dark-mode {
-            border-bottom: 2px solid $color-tertiary;
+            border-bottom: 2px solid $color-primary;
         }
     }
     .active-contact {
         background: none;
-        color: $color-primary;
+        color: $color-text;
         border: 2px solid $color-primary;
         &.is-dark-mode {
             background: none;

@@ -3,7 +3,7 @@
 .custom-button {
     margin-block: 32px;
     background: $color-primary;
-    @include vertical-gradient-inverted;
+    @include vertical-gradient-primary;
     color: $color-text-inverted;
     border-radius: $border-radius-s;
     border: 2px solid transparent;
@@ -12,9 +12,12 @@
     padding: 12px 24px;
     line-height: normal;
     &:hover {
-        background: $color-text-middle;
+        background: $color-primary-hover;
         color: $color-text-inverted;
         text-decoration: none;
+        &:active {
+            background: $color-primary-active;
+        }
         &.is-dark-mode {
             background: $color-tertiary;
             color: $color-primary;
@@ -32,10 +35,13 @@
         color: $color-primary;
         border: 2px solid $color-primary;
         &:hover {
-            background: $color-text-middle;
+            background: $color-primary-hover;
             color: $color-text-inverted;
             border: 2px solid transparent;
             text-decoration: none;
+            &:active {
+                background: $color-primary-active;
+            }
             &.is-dark-mode {
                 background: $color-text-light;
                 color: $color-primary;

@@ -1,12 +1,16 @@
 @use "../utils/" as *;
 
 .hero-content {
+    margin-block: 64px;
     display: flex;
     flex-direction: column;
     position: relative;
+    // background: $color-primary;
+    align-items: center;
     &__layout {
         display: flex;
         flex-direction: row;
+        overflow: visible;
     }
     &__cta {
         display: flex;

@@ -1,5 +1,6 @@
 "use client";
 import Hero from "@/components/Hero/Hero";
+import Latest from "@/components/Latest/Latest";
 import Loader from "@/components/Theme/Loader";
 import { useEffect, useState } from "react";
 
@@ -14,10 +15,16 @@ export default function HomeClient() {
     return () => clearTimeout(timer);
   }, []);
 
-    return (
-      <main className="main-content">
-        {loading ? <Loader /> : <Hero />}
-      </main>
-    );
-  }
-  
+  return (
+    <main className="main-content">
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Hero />
+          <Latest />
+        </>
+      )}
+    </main>
+  );
+}

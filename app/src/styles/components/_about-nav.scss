@@ -2,7 +2,7 @@
 
 .about-cv {
   position: absolute;
-  right: 0;
+  right: 17px;
   top: 128px;
   font-weight: $font-weight-medium;
   color: $color-success;
@@ -48,7 +48,7 @@
   }
   .active {
     font-weight: $font-weight-bold;
-    color: $color-selector;
+    color: $color-primary;
     position: relative; 
     transition: all 200ms ease-in-out;
     &::before {

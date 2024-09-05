@@ -5,6 +5,8 @@ import CustomButton from "../Theme/Button";
 import PageTitle from "../Theme/PageTitle";
 import Quote from "../Theme/Quote";
 import RedHairHero from "../../../public/600K-redhair.png";
+// import RedHairHero from "../../../public/logo-with-shadow.png";
+import Logo from "../../../public/typescript.svg"
 import Image from "next/image";
 
 export default function Hero() {
@@ -18,7 +20,8 @@ export default function Hero() {
             <Quote content="Hi there! My name is Joe. I’m a Front-End developer based in Bordeaux, France." />
           </div>
         </div>
-        <Image src={RedHairHero} alt="RedHair Digital Painting" height={550} />
+        <Image src={RedHairHero} alt="RedHair Digital Painting" height={450}/>
+        {/* <Logo alt="Main Logo"/> */}
       </article>
       <div className="hero-content__cta">
       <CustomButton url="/work" content="Discover" reverse />

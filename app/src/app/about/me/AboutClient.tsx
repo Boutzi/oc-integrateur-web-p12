@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import Groot from "@/assets/groot.jpg";
 import Image from "next/image";
 import CustomButton from "@/components/Theme/Button";
+import Quote from "@/components/Theme/Quote";
 
 export default function AboutClient() {
   const [loading, setLoading] = useState(true);
@@ -39,7 +40,7 @@ export default function AboutClient() {
                 <div className="about-me-content__text">
                   <PageTitle main="about." type={1} />
                   <PageTitle main="Who am I?" type={2} />
-                  <br/>
+                  <br />
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non rhoncus
                     tortor. Nunc urna lectus, consequat nec mi sit amet, pulvinar rutrum lectus.
@@ -53,6 +54,12 @@ export default function AboutClient() {
                     condimentum. Proin feugiat erat et ornare sollicitudin. Vivamus in velit at
                     justo bibendum pretium.
                   </p>
+                  <br />
+                  <Quote
+                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non rhoncus
+                    tortor."
+                  />
+                  <br />
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non rhoncus
                     tortor. Nunc urna lectus, consequat nec mi sit amet, pulvinar rutrum lectus.

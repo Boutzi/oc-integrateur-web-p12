@@ -1,12 +1,25 @@
+@use "../utils/" as *;
+
 .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1440px;
-    height: 68px;
-    margin-bottom: 32px;
+    max-width: 100%;
+    // margin-bottom: 32px;
+    padding: 8.5px 17px;
     &__logo {
-        height: 64px;
+        height: 48px;
+        &.is-dark-mode {
+            .logo_svg__cls-1 {
+                fill: $color-canvas;
+            }
+        }
+        .logo_svg__cls-1 {
+            fill: $color-canvas-inverted;
+        }
+        .logo_svg__cls-2 {
+            fill: $color-primary;
+        }
     }
     @media (max-width: 1240px) {
     }

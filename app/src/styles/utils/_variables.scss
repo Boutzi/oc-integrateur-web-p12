@@ -5,7 +5,9 @@
 
 $font-primary: "Proxima Nova", 'Montserrat', sans-serif;
 
-$color-primary: #16191F;
+$color-primary: #095163;
+$color-primary-hover: #11728a;
+$color-primary-active: #053845;
 $color-secondary: #3d3d3d;
 $color-tertiary: #bcbcbc;
 
@@ -30,7 +32,7 @@ $color-is-moon: #9acbff;
 
 
 $scrollbar: #f6f6f6;
-$scrollbar-thumb: #16191F;
+$scrollbar-thumb: #3d3d3d;
 
 @mixin gradient {
   background: rgb(255, 255, 255);

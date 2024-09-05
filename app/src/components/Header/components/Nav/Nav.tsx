@@ -62,7 +62,7 @@ export default function Nav() {
         ) : !darkMode && pathname === "/contact" ? (
           <SendIconDark alt="sending-icon" className="main-nav__link__send-icon" />
         ) : darkMode && pathname !== "/contact" ? (
-          <SendIconDark alt="sending-icon" className="main-nav__link__send-icon" />
+          <SendIcon alt="sending-icon" className="main-nav__link__send-icon" />
         ) : (
           <SendIcon alt="sending-icon" className="main-nav__link__send-icon" />
         )}

@@ -14,7 +14,23 @@
   background: linear-gradient(to bottom, $start-color, $end-color); /* Standard syntax */
 }
 
-@mixin vertical-gradient-selector($start-color: #0e88a4, $end-color: #065465) {
+@mixin vertical-gradient-primary($start-color: #095163, $end-color: rgb(2, 52, 63)) {
+  background: $start-color; /* Fallback for older browsers */
+  background: -webkit-linear-gradient(top, $start-color, $end-color); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, $start-color, $end-color); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, $start-color, $end-color); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom, $start-color, $end-color); /* Standard syntax */
+}
+
+@mixin vertical-gradient-opacity($start-color: rgba(0, 0, 0, 0), $end-color: rgba(2, 2, 2, 0.2)) {
+  background: $start-color; /* Fallback for older browsers */
+  background: -webkit-linear-gradient(top, $start-color, $end-color); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, $start-color, $end-color); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, $start-color, $end-color); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom, $start-color, $end-color); /* Standard syntax */
+}
+
+@mixin vertical-gradient-opacity-faded($start-color: rgba(0, 0, 0, 0), $end-color: rgba(0, 0, 0, 0.1)) {
   background: $start-color; /* Fallback for older browsers */
   background: -webkit-linear-gradient(top, $start-color, $end-color); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(top, $start-color, $end-color); /* For Opera 11.1 to 12.0 */
