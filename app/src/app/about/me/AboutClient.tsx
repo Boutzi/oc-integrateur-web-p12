@@ -4,7 +4,7 @@ import Loader from "@/components/Theme/Loader";
 import { RootState } from "@/lib/store";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Groot from "@/assets/groot.jpg";
+import Joseph from "@/assets/Joseph.jpg";
 import Image from "next/image";
 import CustomButton from "@/components/Theme/Button";
 import Quote from "@/components/Theme/Quote";
@@ -32,7 +32,7 @@ export default function AboutClient() {
               <article className="about-me-content">
                 <Image
                   className="about-me-content__image"
-                  src={Groot}
+                  src={Joseph}
                   alt="Photo"
                   width={400}
                   height={400}
