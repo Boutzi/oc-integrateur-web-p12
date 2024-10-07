@@ -37,13 +37,13 @@ export const Header = () => {
         <nav className="hidden sm:flex items-center">
           <ul className="inline-flex items-center">
             <div className="flex items-center gap-4 pr-4 border-r border-accent-foreground/30 h-4">
-              <Link href={"#"} className={"text-foreground hover:text-primary"}>
+              <Link href={"/about"} className={"text-foreground hover:text-primary"}>
                 About
               </Link>
-              <Link href={"#"} className={"text-foreground hover:text-primary"}>
+              <Link href={"/work"} className={"text-foreground hover:text-primary"}>
                 Work
               </Link>
-              <Link href={"#"} className={"text-foreground hover:text-primary"}>
+              <Link href={"/contact"} className={"text-foreground hover:text-primary"}>
                 Contact
               </Link>
             </div>

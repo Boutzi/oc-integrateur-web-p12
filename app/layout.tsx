@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Anek_Telugu } from "next/font/google";
 import "./globals.css";
+import { Header } from "./_components/Header";
+import { Footer } from "./_components/Footer";
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
@@ -34,7 +36,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} "font-sans h-full" antialiased`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,5 +1,8 @@
 import { Badge } from "@/app/_components/ui/badge";
 import { Section } from "./Section";
+import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export const Contact = () => {
   return (
@@ -19,6 +22,12 @@ export const Contact = () => {
         hesitate to reach out. I’m eager to connect and discuss how we can work
         together.
       </h3>
+      <Link href={"/contact"} passHref>
+        <Button className="rounded-full font-semibold bg-accent-foreground flex items-center">
+          Contact me
+          <ArrowRight size={16} className="ml-1" />
+        </Button>
+      </Link>
     </Section>
   );
 };

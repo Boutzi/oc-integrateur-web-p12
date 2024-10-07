@@ -1,6 +1,4 @@
 import { Contact } from "./_components/Contact";
-import { Footer } from "./_components/Footer";
-import { Header } from "./_components/Header";
 import { Hero } from "./_components/Hero";
 import { Skills } from "./_components/Skills";
 import { Spacing } from "./_components/Spacing";
@@ -8,18 +6,20 @@ import { Status } from "./_components/Status";
 
 export default function Home() {
   return (
-    <main>
-      <Header />
-      <Spacing size="md" />
-      <Hero />
-      <Spacing size="md" />
+    <main className="">
+      <div className="p-28 border-b">
+        <Hero />
+      </div>
+      <div className="bg-gradient-to-t from-violet-600/0 via-violet-600/0 to-violet-600/5 p-24 border-b ">
       <Status />
-      <Spacing size="md" />
+      </div>
+      <div className="bg-violet-950 p-28 border-b bg-grid-pattern bg-grid-size">
       <Skills />
-      <Spacing size="md" />
+      </div>
+      <div className="p-28">
       <Contact />
+      </div>
       <Spacing size="md" />
-      <Footer />
     </main>
   );
 }
