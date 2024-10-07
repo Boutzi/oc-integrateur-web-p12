@@ -14,7 +14,9 @@ export const Hero = () => {
           Let&apos;s create something amazing together, whether remote or
           on-site, I&apos;m ready to code.
         </h2>
+        <div className="max-sm:hidden">
         <Spacing size="sm" />
+        </div>
         <div className="flex gap-4 max-lg:m-auto max-sm:mb-6">
           <Button className="rounded-full">Get Started</Button>
           <Button className="rounded-full bg-foreground">View on GitHub</Button>
