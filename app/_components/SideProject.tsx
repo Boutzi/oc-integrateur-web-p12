@@ -27,13 +27,13 @@ export const SideProject = (props: SideProjectProps) => {
     <Link
       href={props.html_url}
       target="_blank"
-      className="inline-flex items-start gap-4 hover:bg-accent/30 transition-colors p-1 rounded group"
+      className="inline-flex items-center gap-4 hover:bg-accent/30 transition-colors p-1 rounded group"
     >
       <div className={`bg-accent/50 text-accent-foreground p-3 rounded`}>
         <Code size={24} />
       </div>
       <div>
-        <div className="flex gap-2 max-sm:flex-col items-center  max-sm:items-start mb-1 max-sm:gap-1">
+        <div className="flex gap-2 max-sm:flex-col items-center max-sm:items-start mb-1 max-sm:gap-1">
           <p className="text-md font-semibold flex max-sm:flex-col items-center max-sm:items-start">
             {props.name}
           </p>
