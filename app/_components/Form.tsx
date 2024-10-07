@@ -18,15 +18,17 @@ export const Form = () => {
         <div className="flex flex-col gap-4 mt-8">
           <div className="flex gap-4 max-lg:flex-col">
             <div className="flex flex-[2] flex-col gap-1">
-              <label className="text-xs">First Name</label>
+              <label htmlFor="first-name" className="text-xs">First Name</label>
               <Input
+                id="first-name"
                 className="flex-1 rounded-lg p-3 hover:bg-accent/20"
                 required
               />
             </div>
             <div className="flex flex-[2] flex-col gap-1">
-              <label className="text-xs">Last Name</label>
+              <label htmlFor="last-name" className="text-xs">Last Name</label>
               <Input
+                id="last-name"
                 className="flex-1 rounded-lg p-3 hover:bg-accent/20"
                 required
               />
@@ -34,20 +36,25 @@ export const Form = () => {
           </div>
           <div className="flex gap-4 max-lg:flex-col">
             <div className="flex flex-[2] flex-col gap-1">
-              <label className="text-xs">Email</label>
+              <label htmlFor="email" className="text-xs">Email</label>
               <Input
+                id="email"
                 className="flex-1 rounded-lg p-3 hover:bg-accent/20"
                 required
               />
             </div>
             <div className="flex flex-[2] flex-col gap-1">
-              <label className="text-xs">Company</label>
-              <Input className="flex-1 rounded-lg p-3 hover:bg-accent/20" />
+              <label htmlFor="company" className="text-xs">Company</label>
+              <Input 
+                id="company" 
+                className="flex-1 rounded-lg p-3 hover:bg-accent/20" 
+              />
             </div>
           </div>
           <div className="flex flex-[2] flex-col gap-1">
-            <label className="text-xs">Your message</label>
+            <label htmlFor="message" className="text-xs">Your message</label>
             <Textarea
+              id="message"
               placeholder="Type your message here."
               className="flex-1 rounded-lg p-3 hover:bg-accent/20 resize-y min-h-[130px]"
               required
