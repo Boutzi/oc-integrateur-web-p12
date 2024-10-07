@@ -7,16 +7,16 @@ import { Status } from "./_components/Status";
 export default function Home() {
   return (
     <main className="">
-      <div className="p-28 border-b">
+      <div className="pt-28 pb-28 border-b">
         <Hero />
       </div>
-      <div className="bg-gradient-to-t from-violet-600/0 via-violet-600/0 to-violet-600/5 p-24 border-b ">
+      <div className="bg-gradient-to-t from-violet-600/0 via-violet-600/0 to-violet-600/5 pt-28 pb-28 border-b ">
       <Status />
       </div>
-      <div className="bg-violet-950 p-28 border-b bg-grid-pattern bg-grid-size">
+      <div className="bg-violet-950 pt-28 pb-28 border-b bg-grid-pattern bg-grid-size">
       <Skills />
       </div>
-      <div className="p-28">
+      <div className="pt-28 pb-28 ">
       <Contact />
       </div>
       <Spacing size="md" />
