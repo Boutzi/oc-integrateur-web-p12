@@ -29,7 +29,7 @@ export const Header = () => {
 
   return (
     <header
-      className="sticky top-0 border-b bg-background">
+      className="sticky top-0 border-b bg-background z-50">
       <Section className="flex items-center justify-between p-0 max-sm:pt-2 max-sm:pb-2">
         <Link href={"/"}>
           <JoeIcon size={48} className="p-0" />
@@ -89,18 +89,18 @@ export const Header = () => {
         </div>
       </Section>
       {menuOpen && (
-        <div className="sm:hidden flex flex-col p-5 border-t border-accent-foreground/30 items-end">
+        <div className="absolute top-18 left-0 right-0 bg-background z-50 sm:hidden flex flex-col p-5 border-t border-b border-accent-foreground/30 items-end">
           <div className="flex flex-col pb-3 text-right gap-2">
-          <Link href={"#"} className={"text-foreground hover:text-primary text-xl"}>
+          <Link href={"/about"} className={"text-foreground hover:text-primary text-xl"}>
             About
           </Link>
-          <Link href={"#"} className={"text-foreground hover:text-primary text-xl"}>
+          <Link href={"/work"} className={"text-foreground hover:text-primary text-xl"}>
             Work
           </Link>
-          <Link href={"#"} className={"text-foreground hover:text-primary text-xl"}>
+          <Link href={"/contact"} className={"text-foreground hover:text-primary text-xl"}>
             Contact
           </Link></div>
-          <div className="flex flex-col border-b border-t border-accent-foreground/20 pb-3 pt-3 items-end pl-12">
+          <div className="flex flex-col border-b border-t border-accent-foreground/10 pb-3 pt-3 items-end pl-0">
             <button onClick={toggleDarkMode} className={"p-0"}>
               {darkMode ? (
                 <MoonIcon className="size-7 hover:text-primary" />

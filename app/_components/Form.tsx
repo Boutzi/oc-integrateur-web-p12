@@ -5,7 +5,7 @@ import { Input } from "./ui/input";
 
 export const Form = () => {
   return (
-    <Section className="flex flex-col items-start justify-between gap-4 min-h-[calc(100vh-170px)]">
+    <Section className="flex flex-col items-start justify-between gap-4 min-h-[calc(100vh-170px)] max-lg:pt-8 max-lg:pb-8">
       <form className="m-auto mr-56 ml-56 max-lg:mr-24 max-lg:ml-24 max-sm:mr-8 max-sm:ml-8">
         <h1 className="font-caption text-5xl font-bold text-primary max-md:text-4xl max-sm:text-3xl">
           Let&apos;s talk!
