@@ -20,7 +20,7 @@ export const ScrollAnimation = ({
 }: PropsWithChildren<SectionProps>) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false); // État pour suivre si l'animation a eu lieu
+  const [hasAnimated, setHasAnimated] = useState(false); 
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1440);
 
   useEffect(() => {
