@@ -21,17 +21,30 @@ export const ScrollAnimation = ({
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false); 
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1440);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 1440);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated && !isSmallScreen) {
           setIsVisible(true);
-          setHasAnimated(true); // Marquer comme animé
+          setHasAnimated(true);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.2 }
     );
 
     const currentRef = ref.current;
@@ -46,18 +59,6 @@ export const ScrollAnimation = ({
       }
     };
   }, [hasAnimated, isSmallScreen]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 1440);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const animationProps =
     animationType === "slide-x"
@@ -109,7 +110,6 @@ export const ScrollAnimation = ({
           },
         };
 
-  // Ne pas afficher le contenu si l'écran est petit
   if (isSmallScreen) {
     return <div className={`${className || ""}`}>{children}</div>;
   }

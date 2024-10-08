@@ -4,7 +4,7 @@ import { Section } from "./Section";
 import Link from "next/link";
 import { LinkedinIcon } from "./icons/LinkedinIcon";
 import { GithubIcon } from "./icons/GithubIcon";
-import { MoonIcon, SunIcon, MenuIcon } from "lucide-react";
+import { MoonIcon, SunIcon, MenuIcon, X } from "lucide-react";
 import { JoeIcon } from "./icons/JoeIcon";
 import NavLink from "./NavLink";
 
@@ -96,7 +96,7 @@ export const Header = () => {
         </nav>
         <div className="sm:hidden flex items-center">
           <button onClick={toggleMenu} className="p-0">
-            <MenuIcon className="size-8 text-primary" />
+            {!menuOpen ? <MenuIcon className="size-8" /> : <X className="size-8" />}
           </button>
         </div>
       </Section>

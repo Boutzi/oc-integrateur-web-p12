@@ -7,10 +7,10 @@ import { Status } from "./_components/Status";
 export default function Home() {
   return (
     <main className="">
-      <div className="pt-28 pb-28 border-b max-sm:pt-8 max-sm:pb-16">
+      <div className="pt-28 pb-28 border-b max-md:pt-4 max-md:pb-16">
         <Hero />
       </div>
-      <div className="bg-gradient-to-t from-violet-600/0 via-violet-600/0 to-violet-600/5 pt-28 pb-28 max-sm:pt-16 max-sm:pb-16 border-b ">
+      <div className="bg-gradient-to-t from-violet-600/0 via-violet-600/5 to-violet-600/30 pt-28 pb-28 max-sm:pt-16 max-sm:pb-16 border-b ">
         <Spacing size="md" />
         <Status />
         <Spacing size="md" />

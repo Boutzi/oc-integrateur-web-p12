@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/app/_components/ui/card";
 import { Section } from "./Section";
-import { getRepositories, SideProject, SideProjectProps } from "./SideProject";
+import { SideProject, SideProjectProps } from "./SideProject";
 import { Work, WORKS } from "./Work";
 import { CONTACT, ContactCard } from "./ContactCard";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
+import { getRepositories } from "@/utils/getData";
 
 export const Status = () => {
   const [repos, setRepos] = useState<SideProjectProps[]>([]);
@@ -26,13 +27,16 @@ export const Status = () => {
   return (
     <Section className="flex flex-col gap-4">
       <ScrollAnimation animated={true} animationType="fade">
-        <div className="">
+        <div className="flex flex-col gap-4 items-start">
           <Badge
             variant="outline"
             className="rounded-full text-primary border-primary"
           >
             Activity
           </Badge>
+          <h2 className="font-caption font-extralight text-4xl max-sm:text-xl text-slate-300">
+            Live status
+          </h2>
         </div>
       </ScrollAnimation>
       <div className="flex max-lg:flex-col items-start justify-between gap-4">
@@ -72,12 +76,13 @@ export const Status = () => {
                 )}
               </div>
               <Link
-                href={"#"}
+                href={"https://github.com/Boutzi?tab=repositories"}
+                target="_blank"
                 className="flex items-center -m-4 mt-1 p-2 bg-accent/20 hover:bg-accent/50 text-foreground rounded-t-none rounded-lg border-t"
               >
                 <div className="m-auto flex gap-2 text-md items-center">
-                  <span className="">View all repositories</span>
-                  <ArrowRight className="" size={18} />
+                  <span className="">View all repositories on GitHub</span>
+                  <ArrowUpRight className="" size={18} />
                 </div>
               </Link>
             </Card>
@@ -89,11 +94,23 @@ export const Status = () => {
               <p className="text-sm text-muted-foreground">
                 Lastest jobs & courses
               </p>
-              <div className="flex flex-col gap-4 pt-2">
+              <div className="flex flex-col gap-4 py-2">
                 {WORKS.map((work, index) => (
                   <Work key={index} {...work} />
                 ))}
               </div>
+              <Link
+                href={
+                  "https://www.linkedin.com/in/joseph-girardi/details/experience/"
+                }
+                target="_blank"
+                className="flex items-center -m-4 mt-1 p-2 bg-accent/20 hover:bg-accent/50 text-foreground rounded-t-none rounded-lg border-t"
+              >
+                <div className="m-auto flex gap-2 text-md items-center">
+                  <span className="">View all experiences on Linkedin</span>
+                  <ArrowUpRight className="" size={18} />
+                </div>
+              </Link>
             </Card>
           </ScrollAnimation>
           <ScrollAnimation animated={true} animationType="-slide-y">

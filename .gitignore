@@ -7,6 +7,7 @@ desktop.ini
 /.vscode
 /.idea
 /.DS_Store
+.env
 /.env
 /.env.local
 /.env.development

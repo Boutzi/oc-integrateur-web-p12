@@ -14,10 +14,20 @@ const config: Config = {
       caption: ["var(--font-caption)", "ui-sans-serif", "system-ui"],
     },
     extend: {
-		backgroundImage: {
-		"grid-pattern":
-		  "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 fill=%22none%22 stroke=%22rgba(226, 232, 240, 0.09)%22 stroke-width=%220.1%22><line x1=%220%22 y1=%220%22 x2=%2210%22 y2=%2210%22/><line x1=%2210%22 y1=%220%22 x2=%220%22 y2=%2210%22/></svg>')",
-	  },
+      animation: {
+        'ping-once': 'pingOnce 1s ease-out forwards',
+      },
+      keyframes: {
+        pingOnce: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '75%': { transform: 'scale(1.5)', opacity: '0' },
+          '100%': { transform: 'scale(2)', opacity: '0' },
+        },
+      },
+      backgroundImage: {
+        "grid-pattern":
+          "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 fill=%22none%22 stroke=%22rgba(226, 232, 240, 0.09)%22 stroke-width=%220.1%22><line x1=%220%22 y1=%220%22 x2=%2210%22 y2=%2210%22/><line x1=%2210%22 y1=%220%22 x2=%220%22 y2=%2210%22/></svg>')",
+      },
       backgroundSize: {
         "grid-size": "32px 32px",
       },

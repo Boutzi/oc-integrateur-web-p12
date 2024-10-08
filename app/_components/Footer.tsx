@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import { GithubIcon } from "./icons/GithubIcon";
 import { JoeIcon } from "./icons/JoeIcon";
@@ -5,10 +6,13 @@ import { LinkedinIcon } from "./icons/LinkedinIcon";
 import { Section } from "./Section";
 import { ArrowBigUp } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
+import { usePathname } from "next/navigation";
 
 export const Footer = () => {
+  const pathname = usePathname()
   return (
     <footer className="relative">
+      {pathname === "/" && 
       <ScrollAnimation
         animated={true}
         animationType="fade"
@@ -21,7 +25,7 @@ export const Footer = () => {
             className="bg-accent/30 rounded-lg text-accent-foreground/70 animation-transform animate-pulse hover:bg-accent hover:text-accent-foreground hover:animate-none max-xl:hidden"
           />
         </Link>
-      </ScrollAnimation>
+      </ScrollAnimation>}
       <Section className="flex border-t border-accent/70 w-full pt-4 pb-10 justify-between items-center">
         <div>
           <Link href={"/"}>

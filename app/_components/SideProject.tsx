@@ -2,18 +2,6 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { DevLang } from "./DevLang";
 
-export const getRepositories = async () => {
-  return fetch(`https://api.github.com/users/Boutzi/starred`)
-    .then((res) => res.json())
-    .then((data) => data);
-};
-
-export const getLanguages = async (repoName: string) => {
-  return fetch(`https://api.github.com/repos/Boutzi/${repoName}/languages`)
-    .then((res) => res.json())
-    .then((data) => data);
-};
-
 export type SideProjectProps = {
   id?: number;
   name?: string;
