@@ -16,7 +16,7 @@ const config: Config = {
     extend: {
 		backgroundImage: {
 		"grid-pattern":
-		  "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 fill=%22none%22 stroke=%22rgba(226, 232, 240, 0.04)%22 stroke-width=%220.1%22><line x1=%220%22 y1=%220%22 x2=%2210%22 y2=%2210%22/><line x1=%2210%22 y1=%220%22 x2=%220%22 y2=%2210%22/></svg>')",
+		  "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 fill=%22none%22 stroke=%22rgba(226, 232, 240, 0.09)%22 stroke-width=%220.1%22><line x1=%220%22 y1=%220%22 x2=%2210%22 y2=%2210%22/><line x1=%2210%22 y1=%220%22 x2=%220%22 y2=%2210%22/></svg>')",
 	  },
       backgroundSize: {
         "grid-size": "32px 32px",

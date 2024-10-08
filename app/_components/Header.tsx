@@ -6,9 +6,10 @@ import { LinkedinIcon } from "./icons/LinkedinIcon";
 import { GithubIcon } from "./icons/GithubIcon";
 import { MoonIcon, SunIcon, MenuIcon } from "lucide-react";
 import { JoeIcon } from "./icons/JoeIcon";
+import NavLink from "./NavLink";
 
 export const Header = () => {
-  const [darkMode, setDarkMode] = useState(true); 
+  const [darkMode, setDarkMode] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -19,6 +20,10 @@ export const Header = () => {
     setDarkMode(!darkMode);
   };
 
+  const handleCloseMenu = () => {
+    setMenuOpen(false)
+  }
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -27,25 +32,32 @@ export const Header = () => {
     }
   }, [darkMode]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (menuOpen && !target.closest('header')) {
+        setMenuOpen(false);
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
+  
   return (
-    <header
-      className="sticky top-0 border-b bg-background z-50">
+    <header className="sticky top-0 border-b bg-background z-50">
       <Section className="flex items-center justify-between p-0 max-sm:pt-2 max-sm:pb-2">
-        <Link href={"/"}>
+        <Link href={"/"} onClick={handleCloseMenu}>
           <JoeIcon size={48} className="p-0" />
         </Link>
         <nav className="hidden sm:flex items-center">
           <ul className="inline-flex items-center">
             <div className="flex items-center gap-4 pr-4 border-r border-accent-foreground/30 h-4">
-              <Link href={"/about"} className={"text-foreground hover:text-primary"}>
-                About
-              </Link>
-              <Link href={"/work"} className={"text-foreground hover:text-primary"}>
-                Work
-              </Link>
-              <Link href={"/contact"} className={"text-foreground hover:text-primary"}>
-                Contact
-              </Link>
+              <NavLink href={"/about"}>About</NavLink>
+              <NavLink href={"/work"}>Work</NavLink>
+              <NavLink href={"/contact"}>Contact</NavLink>
             </div>
 
             <div className="flex items-center gap-4 pr-4 pl-4 border-r border-accent-foreground/30 h-4">
@@ -91,15 +103,10 @@ export const Header = () => {
       {menuOpen && (
         <div className="absolute top-18 left-0 right-0 bg-background z-50 sm:hidden flex flex-col p-5 border-t border-b border-accent-foreground/30 items-end">
           <div className="flex flex-col pb-3 text-right gap-2">
-          <Link href={"/about"} className={"text-foreground hover:text-primary text-xl"}>
-            About
-          </Link>
-          <Link href={"/work"} className={"text-foreground hover:text-primary text-xl"}>
-            Work
-          </Link>
-          <Link href={"/contact"} className={"text-foreground hover:text-primary text-xl"}>
-            Contact
-          </Link></div>
+            <NavLink href={"/about"} className="text-xl" onClick={handleCloseMenu}>About</NavLink>
+            <NavLink href={"/work"} className="text-xl" onClick={handleCloseMenu}>Work</NavLink>
+            <NavLink href={"/contact"} className="text-xl" onClick={handleCloseMenu}>Contact</NavLink>
+          </div>
           <div className="flex flex-col border-b border-t border-accent-foreground/10 pb-3 pt-3 items-end pl-0">
             <button onClick={toggleDarkMode} className={"p-0"}>
               {darkMode ? (
@@ -108,8 +115,8 @@ export const Header = () => {
                 <SunIcon className="size-7 hover:text-primary" />
               )}
             </button>
-            </div>
-            <div className="flex gap-4 mt-2 pt-3">
+          </div>
+          <div className="flex gap-4 mt-2 pt-3">
             <Link
               target="_blank"
               href={"https://github.com/Boutzi"}

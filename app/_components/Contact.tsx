@@ -3,6 +3,7 @@ import { Section } from "./Section";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ScrollAnimation } from "./ScrollAnimation";
 
 export const Contact = () => {
   return (
@@ -23,10 +24,12 @@ export const Contact = () => {
         together.
       </h3>
       <Link href={"/contact"} passHref>
-        <Button className="rounded-full font-semibold bg-accent-foreground flex items-center">
-          Contact me
-          <ArrowRight size={16} className="ml-1" />
-        </Button>
+        <ScrollAnimation animated={true} animationType="slide-x">
+          <Button className="rounded-full font-semibold bg-accent-foreground flex items-center mt-4">
+            Contact me
+            <ArrowRight size={16} className="ml-1" />
+          </Button>
+        </ScrollAnimation>
       </Link>
     </Section>
   );

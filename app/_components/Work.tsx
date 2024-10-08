@@ -69,7 +69,7 @@ export const Work = (props: WorkProps) => {
         <p className="text-xs text-muted-foreground">{props.role}</p>
       </div>
       <div className="">
-        <p className="text-sm text-muted-foreground text-xs">{props.date}</p>
+        <p className="text-muted-foreground text-xs">{props.date}</p>
       </div>
     </Link>
   );

@@ -11,13 +11,19 @@ export default function Home() {
         <Hero />
       </div>
       <div className="bg-gradient-to-t from-violet-600/0 via-violet-600/0 to-violet-600/5 pt-28 pb-28 max-sm:pt-16 max-sm:pb-16 border-b ">
-      <Status />
+        <Spacing size="md" />
+        <Status />
+        <Spacing size="md" />
       </div>
       <div className="bg-violet-950 pt-28 pb-28 max-sm:pt-16 max-sm:pb-16 border-b bg-grid-pattern bg-grid-size">
-      <Skills />
+        <Spacing size="md" />
+        <Skills />
+        <Spacing size="md" />
       </div>
       <div className="pt-28 pb-28 max-sm:pt-16 max-sm:pb-16">
-      <Contact />
+        <Spacing size="md" />
+        <Contact />
+        <Spacing size="md" />
       </div>
       <Spacing size="md" />
     </main>
