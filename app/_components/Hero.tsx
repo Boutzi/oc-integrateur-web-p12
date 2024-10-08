@@ -3,6 +3,7 @@ import { Button } from "@/app/_components/ui/button";
 import { Section } from "./Section";
 import { Spacing } from "./Spacing";
 import Link from "next/link";
+import { Download } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -27,9 +28,14 @@ export const Hero = () => {
           <Link href={"/contact"}>
             <Button className="rounded-full">Contact me</Button>
           </Link>
-          <Link href={"https://github.com/Boutzi"}>
+          <Link href={"https://github.com/Boutzi"} target="_blank">
             <Button className="rounded-full bg-foreground hover:bg-accent-foreground/70">
               View on GitHub
+            </Button>
+          </Link>
+          <Link href={"../CV-Joseph-Girardi-Dev-2025.pdf"} target="_blank">
+            <Button className="rounded-full bg-foreground hover:bg-accent-foreground/70 flex gap-2">
+              <Download size={16} /> Download CV
             </Button>
           </Link>
         </div>
