@@ -1,4 +1,4 @@
-import { Badge } from "@/app/_components/ui/badge";
+import { Badge } from "./ui/badge";
 import { Section } from "./Section";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";

@@ -1,4 +1,4 @@
-import { Badge } from "@/app/_components/ui/badge";
+import { Badge } from "./ui/badge";
 import Link from "next/link";
 
 /* eslint-disable @next/next/no-img-element */
