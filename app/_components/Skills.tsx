@@ -15,7 +15,7 @@ export const Skills = () => {
         >
           Skills
         </Badge>
-        <h2 className="font-caption font-extralight text-4xl max-sm:text-xl text-slate-300">
+        <h2 className="font-caption font-extralight text-5xl max-sm:text-3xl text-slate-300">
           I love working on...
         </h2>
 

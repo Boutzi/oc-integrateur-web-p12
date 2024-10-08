@@ -14,23 +14,25 @@ export const Contact = () => {
       >
         Get in touch
       </Badge>
-      <h2 className="font-caption font-extralight text-4xl max-sm:text-xl">
-        Open to new opportunities.
-        <br /> Let’s connect and make it happen.
+      <h2 className="font-caption font-extralight text-5xl max-sm:text-3xl">
+        Open to new opportunities
       </h2>
-      <h3>
-        If you have a question, a job opportunity, or a project in mind, don’t
-        hesitate to reach out. I’m eager to connect and discuss how we can work
-        together.
+      <h3 className="font-caption font-semibold  text-2xl">
+        Let’s connect and make it happen!
       </h3>
       <Link href={"/contact"} passHref>
         <ScrollAnimation animated={true} animationType="slide-x">
-          <Button className="rounded-full font-semibold bg-accent-foreground flex items-center mt-4">
+          <Button className="rounded-full font-semibold bg-accent-foreground flex items-center my-8">
             Contact me
             <ArrowRight size={16} className="ml-1" />
           </Button>
         </ScrollAnimation>
       </Link>
+      <h4 className="text-sm">
+        If you have a question, a job opportunity, or a project in mind, don’t
+        hesitate to reach out. <br/>I’m eager to connect and discuss how we can work
+        together.
+      </h4>
     </Section>
   );
 };

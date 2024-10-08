@@ -24,15 +24,17 @@ export const Hero = () => {
         <div className="max-sm:hidden">
           <Spacing size="md" />
         </div>
-        <div className="flex gap-4 max-lg:m-auto">
-          <Link href={"/contact"}>
-            <Button className="rounded-full">Contact me</Button>
-          </Link>
-          <Link href={"https://github.com/Boutzi"} target="_blank">
-            <Button className="rounded-full bg-foreground hover:bg-accent-foreground/70">
-              View on GitHub
-            </Button>
-          </Link>
+        <div className="flex gap-4 max-lg:m-auto max-sm:flex-col max-sm:items-center">
+          <div className="flex gap-4 max-sm:items-center">
+            <Link href={"/contact"}>
+              <Button className="rounded-full">Contact me</Button>
+            </Link>
+            <Link href={"https://github.com/Boutzi"} target="_blank">
+              <Button className="rounded-full bg-foreground hover:bg-accent-foreground/70">
+                View on GitHub
+              </Button>
+            </Link>
+          </div>
           <Link href={"../CV-Joseph-Girardi-Dev-2025.pdf"} target="_blank">
             <Button className="rounded-full bg-foreground hover:bg-accent-foreground/70 flex gap-2">
               <Download size={16} /> Download CV
