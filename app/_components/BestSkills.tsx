@@ -5,7 +5,7 @@ import { TailwindIcon } from "./icons/TailwindIcon";
 import { PythonIcon } from "./icons/PythonIcon";
 import { ScrollAnimation } from "./ScrollAnimation";
 
-export const Skills = () => {
+export const BestSkills = () => {
   return (
     <ScrollAnimation animated={true} animationType="fade">
       <Section className="flex flex-col items-start justify-between gap-4">

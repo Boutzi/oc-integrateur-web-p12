@@ -1,6 +1,6 @@
 import { Contact } from "./_components/Contact";
 import { Hero } from "./_components/Hero";
-import { Skills } from "./_components/Skills";
+import { BestSkills } from "./_components/BestSkills";
 import { Spacing } from "./_components/Spacing";
 import { Status } from "./_components/Status";
 
@@ -17,7 +17,7 @@ export default function Home() {
       </div>
       <div className="bg-violet-950 pt-28 pb-28 max-sm:pt-16 max-sm:pb-16 border-b bg-grid-pattern bg-grid-size">
         <Spacing size="md" />
-        <Skills />
+        <BestSkills />
         <Spacing size="md" />
       </div>
       <div className="pt-28 pb-28 max-sm:pt-16 max-sm:pb-16">

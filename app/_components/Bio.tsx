@@ -4,15 +4,15 @@ import { Card } from "./ui/card";
 export const Bio = () => {
   return (
     <section className="flex flex-col gap-8">
+    <div className="rounded-lg h-50 overflow-hidden">
+      <img
+        alt="content"
+        className="object-cover object-center h-full w-full"
+        src="https://media.licdn.com/dms/image/v2/D5616AQFRUI1yi0J6Rg/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1702319166552?e=1733961600&v=beta&t=BjRd6tZXhY9mQIb7bMZLVPPBI4NVJfCdLdTmrN4ruq0"
+      />
+    </div>
       <Card className="container mx-auto flex flex-col p-8 gap-4">
         <div className="">
-          <div className="rounded-lg h-50 overflow-hidden">
-            <img
-              alt="content"
-              className="object-cover object-center h-full w-full"
-              src="https://media.licdn.com/dms/image/v2/D5616AQFRUI1yi0J6Rg/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1702319166552?e=1733961600&v=beta&t=BjRd6tZXhY9mQIb7bMZLVPPBI4NVJfCdLdTmrN4ruq0"
-            />
-          </div>
           <div className="flex flex-col sm:flex-row mt-10">
             <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
               <div className="w-20 h-20 rounded-full inline-flex items-center justify-center ">
