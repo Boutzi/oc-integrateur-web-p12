@@ -24,8 +24,8 @@ interface ExperienceCardProps {
 
 export const ExperienceCard = (props: ExperienceCardProps) => {
   return (
-    <Card className="container mx-auto flex p-8 gap-6 max-lg:flex-col">
-      <div className="-m-8 mr-0 max-lg:hidden">
+    <Card className="mx-auto flex p-8 gap-6 max-md:flex-col">
+      <div className="-m-8 mr-0 max-md:hidden">
         <img
           src={props.banner}
           alt={`${props.company} office`}

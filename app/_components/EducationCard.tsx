@@ -27,7 +27,7 @@ interface EducationCardProps {
 
 export const EducationCard = (props: EducationCardProps) => {
   return (
-    <Card className="container mx-auto flex p-8 gap-6 max-lg:flex-col flex-1">
+    <Card className="mx-auto flex p-8 gap-6 max-md:flex-col">
       <div>
         <CardHeader className="border-b flex-row gap-4 items-start p-0 pb-4">
           <div className="w-24 h-24 bg-white p-2 rounded-lg aspect-square">

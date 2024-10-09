@@ -61,13 +61,13 @@ export default function Education() {
   return (
     <section className="flex flex-col gap-8">
       <h2 className="text-4xl font-semibold text-center">Education</h2>
-      <div className="flex gap-4">
+      <div className="grid gap-4 grid-cols-2 max-lg:grid-cols-1">
         {EDUCATION.map((course, index) => (
           <EducationCard key={index} {...course} />
         ))}
       </div>
       <h2 className="text-4xl font-semibold text-center">Certifications</h2>
-      <div className="flex gap-4">
+      <div className="grid gap-4 grid-cols-2 max-lg:grid-cols-1">
         {CERTIFICATIONS.map((certif, index) => (
           <EducationCard key={index} {...certif} />
         ))}

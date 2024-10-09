@@ -47,7 +47,7 @@ export const Header = () => {
   }, [menuOpen]);
   
   return (
-    <header className="sticky top-0 border-b bg-background z-50">
+    <header className="sticky top-0 border-b bg-background z-40">
       <Section className="flex items-center justify-between p-0 max-sm:pt-2 max-sm:pb-2">
         <Link href={"/"} onClick={handleCloseMenu}>
           <JoeIcon size={48} className="p-0" />
@@ -101,7 +101,7 @@ export const Header = () => {
         </div>
       </Section>
       {menuOpen && (
-        <div className="absolute top-18 left-0 right-0 bg-background z-50 sm:hidden flex flex-col p-5 border-t border-b border-accent-foreground/30 items-end">
+        <div className="absolute top-18 left-0 right-0 bg-background z-40 sm:hidden flex flex-col p-5 border-t border-b border-accent-foreground/30 items-end">
           <div className="flex flex-col pb-3 text-right gap-2">
             <NavLink href={"/about"} className="text-xl" onClick={handleCloseMenu}>About</NavLink>
             <NavLink href={"/work"} className="text-xl" onClick={handleCloseMenu}>Work</NavLink>
