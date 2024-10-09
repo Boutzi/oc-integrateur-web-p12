@@ -11,12 +11,7 @@ export const GlobalStatus = () => {
     setAnimate(false);
     setTimeout(() => setShow(false), 200);
   };
-
-  const handleOpen = () => {
-    setShow(true);
-    setTimeout(() => setAnimate(true), 50);
-  };
-
+  
   return (
     <>
       {show && (
