@@ -6,7 +6,6 @@ import "./globals.css";
 import { Header } from "./_components/Header";
 import { Footer } from "./_components/Footer";
 import { GlobalStatus } from "./_components/GlobalStatus";
-import { ClientOnly } from "./_components/ClientOnly";
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
