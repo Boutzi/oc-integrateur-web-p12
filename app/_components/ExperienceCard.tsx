@@ -75,7 +75,7 @@ export const ExperienceCard = (props: ExperienceCardProps) => {
             <Badge
               key={index}
               variant={"outline"}
-              className="rounded-full overflow-hidden text-ellipsis whitespace-nowrap"
+              className="font-light rounded-full overflow-hidden text-ellipsis whitespace-nowrap"
             >
               {skill}
             </Badge>

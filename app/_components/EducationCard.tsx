@@ -39,7 +39,7 @@ export const EducationCard = (props: EducationCardProps) => {
           </div>
           <div className="flex flex-col items-start gap-1">
             <div className="flex items-start justify-between w-full">
-              <CardTitle className="text-2xl">
+              <CardTitle className="text-2xl text-primary">
                 {props.course ? props.course : props.certification}
               </CardTitle>
             </div>
@@ -93,7 +93,7 @@ export const EducationCard = (props: EducationCardProps) => {
             <Badge
               key={index}
               variant={"outline"}
-              className="rounded-full overflow-hidden text-ellipsis whitespace-nowrap"
+              className="font-light rounded-full overflow-hidden text-ellipsis whitespace-nowrap"
             >
               {skill}
             </Badge>
