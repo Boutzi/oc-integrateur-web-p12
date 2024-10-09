@@ -34,11 +34,13 @@ export const ExperienceCard = (props: ExperienceCardProps) => {
       </div>
       <div>
         <CardHeader className="border-b flex-row gap-4 items-start p-0 pb-4">
-          <img
-            src={props.logo}
-            alt={`${props.company} logo`}
-            className="w-16 h-16 object-contain rounded"
-          />
+          <div className="w-16 h-16 bg-white rounded-lg">
+            <img
+              src={props.logo}
+              alt={`${props.company} logo`}
+              className="w-16 h-16 object-contain rounded"
+            />
+          </div>
           <div className="flex flex-col items-start gap-1">
             <div className="flex items-start justify-between w-full">
               <CardTitle className="text-2xl">{props.company}</CardTitle>
@@ -68,9 +70,9 @@ export const ExperienceCard = (props: ExperienceCardProps) => {
             <p className="leading-relaxed text-md">{props.description}</p>
           </div>
         </CardContent>
-        <CardFooter className="border-t pt-4 px-0 pb-0 gap-2">
+        <CardFooter className="border-t pt-4 px-0 pb-0 gap-2 flex-wrap">
           {props.skills.map((skill) => (
-            <Badge variant={"outline"} className="rounded-full">
+            <Badge variant={"outline"} className="rounded-full overflow-hidden text-ellipsis whitespace-nowrap">
               {skill}
             </Badge>
           ))}
