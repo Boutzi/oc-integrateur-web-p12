@@ -89,8 +89,9 @@ export const EducationCard = (props: EducationCardProps) => {
           </div>
         </CardContent>
         <CardFooter className="border-t pt-4 px-0 pb-0 gap-2 flex-wrap">
-          {props.skills.map((skill) => (
+          {props.skills.map((skill, index) => (
             <Badge
+              key={index}
               variant={"outline"}
               className="rounded-full overflow-hidden text-ellipsis whitespace-nowrap"
             >
