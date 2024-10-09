@@ -55,21 +55,21 @@ const CERTIFICATIONS = [
     description: "I'm currently preparing for the AWS Cloud Practitioner certification. This course will provide me with a solid understanding of cloud computing concepts, AWS services, security, and architecture.",
     skills: ["AWS Fundamentals", "Cloud Concepts", "Security", "Architecture"],
   },
-]
+] 
 
 export default function Education() {
   return (
     <section className="flex flex-col gap-8">
       <h2 className="text-4xl font-semibold text-center">Education</h2>
       <div className="flex gap-4">
-        {EDUCATION.map((course) => (
-          <EducationCard {...course} />
+        {EDUCATION.map((course, index) => (
+          <EducationCard key={index} {...course} />
         ))}
       </div>
       <h2 className="text-4xl font-semibold text-center">Certifications</h2>
       <div className="flex gap-4">
-        {CERTIFICATIONS.map((certif) => (
-          <EducationCard {...certif} />
+        {CERTIFICATIONS.map((certif, index) => (
+          <EducationCard key={index} {...certif} />
         ))}
       </div>
     </section>

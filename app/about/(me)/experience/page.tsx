@@ -50,8 +50,8 @@ const EXPERIENCE = [
 export default function Experience() {
   return (
     <section className="flex flex-col gap-8">
-      {EXPERIENCE.map((xp) => (
-        <ExperienceCard {...xp} />
+      {EXPERIENCE.map((xp, index) => (
+        <ExperienceCard key={index} {...xp} />
       ))}
     </section>
   );
