@@ -62,12 +62,16 @@ jobs:
           # Tenter de faire un pull
           git pull --rebase origin main
 
-          # Ajouter les changements de version et faire un commit
-          git add version.json
-          git commit -m "Bump version to ${{ steps.increment_version.outputs.new_version }}"
-
-          # Pousser les changements
-          git push origin main
+          # Vérifier les modifications dans version.json
+          if ! git diff --exit-code version.json; then
+            # Ajouter les changements de version et faire un commit
+            git add version.json
+            git commit -m "Bump version to ${{ steps.increment_version.outputs.new_version }}"
+            # Pousser les changements
+            git push origin main
+          else
+            echo "Aucune modification dans version.json. Aucun commit nécessaire."
+          fi
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
