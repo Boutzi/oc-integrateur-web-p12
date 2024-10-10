@@ -21,6 +21,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Vérifiez et créez le fichier version.json s'il n'existe pas
+      - name: Check and create version.json
+        run: |
+          if [ ! -f version.json ]; then
+            echo "{\"version\": \"0.1.0\"}" > version.json
+            echo "Fichier version.json créé avec la version initiale 0.1.0."
+          else
+            echo "version.json existe déjà."
+          fi
+
       # Incrementer la version
       - name: Increment version
         id: increment_version
@@ -29,6 +39,7 @@ jobs:
           IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
 
           echo "Commit message: ${{ github.event.head_commit.message }}"
+
           if [[ "${{ github.event.head_commit.message }}" == *"[major]"* ]]; then
             major=$((major + 1))
             minor=0
@@ -46,32 +57,19 @@ jobs:
           NEW_VERSION="$major.$minor.$patch"
           echo "Nouvelle version: $NEW_VERSION"
           echo "{\"version\": \"$NEW_VERSION\"}" > version.json
-          echo "::set-output name=new_version::$NEW_VERSION"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Configurer Git
         run: |
           git config --local user.name "boutzi"
           git config --local user.email "joe@arkaans.com"
 
-      # Gérer le versioning et le pull en un seul script
       - name: Versioning and Pull
         run: |
-          # Stasher les changements
-          git stash
-
-          # Tenter de faire un pull
-          git pull --rebase origin main
-
-          # Vérifier les modifications dans version.json
-          if ! git diff --exit-code version.json; then
-            # Ajouter les changements de version et faire un commit
-            git add version.json
-            git commit -m "Bump version to ${{ steps.increment_version.outputs.new_version }}"
-            # Pousser les changements
-            git push origin main
-          else
-            echo "Aucune modification dans version.json. Aucun commit nécessaire."
-          fi
+          git pull --rebase origin main || true
+          git add version.json
+          git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification dans version.json. Aucun commit nécessaire."
+          git push origin main || echo "Échec du push, vérifiez les permissions."
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -120,7 +118,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
-          NEXT_PUBLIC_GITHUB_BEARER_TOKEN: ${{secrets.NEXT_PUBLIC_GITHUB_BEARER_TOKEN }}
+          NEXT_PUBLIC_GITHUB_BEARER_TOKEN: ${{ secrets.NEXT_PUBLIC_GITHUB_BEARER_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
