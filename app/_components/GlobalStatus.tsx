@@ -4,7 +4,7 @@ import { Section } from "./Section";
 import { useState } from "react";
 
 export const GlobalStatus = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [animate, setAnimate] = useState(true);
 
   const handleClose = () => {
