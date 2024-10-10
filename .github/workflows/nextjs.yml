@@ -1,33 +1,145 @@
-# Incrementer la version
-- name: Increment version
-  id: increment_version
-  run: |
-    CURRENT_VERSION=$(jq -r '.version' version.json)
-    IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
+name: Deploy Next.js site to Pages
 
-    echo "Commit message: ${{ github.event.head_commit.message }}"
-    
-    # Vérifier si le message est un merge
-    if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
-      echo "Ceci est un commit de fusion, aucune action sur la version."
-      exit 0
-    fi
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
-    if [[ "${{ github.event.head_commit.message }}" == *"[major]"* ]]; then
-      major=$((major + 1))
-      minor=0
-      patch=0
-    elif [[ "${{ github.event.head_commit.message }}" == *"[minor]"* ]]; then
-      minor=$((minor + 1))
-      patch=0
-    elif [[ "${{ github.event.head_commit.message }}" == *"[patch]"* ]]; then
-      patch=$((patch + 1))
-    else
-      echo "No version increment specified. Defaulting to patch."
-      patch=$((patch + 1))
-    fi
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
-    NEW_VERSION="$major.$minor.$patch"
-    echo "Nouvelle version: $NEW_VERSION"
-    echo "{\"version\": \"$NEW_VERSION\"}" > version.json
-    echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check and create version.json
+        run: |
+          if [ ! -f version.json ]; then
+            echo "{\"version\": \"0.1.0\"}" > version.json
+            echo "Fichier version.json créé avec la version initiale 0.1.0."
+          else
+            echo "version.json existe déjà."
+          fi
+
+      - name: Increment version
+        id: increment_version
+        run: |
+          CURRENT_VERSION=$(jq -r '.version' version.json)
+          IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
+
+          echo "Commit message: ${{ github.event.head_commit.message }}"
+
+          # Vérifiez si le message est un merge
+          if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
+            echo "Ceci est un commit de fusion, aucune action sur la version."
+            exit 0
+          fi
+
+          if [[ "${{ github.event.head_commit.message }}" == *"[major]"* ]]; then
+            major=$((major + 1))
+            minor=0
+            patch=0
+          elif [[ "${{ github.event.head_commit.message }}" == *"[minor]"* ]]; then
+            minor=$((minor + 1))
+            patch=0
+          elif [[ "${{ github.event.head_commit.message }}" == *"[patch]"* ]]; then
+            patch=$((patch + 1))
+          else
+            echo "No version increment specified. Defaulting to patch."
+            patch=$((patch + 1))
+          fi
+
+          NEW_VERSION="$major.$minor.$patch"
+          echo "Nouvelle version: $NEW_VERSION"
+          echo "{\"version\": \"$NEW_VERSION\"}" > version.json
+          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Configurer Git
+        run: |
+          git config --local user.name "boutzi"
+          git config --local user.email "joe@arkaans.com"
+
+      - name: Versioning and Pull
+        run: |
+          git pull --rebase origin main || true
+          git add version.json
+          if git diff --exit-code version.json; then
+            echo "Aucune modification dans version.json. Aucun commit nécessaire."
+            exit 0
+          fi
+          git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
+          git push origin main || echo "Échec du push, vérifiez les permissions."
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Detect package manager
+        id: detect-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Unable to determine package manager"
+            exit 1
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: next
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+
+      - name: Install dependencies
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+      - name: Build with Next.js
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          NEXT_PUBLIC_GITHUB_BEARER_TOKEN: ${{ secrets.NEXT_PUBLIC_GITHUB_BEARER_TOKEN }}
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
