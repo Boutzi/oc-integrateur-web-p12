@@ -1,45 +1,50 @@
-"use client"; // Exécuté côté client
+"use client";
 
 import { useState, useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation"; // Utilise ces hooks pour détecter le changement d'URL
+import { usePathname } from "next/navigation";
 import { Progress } from "./ui/progress";
 
 export function ProgressBar() {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(false);
-  const pathname = usePathname(); // Récupère le chemin actuel
-  const searchParams = useSearchParams(); // Récupère les paramètres de recherche
+  const pathname = usePathname();
 
   useEffect(() => {
+    let animationFrameId: number;
+    let start: number;
+    const timer = window.setTimeout; // Utilisation de const ici
+
     const handleStart = () => {
       setProgress(0);
       setVisible(true);
-
-      // Démarre l'incrémentation de la barre de progression
-      const start = Date.now();
-      const timer = window.setInterval(() => {
-        const elapsed = Date.now() - start;
-        const newProgress = Math.min((elapsed / 1000) * 100, 100);
+      start = performance.now();
+      
+      const updateProgress = (currentTime: number) => {
+        const elapsed = (currentTime - start) / 1000;
+        const newProgress = Math.min((elapsed / 1) * 100, 100); // 1 seconde pour 100%
         setProgress(newProgress);
-      }, 100); // Mettez à jour toutes les 100 ms
 
-      // Nettoyage pour effacer l'intervalle lorsque la progression est terminée
-      return () => clearInterval(timer);
+        if (newProgress < 100) {
+          animationFrameId = requestAnimationFrame(updateProgress);
+        }
+      };
+
+      animationFrameId = requestAnimationFrame(updateProgress);
     };
 
     const handleComplete = () => {
-      setProgress(100); // Mettez la progression à 100%
-      setTimeout(() => setVisible(false), 300); // Cachez la barre après 300 ms
+      setProgress(100);
+      setTimeout(() => setVisible(false), 200);
     };
 
-    // Commence la progression à chaque changement de chemin ou de paramètres de recherche
-    const startLoading = handleStart();
-    handleComplete(); // Appelle ici pour simuler la complétion immédiate lors de l'affichage
+    handleStart();
+    const timeoutId = timer(() => handleComplete(), 1000); // Utilisation de const ici
 
     return () => {
-      if (startLoading) startLoading(); // Nettoie l'intervalle
+      cancelAnimationFrame(animationFrameId);
+      clearTimeout(timeoutId); // Utilisation de const ici
     };
-  }, [pathname, searchParams]); // Démarre l'effet à chaque changement de chemin ou de paramètres
+  }, [pathname]);
 
   return (
     visible && (
