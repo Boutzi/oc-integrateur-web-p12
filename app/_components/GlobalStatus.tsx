@@ -21,7 +21,7 @@ export const GlobalStatus = () => {
             <Section className="">
               <span className="font-semibold text-white flex gap-1 items-center">
                 <PencilRuler size={20} className="text-white" />
-                Website under development<span className="text-white/80 font-light text-xs">- Some features may not work as expected -</span>
+                Website under development<span className="text-white/90 font-light text-xs">- Some features may not work as expected -</span>
                 <span className="text-white/90 text-xs font-semibold">version <VersionStatus /></span>
               </span>
             </Section>
