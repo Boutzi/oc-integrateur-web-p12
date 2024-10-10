@@ -15,7 +15,7 @@ export const Hero = () => {
           <br />
           My name is Joe.
           <br />{" "}
-          <span className="text-foreground">I’m a Front-End Developer.</span>
+          <span className="text-foreground">I’m a Front-End developer.</span>
         </h1>
         <h2 className="font-caption font-extralight text-2xl max-sm:text-xl">
           Let&apos;s create something amazing together, <br />
