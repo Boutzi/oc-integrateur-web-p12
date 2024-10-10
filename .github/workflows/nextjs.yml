@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -45,64 +45,22 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
-      - name: Increment version
-        id: increment_version
-        run: |
-          # Vérifiez si le message de commit est un merge
-          if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
-            echo "Ceci est un commit de fusion, aucune action sur la version."
-            exit 0
-          fi
-
-          # Lire la version actuelle depuis package.json
-          CURRENT_VERSION=$(jq -r '.version' package.json)
-          IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
-
-          echo "Version actuelle: $CURRENT_VERSION"
-
-          # Vérification des mots-clés pour l'incrémentation
-          if [[ "${{ github.event.head_commit.message }}" == *"major"* ]]; then
-            major=$((major + 1))
-            minor=0
-            patch=0
-          elif [[ "${{ github.event.head_commit.message }}" == *"feat"* ]]; then
-            minor=$((minor + 1))
-            patch=0
-          elif [[ "${{ github.event.head_commit.message }}" == *"fix"* ]]; then
-            patch=$((patch + 1))
-          else
-            echo "Aucun incrément de version spécifié. Aucune modification."
-            exit 0
-          fi
-
-          NEW_VERSION="$major.$minor.$patch"
-          echo "Nouvelle version: $NEW_VERSION"
-          
-          # Mettre à jour package.json avec la nouvelle version
-          jq --arg new_version "$NEW_VERSION" '.version = $new_version' package.json > tmp.$$.json && mv tmp.$$.json package.json
-
-          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
-
-      - name: Configurer Git
-        run: |
-          git config --local user.name "boutzi"
-          git config --local user.email "joe@arkaans.com"
-          git add package.json
-          git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
-          git push origin main || echo "Échec du push, vérifiez les permissions."
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build with Next.js
-        run: |
-          ${{ steps.detect-package-manager.outputs.runner }} next build
-          ${{ steps.detect-package-manager.outputs.runner }} next export
-
-      - name: Check output directory
-        run: |
-          echo "Vérification du contenu de ./out"
-          ls -la ./out || echo "./out n'existe pas"
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          NEXT_PUBLIC_GITHUB_BEARER_TOKEN: ${{ secrets.NEXT_PUBLIC_GITHUB_BEARER_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -110,7 +68,6 @@ jobs:
           path: ./out
           name: github-pages
           retention-days: 1
-
 
   deploy:
     environment:
