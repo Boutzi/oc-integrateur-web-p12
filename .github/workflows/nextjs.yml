@@ -95,14 +95,22 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
-        env:
-          NEXT_PUBLIC_GITHUB_BEARER_TOKEN: ${{ secrets.NEXT_PUBLIC_GITHUB_BEARER_TOKEN }}
+        run: |
+          ${{ steps.detect-package-manager.outputs.runner }} next build
+          ${{ steps.detect-package-manager.outputs.runner }} next export
+
+      - name: Check output directory
+        run: |
+          echo "Vérification du contenu de ./out"
+          ls -la ./out || echo "./out n'existe pas"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
+          name: github-pages
+          retention-days: 1
+
 
   deploy:
     environment:
