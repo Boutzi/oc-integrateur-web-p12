@@ -93,3 +93,14 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # Commit version change
+      - name: Commit version change
+        run: |
+          git config --local user.name "boutzi"
+          git config --local user.email "joe@arkaans.com"
+          git add version.json
+          git commit -m "Bump version to ${{ steps.increment_version.outputs.new_version }}"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

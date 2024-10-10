@@ -2,6 +2,7 @@
 import { PencilRuler, X } from "lucide-react";
 import { Section } from "./Section";
 import { useState } from "react";
+import VersionStatus from "./VersionStatus";
 
 export const GlobalStatus = () => {
   const [show, setShow] = useState(true);
@@ -18,9 +19,10 @@ export const GlobalStatus = () => {
         <div className={`transition-transform duration-300 ${animate ? "translate-y-0" : "-translate-y-full"}`}>
           <div className="sticky bg-orange-700 flex items-center z-50 border-b border-accent-foreground/0">
             <Section className="">
-              <span className="font-semibold text-white flex gap-2 items-center">
+              <span className="font-semibold text-white flex gap-1 items-center">
                 <PencilRuler size={20} className="text-white" />
-                Website under development
+                Website under development<span className="text-white/70 font-light text-xs">- Some features may not work as expected -</span>
+                <span className="text-white/70 font-light text-xs">v<VersionStatus /></span>
               </span>
             </Section>
             <button
