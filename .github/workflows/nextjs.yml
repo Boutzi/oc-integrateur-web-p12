@@ -15,21 +15,19 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       
-      # Incrémenter la version
+      # Incrementer la version
       - name: Increment version
         id: increment_version
         run: |
           CURRENT_VERSION=$(jq -r '.version' version.json)
           IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
           
-          # Récupérer le type d'incrémentation depuis le message de commit
           echo "Commit message: ${{ github.event.head_commit.message }}"
           if [[ "${{ github.event.head_commit.message }}" == *"[major]"* ]]; then
             major=$((major + 1))
@@ -55,10 +53,13 @@ jobs:
           git config --local user.name "boutzi"
           git config --local user.email "joe@arkaans.com"
 
-      # Pull pour s'assurer d'avoir la dernière version
+      # Stasher les changements
+      - name: Stash changes
+        run: git stash
+
+      # Tirer les dernières modifications
       - name: Pull latest changes
-        run: |
-          git pull --rebase origin main
+        run: git pull --rebase origin main
 
       # Commit version change
       - name: Commit version change
@@ -120,7 +121,6 @@ jobs:
         with:
           path: ./out
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
