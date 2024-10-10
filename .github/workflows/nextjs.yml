@@ -21,70 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check and create version.json
-        run: |
-          if [ ! -f version.json ]; then
-            echo "{\"version\": \"0.1.0\"}" > version.json
-            echo "Fichier version.json créé avec la version initiale 0.1.0."
-          else
-            echo "version.json existe déjà."
-          fi
-
-      - name: Increment version
-        id: increment_version
-        run: |
-          CURRENT_VERSION=$(jq -r '.version' version.json)
-          IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
-
-          echo "Commit message: ${{ github.event.head_commit.message }}"
-          
-          echo "Version actuelle: $CURRENT_VERSION"
-
-          # Vérifiez si le message est un merge
-          if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
-            echo "Ceci est un commit de fusion, aucune action sur la version."
-            exit 0
-          fi
-
-          # Vérification des mots-clés pour l'incrémentation (sans crochets)
-          if [[ "${{ github.event.head_commit.message }}" == *"major"* ]]; then
-            major=$((major + 1))
-            minor=0
-            patch=0
-          elif [[ "${{ github.event.head_commit.message }}" == *"minor"* ]]; then
-            minor=$((minor + 1))
-            patch=0
-          elif [[ "${{ github.event.head_commit.message }}" == *"patch"* ]]; then
-            patch=$((patch + 1))
-          else
-            echo "Aucun incrément de version spécifié. Par défaut, incrémentation de patch."
-            patch=$((patch + 1))
-          fi
-
-          NEW_VERSION="$major.$minor.$patch"
-          echo "Nouvelle version: $NEW_VERSION"
-          echo "{\"version\": \"$NEW_VERSION\"}" > version.json
-          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
-
-      - name: Configurer Git
-        run: |
-          git config --local user.name "boutzi"
-          git config --local user.email "joe@arkaans.com"
-
-      - name: Versioning and Pull
-        run: |
-          git pull --rebase origin main || true
-          git add version.json
-          if git diff --exit-code version.json; then
-            echo "Aucune modification dans version.json. Aucun commit nécessaire."
-            exit 0
-          fi
-          git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
-          git push origin main || echo "Échec du push, vérifiez les permissions."
-
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -109,19 +45,51 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: next
+      - name: Increment version
+        id: increment_version
+        run: |
+          # Vérifiez si le message de commit est un merge
+          if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
+            echo "Ceci est un commit de fusion, aucune action sur la version."
+            exit 0
+          fi
 
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+          # Lire la version actuelle depuis package.json
+          CURRENT_VERSION=$(jq -r '.version' package.json)
+          IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
+
+          echo "Version actuelle: $CURRENT_VERSION"
+
+          # Vérification des mots-clés pour l'incrémentation
+          if [[ "${{ github.event.head_commit.message }}" == *"major"* ]]; then
+            major=$((major + 1))
+            minor=0
+            patch=0
+          elif [[ "${{ github.event.head_commit.message }}" == *"feat"* ]]; then
+            minor=$((minor + 1))
+            patch=0
+          elif [[ "${{ github.event.head_commit.message }}" == *"fix"* ]]; then
+            patch=$((patch + 1))
+          else
+            echo "Aucun incrément de version spécifié. Aucune modification."
+            exit 0
+          fi
+
+          NEW_VERSION="$major.$minor.$patch"
+          echo "Nouvelle version: $NEW_VERSION"
+          
+          # Mettre à jour package.json avec la nouvelle version
+          jq --arg new_version "$NEW_VERSION" '.version = $new_version' package.json > tmp.$$.json && mv tmp.$$.json package.json
+
+          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Configurer Git
+        run: |
+          git config --local user.name "boutzi"
+          git config --local user.email "joe@arkaans.com"
+          git add package.json
+          git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
+          git push origin main || echo "Échec du push, vérifiez les permissions."
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
