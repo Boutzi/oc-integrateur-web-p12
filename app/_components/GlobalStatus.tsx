@@ -22,7 +22,7 @@ export const GlobalStatus = () => {
               <span className="font-semibold text-white flex gap-1 items-center">
                 <PencilRuler size={20} className="text-white" />
                 Website under development<span className="text-white/70 font-light text-xs">- Some features may not work as expected -</span>
-                <span className="text-white/70 font-light text-xs">v<VersionStatus /></span>
+                <span className="text-white/70 text-xs font-semibold">v<VersionStatus /></span>
               </span>
             </Section>
             <button
