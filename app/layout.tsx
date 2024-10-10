@@ -6,6 +6,7 @@ import "./globals.css";
 import { Header } from "./_components/Header";
 import { Footer } from "./_components/Footer";
 import { GlobalStatus } from "./_components/GlobalStatus";
+import { ProgressBar } from "./_components/ProgressBar";
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
@@ -44,8 +45,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased`}
       >
+        <ProgressBar />
         <GlobalStatus />
-
         <Header />
         {children}
         <Footer />
