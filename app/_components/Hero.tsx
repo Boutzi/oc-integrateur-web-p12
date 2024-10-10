@@ -8,7 +8,7 @@ import { Download } from "lucide-react";
 export const Hero = () => {
   return (
     // min-h-[calc(100vh-270px)]
-    <Section className="flex max-lg:flex-col items-center justify-between gap-6 min-h-[calc(100vh-380px)] max-lg:pt-8 max-lg:pb-8 max-md:pt-0">
+    <Section className="flex max-lg:flex-col items-center justify-between gap-6 min-h-[calc(100vh-400px)] max-lg:pt-8 max-lg:pb-8 max-md:pt-0">
       <div className="flex-[3] flex flex-col gap-2">
         <h1 className="font-caption text-7xl font-bold text-primary max-md:text-4xl max-sm:text-3xl max-xl:text-6xl max-lg:text-5xl">
           Hi there!
