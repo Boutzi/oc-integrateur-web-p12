@@ -30,33 +30,39 @@ jobs:
             echo "version.json existe déjà."
           fi
 
-          - name: Increment version
-          id: increment_version
-          run: |
-            CURRENT_VERSION=$(jq -r '.version' version.json)
-            echo "Current version is: $CURRENT_VERSION" # Debug line
-            IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
-  
-            echo "Commit message: ${{ github.event.head_commit.message }}"
-            
-            if [[ "${{ github.event.head_commit.message }}" == *"[major]"* ]]; then
-              major=$((major + 1))
-              minor=0
-              patch=0
-            elif [[ "${{ github.event.head_commit.message }}" == *"[minor]"* ]]; then
-              minor=$((minor + 1))
-              patch=0
-            elif [[ "${{ github.event.head_commit.message }}" == *"[patch]"* ]]; then
-              patch=$((patch + 1))
-            else
-              echo "No version increment specified. Defaulting to patch."
-              patch=$((patch + 1))
-            fi
-  
-            NEW_VERSION="$major.$minor.$patch"
-            echo "Nouvelle version: $NEW_VERSION"
-            echo "{\"version\": \"$NEW_VERSION\"}" > version.json
-            echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+      - name: Increment version
+        id: increment_version
+        run: |
+          CURRENT_VERSION=$(jq -r '.version' version.json)
+          IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
+
+          echo "Commit message: ${{ github.event.head_commit.message }}"
+
+          # Vérifiez si le message est un merge
+          if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
+            echo "Ceci est un commit de fusion, aucune action sur la version."
+            exit 0
+          fi
+
+          # Vérification des mots-clés pour l'incrémentation (sans crochets)
+          if [[ "${{ github.event.head_commit.message }}" == *"major"* ]]; then
+            major=$((major + 1))
+            minor=0
+            patch=0
+          elif [[ "${{ github.event.head_commit.message }}" == *"minor"* ]]; then
+            minor=$((minor + 1))
+            patch=0
+          elif [[ "${{ github.event.head_commit.message }}" == *"patch"* ]]; then
+            patch=$((patch + 1))
+          else
+            echo "Aucun incrément de version spécifié. Par défaut, incrémentation de patch."
+            patch=$((patch + 1))
+          fi
+
+          NEW_VERSION="$major.$minor.$patch"
+          echo "Nouvelle version: $NEW_VERSION"
+          echo "{\"version\": \"$NEW_VERSION\"}" > version.json
+          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Configurer Git
         run: |
