@@ -66,7 +66,6 @@ jobs:
 
       - name: Versioning and Pull
         run: |
-          git pull --rebase origin main || true
           git add version.json
           git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification dans version.json. Aucun commit nécessaire."
           git push origin main || echo "Échec du push, vérifiez les permissions."
