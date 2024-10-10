@@ -15,11 +15,11 @@ export const Hero = () => {
           <br />
           My name is Joe.
           <br />{" "}
-          <span className="text-foreground">I’m a Front-End developer.</span>
+          <span className="text-foreground">I’m a Front-End Developer.</span>
         </h1>
         <h2 className="font-caption font-extralight text-2xl max-sm:text-xl">
           Let&apos;s create something amazing together, <br />
-          whether remote or on-site, I&apos;m ready to code.
+          whether remote or on-site, I&apos;m reaDy to code.
         </h2>
         <div className="max-sm:hidden">
           <Spacing size="md" />
