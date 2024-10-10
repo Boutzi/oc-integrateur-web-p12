@@ -37,6 +37,8 @@ jobs:
           IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
 
           echo "Commit message: ${{ github.event.head_commit.message }}"
+          
+          echo "Version actuelle: $CURRENT_VERSION"
 
           # Vérifiez si le message est un merge
           if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
