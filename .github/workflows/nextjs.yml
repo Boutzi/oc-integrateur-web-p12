@@ -28,22 +28,39 @@ jobs:
         run: |
           CURRENT_VERSION=$(jq -r '.version' version.json)
           IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
-          patch=$((patch + 1))  # Incrémente le patch
+          
+          # Récupérer le type d'incrémentation depuis le message de commit
+          echo "Commit message: ${{ github.event.head_commit.message }}"
+          if [[ "${{ github.event.head_commit.message }}" == *"[major]"* ]]; then
+            major=$((major + 1))
+            minor=0
+            patch=0
+          elif [[ "${{ github.event.head_commit.message }}" == *"[minor]"* ]]; then
+            minor=$((minor + 1))
+            patch=0
+          elif [[ "${{ github.event.head_commit.message }}" == *"[patch]"* ]]; then
+            patch=$((patch + 1))
+          else
+            echo "No version increment specified. Defaulting to patch."
+            patch=$((patch + 1))
+          fi
+
           NEW_VERSION="$major.$minor.$patch"
           echo "Nouvelle version: $NEW_VERSION"
           echo "{\"version\": \"$NEW_VERSION\"}" > version.json
           echo "::set-output name=new_version::$NEW_VERSION"
-
-      - name: Vérifier le répertoire
-        run: |
-          pwd
-          ls -la
 
       - name: Configurer Git
         run: |
           git config --local user.name "boutzi"
           git config --local user.email "joe@arkaans.com"
 
+      # Pull pour s'assurer d'avoir la dernière version
+      - name: Pull latest changes
+        run: |
+          git pull --rebase origin main
+
+      # Commit version change
       - name: Commit version change
         run: |
           git add version.json
