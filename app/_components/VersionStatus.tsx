@@ -1,13 +1,13 @@
-"use client"
+"use client";
 import { useEffect, useState } from 'react';
-import versionData from '../../version.json';
+import packageData from '../../package.json';
 
 const VersionStatus = () => {
-  const [version, setVersion] = useState(versionData.version);
+  const [version, setVersion] = useState(packageData.version);
 
   useEffect(() => {
     const fetchVersion = async () => {
-      const response = await fetch('/version.json');
+      const response = await fetch('/package.json');
       const data = await response.json();
       setVersion(data.version);
     };
