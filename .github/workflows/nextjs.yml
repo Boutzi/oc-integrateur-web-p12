@@ -22,7 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      # Incrémenter la version
       - name: Increment version
         id: increment_version
         run: |
@@ -55,12 +54,10 @@ jobs:
           git config --local user.name "boutzi"
           git config --local user.email "joe@arkaans.com"
 
-      # Pull pour s'assurer d'avoir la dernière version
       - name: Pull latest changes
         run: |
           git pull --rebase origin main
 
-      # Commit version change
       - name: Commit version change
         run: |
           git add version.json
