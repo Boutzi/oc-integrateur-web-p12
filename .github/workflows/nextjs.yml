@@ -21,7 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Vérifiez et créez le fichier version.json s'il n'existe pas
       - name: Check and create version.json
         run: |
           if [ ! -f version.json ]; then
@@ -31,7 +30,6 @@ jobs:
             echo "version.json existe déjà."
           fi
 
-      # Incrementer la version
       - name: Increment version
         id: increment_version
         run: |
@@ -39,6 +37,12 @@ jobs:
           IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
 
           echo "Commit message: ${{ github.event.head_commit.message }}"
+
+          # Vérifiez si le message est un merge
+          if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
+            echo "Ceci est un commit de fusion, aucune action sur la version."
+            exit 0
+          fi
 
           if [[ "${{ github.event.head_commit.message }}" == *"[major]"* ]]; then
             major=$((major + 1))
@@ -66,8 +70,13 @@ jobs:
 
       - name: Versioning and Pull
         run: |
+          git pull --rebase origin main || true
           git add version.json
-          git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification dans version.json. Aucun commit nécessaire."
+          if git diff --exit-code version.json; then
+            echo "Aucune modification dans version.json. Aucun commit nécessaire."
+            exit 0
+          fi
+          git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
           git push origin main || echo "Échec du push, vérifiez les permissions."
 
         env:
