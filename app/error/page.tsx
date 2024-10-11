@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Section } from "../_components/Section";
 import { Button } from "../_components/ui/button";
 
-const Error500 = () => {
+export default function Error500() {
   return (
     <Section className="flex justify-between gap-4 min-h-[calc(100vh-170px)] max-lg:pt-8 max-lg:pb-8">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -27,5 +27,3 @@ const Error500 = () => {
     </Section>
   );
 };
-
-export default Error500;
