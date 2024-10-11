@@ -1,20 +1,40 @@
-"use client"
+"use client";
 import { Section } from "./Section";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { useRef } from "react";
 
 export const Form = () => {
-// const [ sentStatus, setSentStatus ] = useState(false)
+  const firstNameRef = useRef<HTMLInputElement | null>(null);
+  const lastNameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const companyRef = useRef<HTMLInputElement | null>(null);
+  const messageRef = useRef<HTMLTextAreaElement | null>(null);
 
-//   const handleSubmit = () => {
-//     setSentStatus(true)
-//     console.log(sentStatus)
-//   }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (
+      firstNameRef.current &&
+      lastNameRef.current &&
+      emailRef.current &&
+      companyRef.current &&
+      messageRef.current
+    ) {
+      console.log("First Name:", firstNameRef.current.value);
+      console.log("Last Name:", lastNameRef.current.value);
+      console.log("Email:", emailRef.current.value);
+      console.log("Company:", companyRef.current.value);
+      console.log("Message:", messageRef.current.value);
+    }
+  };
 
   return (
     <Section className="flex flex-col items-start justify-between gap-4 max-lg:pt-8 max-lg:pb-8">
-      <form className="m-auto mr-56 ml-56 max-lg:mr-24 max-lg:ml-24 max-sm:mr-8 max-sm:ml-8">
+      <form
+        className="m-auto mr-56 ml-56 max-lg:mr-24 max-lg:ml-24 max-sm:mr-8 max-sm:ml-8"
+        onSubmit={handleSubmit}
+      >
         <h1 className="font-caption text-5xl font-bold text-primary max-md:text-4xl max-sm:text-3xl">
           Let&apos;s talk!
         </h1>
@@ -26,16 +46,22 @@ export const Form = () => {
         <div className="flex flex-col gap-4 mt-8">
           <div className="flex gap-4 max-lg:flex-col">
             <div className="flex flex-[2] flex-col gap-1">
-              <label htmlFor="first-name" className="text-xs">First Name</label>
+              <label htmlFor="first-name" className="text-xs">
+                First Name
+              </label>
               <Input
+                ref={firstNameRef}
                 id="first-name"
                 className="flex-1 rounded-lg p-3 hover:bg-accent/20"
                 required
               />
             </div>
             <div className="flex flex-[2] flex-col gap-1">
-              <label htmlFor="last-name" className="text-xs">Last Name</label>
+              <label htmlFor="last-name" className="text-xs">
+                Last Name
+              </label>
               <Input
+                ref={lastNameRef}
                 id="last-name"
                 className="flex-1 rounded-lg p-3 hover:bg-accent/20"
                 required
@@ -44,24 +70,33 @@ export const Form = () => {
           </div>
           <div className="flex gap-4 max-lg:flex-col">
             <div className="flex flex-[2] flex-col gap-1">
-              <label htmlFor="email" className="text-xs">Email</label>
+              <label htmlFor="email" className="text-xs">
+                Email
+              </label>
               <Input
+                ref={emailRef}
                 id="email"
                 className="flex-1 rounded-lg p-3 hover:bg-accent/20"
                 required
               />
             </div>
             <div className="flex flex-[2] flex-col gap-1">
-              <label htmlFor="company" className="text-xs">Company</label>
-              <Input 
-                id="company" 
-                className="flex-1 rounded-lg p-3 hover:bg-accent/20" 
+              <label htmlFor="company" className="text-xs">
+                Company
+              </label>
+              <Input
+                ref={companyRef}
+                id="company"
+                className="flex-1 rounded-lg p-3 hover:bg-accent/20"
               />
             </div>
           </div>
           <div className="flex flex-[2] flex-col gap-1">
-            <label htmlFor="message" className="text-xs">Your message</label>
+            <label htmlFor="message" className="text-xs">
+              Your message
+            </label>
             <Textarea
+              ref={messageRef}
               id="message"
               placeholder="Type your message here."
               className="flex-1 rounded-lg p-3 hover:bg-accent/20 resize-y min-h-[130px]"
