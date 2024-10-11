@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -49,19 +49,16 @@ jobs:
       - name: Increment version (package.json)
         id: increment_version
         run: |
-          # Vérifiez si le message de commit est un merge
           if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
             echo "Ceci est un commit de fusion, aucune action sur la version."
             exit 0
           fi
 
-          # Lire la version actuelle depuis package.json
           CURRENT_VERSION=$(jq -r '.version' package.json)
           IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
 
           echo "Version actuelle: $CURRENT_VERSION"
 
-          # Vérification des mots-clés pour l'incrémentation
           if [[ "${{ github.event.head_commit.message }}" == *"major"* ]]; then
             major=$((major + 1))
             minor=0
@@ -79,7 +76,6 @@ jobs:
           NEW_VERSION="$major.$minor.$patch"
           echo "Nouvelle version: $NEW_VERSION"
           
-          # Mettre à jour package.json avec la nouvelle version
           jq --arg new_version "$NEW_VERSION" '.version = $new_version' package.json > tmp.$$.json && mv tmp.$$.json package.json
 
           echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
