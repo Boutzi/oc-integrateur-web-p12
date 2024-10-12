@@ -6,6 +6,7 @@ const VersionStatus = () => {
 
   useEffect(() => {
     const location = window.location;
+    console.log(location)
     const fetchVersion = async () => {
       try {
         const response = await fetch(`${location.origin}/api/version`);
