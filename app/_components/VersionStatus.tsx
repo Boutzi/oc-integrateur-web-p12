@@ -16,6 +16,7 @@ const VersionStatus = () => {
 
     const fetchVersion = async () => {
       try {
+        console.log(`Fetching version from: ${basePath}/api/version`);
         const response = await fetch(`${basePath}/api/version`);
         if (!response.ok) {
           throw new Error(`Error fetching version: ${response.status}`);
