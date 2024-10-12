@@ -1,4 +1,7 @@
 export default function currentLocation() {
+  if (typeof window === "undefined") {
+    return "";
+  }
   const location = window.location;
   let basePath: string;
 
