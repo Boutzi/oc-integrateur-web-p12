@@ -14,11 +14,9 @@ const VersionStatus = () => {
       basePath = location.origin;
     }
 
-    console.log("Base Path:", basePath);
-
     const fetchVersion = async () => {
       try {
-        const response = await fetch(`${location.origin}/api/version`);
+        const response = await fetch(`${basePath}/api/version`);
         if (!response.ok) {
           throw new Error(`Error fetching version: ${response.status}`);
         }
