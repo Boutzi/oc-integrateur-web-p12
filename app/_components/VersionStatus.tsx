@@ -5,9 +5,10 @@ const VersionStatus = () => {
   const [version, setVersion] = useState<string>();
 
   useEffect(() => {
+    const location = window.location;
     const fetchVersion = async () => {
       try {
-        const response = await fetch('/api/version');
+        const response = await fetch(`${location.origin}/api/version`);
         if (!response.ok) {
           throw new Error(`Error fetching version: ${response.status}`);
         }
