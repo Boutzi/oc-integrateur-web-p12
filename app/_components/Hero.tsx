@@ -4,7 +4,7 @@ import { Section } from "./Section";
 import { Spacing } from "./Spacing";
 import Link from "next/link";
 import { Download } from "lucide-react";
-import currentLocation from "@/utils/CurrentLocation";
+import currentLocation from "@/utils/currentLocation";
 
 export const Hero = () => {
   const basePath = currentLocation(); 

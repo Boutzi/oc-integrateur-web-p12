@@ -1,5 +1,5 @@
 "use client";
-import currentLocation from "@/utils/CurrentLocation";
+import currentLocation from "@/utils/currentLocation";
 import { useEffect, useState } from "react";
 
 const VersionStatus = () => {
