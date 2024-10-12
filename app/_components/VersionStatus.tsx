@@ -6,16 +6,23 @@ const VersionStatus = () => {
 
   useEffect(() => {
     const fetchVersion = async () => {
-      const response = await fetch('/api/version');
-      const data = await response.json();
-      setVersion(data);
+      try {
+        const response = await fetch('/api/version');
+        if (!response.ok) {
+          throw new Error(`Error fetching version: ${response.status}`);
+        }
+        const data = await response.json();
+        setVersion(data.version);
+      } catch (error) {
+        console.error('Failed to fetch version:', error);
+      }
     };
 
     fetchVersion();
   }, []);
 
   return (
-    <span>{version}</span>
+    <span>{version ? version : "---"}</span>
   );
 };
 

@@ -16,10 +16,10 @@ export async function GET() {
       return NextResponse.json({ error: "Version not found" }, { status: 404 });
     }
 
-    // Renvoie la version en tant que chaîne de caractères
-    return NextResponse.json(version, { status: 200 });
+    // Renvoie la version en tant qu'objet JSON
+    return NextResponse.json({ version }, { status: 200 });
   } catch (err) {
-    // Gère les erreurs de lecture ou d'analyse
+    console.error("Error reading package.json:", err);
     return NextResponse.json({ error: "Failed to read or parse package.json" }, { status: 500 });
   }
 }
