@@ -1,22 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises'; // Utiliser fs/promises pour des appels asynchrones
+import fs from 'fs/promises'; 
 import path from 'path';
 
 export async function GET() {
   const filePath = path.join(process.cwd(), "package.json");
 
   try {
-    const data = await fs.readFile(filePath, "utf8"); // Lecture asynchrone du fichier
-    const jsonData = JSON.parse(data); // Analyser le contenu JSON
-    const version = jsonData.version; // Extrait la version
+    const data = await fs.readFile(filePath, "utf8");
+    const jsonData = JSON.parse(data); 
+    const version = jsonData.version;
 
-    // Vérifie si la version existe
     if (!version) {
       return NextResponse.json({ error: "Version not found" }, { status: 404 });
     }
 
-    // Renvoie la version en tant qu'objet JSON
     return NextResponse.json({ version }, { status: 200 });
   } catch (err) {
     console.error("Error reading package.json:", err);

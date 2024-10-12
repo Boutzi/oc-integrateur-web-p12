@@ -38,7 +38,7 @@ export const Hero = () => {
               </Button>
             </Link>
           </div>
-          <Link href={`${basePath}/CV-Joseph-Girardi-Dev-2025.pdf`} target="_blank">
+          <Link href={`${basePath}/CV-Joseph-Girardi-Dev-2025.pdf`} target="_blank" prefetch={false}>
             <Button className="rounded-full bg-foreground hover:bg-accent-foreground/70 flex gap-2">
               <Download size={16} /> Download CV
             </Button>
