@@ -9,9 +9,9 @@ const VersionStatus = () => {
     let basePath: string;
 
     if (location.href.includes("boutzi.github.io")) {
-      basePath = `${location.origin}/oc-integrateur-web`;
+      basePath = `${location.origin}/oc-integrateur-web-p12`;
     } else {
-      basePath = location.origin;
+      basePath = `${location.origin}`;
     }
 
     const fetchVersion = async () => {
