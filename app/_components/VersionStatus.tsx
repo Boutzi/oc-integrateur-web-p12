@@ -1,12 +1,21 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const VersionStatus = () => {
   const [version, setVersion] = useState<string>();
 
   useEffect(() => {
     const location = window.location;
-    console.log(location)
+    let basePath: string;
+
+    if (location.href.includes("boutzi.github.io")) {
+      basePath = `${location.origin}/oc-integrateur-web`;
+    } else {
+      basePath = location.origin;
+    }
+
+    console.log("Base Path:", basePath);
+
     const fetchVersion = async () => {
       try {
         const response = await fetch(`${location.origin}/api/version`);
@@ -16,16 +25,14 @@ const VersionStatus = () => {
         const data = await response.json();
         setVersion(data.version);
       } catch (error) {
-        console.error('Failed to fetch version:', error);
+        console.error("Failed to fetch version:", error);
       }
     };
 
     fetchVersion();
   }, []);
 
-  return (
-    <span>{version ? version : "---"}</span>
-  );
+  return <span>{version ? version : "---"}</span>;
 };
 
 export default VersionStatus;
