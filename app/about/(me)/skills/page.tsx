@@ -425,6 +425,12 @@ export default function Skills() {
                           width={64}
                           height={64}
                           alt={`${skill.name} Logo`}
+                          style={{
+                            width: "64px",
+                            height: "auto",
+                            maxWidth: "100%",
+                            maxHeight: "100%",
+                          }}
                         />
                       </div>
                       {skill.name}
@@ -447,6 +453,12 @@ export default function Skills() {
                     width={256}
                     height={256}
                     alt={`${skill.name} Logo`}
+                    style={{
+                      width: "256px",
+                      height: "auto",
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                    }}
                   />
                 </div>
                 <div className="space-y-1">

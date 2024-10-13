@@ -8,6 +8,7 @@ import { MenuIcon, X } from "lucide-react";
 import { JoeIcon } from "./icons/JoeIcon";
 import NavLink from "./NavLink";
 import { ModeToggle } from "./ModeToggle";
+import { Settings } from "./Settings";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,8 +49,9 @@ export const Header = () => {
               <NavLink href={"/contact"}>Contact</NavLink>
             </div>
 
-            <div className="flex items-center gap-4 pr-4 pl-4 border-r border-accent-foreground/30 h-4">
+            <div className="flex items-center px-2 border-r border-accent-foreground/30 h-4">
               <ModeToggle />
+              <Settings />
             </div>
 
             <div className="flex items-center gap-4 pl-4">
