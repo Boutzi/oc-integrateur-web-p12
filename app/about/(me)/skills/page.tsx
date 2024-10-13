@@ -26,7 +26,7 @@ const skills: Skill[] = [
     name: "React",
     icon: "react",
     proficiency: 85,
-    categories: ["web", "front", "frameworks/libs"],
+    categories: ["web", "front-end", "frameworks/libs"],
     description:
       "A JavaScript library for building user interfaces, focusing on reusable components and efficient state management.",
   },
@@ -34,7 +34,7 @@ const skills: Skill[] = [
     name: "JavaScript",
     icon: "javascript",
     proficiency: 75,
-    categories: ["web", "front", "scripting"],
+    categories: ["web", "front-end", "scripting"],
     description:
       "A versatile programming language used to create interactive web pages and dynamic content.",
   },
@@ -42,7 +42,7 @@ const skills: Skill[] = [
     name: "Tailwind CSS",
     icon: "tailwind",
     proficiency: 90,
-    categories: ["web", "front", "frameworks/libs"],
+    categories: ["web", "front-end", "frameworks/libs"],
     description:
       "A utility-first CSS framework for rapid UI development with customizable styles.",
   },
@@ -50,7 +50,7 @@ const skills: Skill[] = [
     name: "Python",
     icon: "python",
     proficiency: 65,
-    categories: ["software", "back", "scripting"],
+    categories: ["software", "back-end", "scripting"],
     description:
       "A high-level programming language known for its readability and versatility in various domains.",
   },
@@ -58,7 +58,7 @@ const skills: Skill[] = [
     name: "TypeScript",
     icon: "typescript",
     proficiency: 60,
-    categories: ["web", "front", "back"],
+    categories: ["web", "front-end", "back-end"],
     description:
       "A superset of JavaScript that adds static types, enhancing code quality and maintainability.",
   },
@@ -66,7 +66,7 @@ const skills: Skill[] = [
     name: "C#",
     icon: "cs",
     proficiency: 40,
-    categories: ["software", "back"],
+    categories: ["software", "back-end"],
     description:
       "A modern object-oriented programming language developed by Microsoft, widely used in enterprise applications.",
   },
@@ -114,7 +114,7 @@ const skills: Skill[] = [
     name: "HTML",
     icon: "html",
     proficiency: 99,
-    categories: ["web", "front"],
+    categories: ["web", "front-end"],
     description:
       "The standard markup language for creating web pages and web applications.",
   },
@@ -122,7 +122,7 @@ const skills: Skill[] = [
     name: "CSS",
     icon: "css",
     proficiency: 99,
-    categories: ["web", "front"],
+    categories: ["web", "front-end"],
     description:
       "A style sheet language used for describing the presentation of a document written in HTML.",
   },
@@ -130,7 +130,7 @@ const skills: Skill[] = [
     name: "Sass",
     icon: "sass",
     proficiency: 70,
-    categories: ["web", "front", "frameworks/libs"],
+    categories: ["web", "front-end", "frameworks/libs"],
     description:
       "A preprocessor scripting language that is interpreted or compiled into CSS.",
   },
@@ -169,7 +169,7 @@ const skills: Skill[] = [
     name: "Java",
     icon: "java",
     proficiency: 20,
-    categories: ["software", "back"],
+    categories: ["software", "back-end"],
     description:
       "A high-level programming language used for building platform-independent applications.",
   },
@@ -185,7 +185,7 @@ const skills: Skill[] = [
     name: ".Net",
     icon: "net",
     proficiency: 40,
-    categories: ["software", "back", "frameworks/libs"],
+    categories: ["software", "back-end", "frameworks/libs"],
     description:
       "A framework for building applications on Windows, with support for multiple languages.",
   },
@@ -193,7 +193,7 @@ const skills: Skill[] = [
     name: "Redux",
     icon: "redux",
     proficiency: 50,
-    categories: ["web", "front", "frameworks/libs"],
+    categories: ["web", "front-end", "frameworks/libs"],
     description:
       "A state management library for JavaScript applications, often used with React.",
   },
@@ -201,7 +201,7 @@ const skills: Skill[] = [
     name: "Swagger",
     icon: "swagger",
     proficiency: 90,
-    categories: ["web", "back", "frameworks/libs"],
+    categories: ["web", "back-end", "frameworks/libs"],
     description:
       "A toolset for API documentation and design, enabling interactive API exploration.",
   },
@@ -225,7 +225,7 @@ const skills: Skill[] = [
     name: "Node.js",
     icon: "node",
     proficiency: 30,
-    categories: ["web", "tools", "back"],
+    categories: ["web", "tools", "back-end"],
     description:
       "A JavaScript runtime built on Chrome's V8 engine for building server-side applications.",
   },
@@ -235,7 +235,7 @@ const skills: Skill[] = [
     proficiency: 20, // Connaissance basique, utilisé surtout pour Firestore.
     categories: ["web", "tools", "database", "cloud"],
     description:
-      "A platform for building mobile and web applications, providing various backend services.",
+      "A platform for building mobile and web applications, providing various back-end services.",
   },
   {
     name: "Jupyter",
@@ -257,7 +257,7 @@ const skills: Skill[] = [
     name: "Flask",
     icon: "flask",
     proficiency: 30, // Déployé une API basique sur Heroku.
-    categories: ["web", "back", "frameworks/libs"],
+    categories: ["web", "back-end", "frameworks/libs"],
     description:
       "A lightweight web framework for Python, great for building web applications quickly.",
   },
@@ -296,8 +296,8 @@ const skills: Skill[] = [
   {
     name: "Next.js",
     icon: "next",
-    proficiency: 70, // Utilisé principalement pour le front, quelques API routes, mais pas encore de déploiements avancés.
-    categories: ["web", "front", "back", "frameworks/libs"],
+    proficiency: 70, // Utilisé principalement pour le front-end, quelques API routes, mais pas encore de déploiements avancés.
+    categories: ["web", "front-end", "back-end", "frameworks/libs"],
     description:
       "A React framework for building server-rendered applications and static websites.",
   },
