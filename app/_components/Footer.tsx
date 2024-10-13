@@ -8,9 +8,12 @@ import { ArrowBigUp } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { usePathname } from "next/navigation";
 import VersionStatus from "./VersionStatus";
+import currentLocation from "@/utils/currentLocation";
 
 export const Footer = () => {
   const pathname = usePathname();
+  const basePath = currentLocation();
+
   return (
     <footer className="relative">
       {pathname === "/" && (
@@ -30,7 +33,7 @@ export const Footer = () => {
       )}
       <Section className="flex border-t border-accent/70 w-full pt-4 pb-10 justify-between items-center">
         <div>
-          <Link href={"/"}>
+          <Link href={`${basePath}`}>
             <JoeIcon size={64} />
           </Link>
         </div>
