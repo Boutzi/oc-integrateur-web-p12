@@ -1,0 +1,53 @@
+React : OUI
+JavaScript : closures: non , les promesses: vaguement, ou l'asynchrone: oui
+Tailwind CSS : oui tout le temps
+Python : j'ai fais des api basiques avec Flask, et des script de scraping
+TypeScript : j'utilise TS pour Next.js (React uniquement), je suis assez à l'aise avec mais j'ai encore beaucoup à apprendre
+C# : oui j'ai fais 2 applications .Net (WPF), j'ai fais une app de gestion de temps (pomodoro) et une app de control de powerpoint avec commande vocale, mais celle-ci en duo avec un dev senior car je ne suis pas très bon sur le back C#.
+Amazon Web Services (AWS) : Je suis en train de préparer ma certification AWS Cloud Practionner, j'ai juste fais des zones DNS et domaine sur Route 53, compris les utilisateurs IAM, et regardé rapidement S3, Lambda, Amplify mais je n'ai pas encore fait.
+Photoshop : j'ai 15 ans d'expérience, je suis très à l'aise avec, mais je ne m'excerce presque plus car je suis passé au Dev.
+Illustrator : Pareil que Photoshop
+Blender : J'ai juste fais un tuto pour modéliser un donuts en 3D, mais je n'ai pas encore fais de projet.
+Figma : Je sais faire des maquettes, gérer des composants, je n'ai pas contre pas testé les prototypes car je n'en ai pas eu l'utilité étant donné que cest moi qui faisait le dev ensuite.
+HTML et CSS : J'ai commencé HTML CSS il y a 14 ans, je suis très à l'aise avec, je fais des pages web depuis 10 ans, mais sans jamais rien de concret en projet.
+Sass : J'ai appris Sass dans ma formation OpenClassrooms, mais vu que j'utilise Tailwind CSS maintenant, je ne l'utilise plus.
+Git et GitHub : Je sais très bien gérer le versionning d'un projet, faire des pull requests, merge, etc.
+Insomnia et Postman : je les utilise pour tester mes API, je ne suis vraiment pas un expert mais j'ai compris l'essentiel.
+Java : J'ai seulement fais un stage d'une semaine en ESN, j'ai fais un début d'une app Spring Boot et Gradle, mais depuis je n'y ai plus touché.
+MongoDB : pas du tout, je sais juste créer un cluster, et le connecter à mon vscode, et à mon projet web pour chercher des données.
+.Net : répondu dans la question C#
+Redux : Redux Thunk oui, une fois, j'aime bien le concept, je l'ai utilisé 2x en projets, mais avec shadcn/ui, j'ai l'impression de ne plus en avoir besoin presque.
+Swagger : OUI pas de soucis, j'ai fais avec Flask un swagger, avec Gradle, et avec Node.js
+Slack : Tous les jours
+VS Code : Sans aucun soucis
+Node.js : J'ai pas beaucoup d'expérience, j'ai utilisé Express et Discord.js pour un bot discord, mais en collaboration avec un sénior dev car cest encore trop compliqué pour moi.
+
+1. Firebase
+juste firestore, rapidement
+As-tu déjà configuré Firebase pour un projet React/Next.js ? oui
+2. Jupyter
+rien du tout, j'ai juste installé jupyter et regardé brèvement comment ça marche
+3. WordPress
+j'ai modifié des themes et fais des sites one page simple avec
+jamais dev de themes
+oui elementor
+4. Flask
+sur Heroku j'en ai une petite api
+non pas plus complexe que ma peitte api
+pas utilisé dextensions
+5. Apple (OS)
+J'ai de très bonnes bases sur l'utilisation de macOS mais jamais dev avec?
+6. Windows (OS)
+oui je l'utilise tous les jours pour dev
+oui rapidement, quand j'ai besoin
+non jamais fais de serveur denvironement je sais pas quoi
+7. Premiere Pro
+clips simples
+8. Next.js (déjà traité mais précisions possibles)
+implémenté une fois une api, je m'en sert surtout pour le front
+j'ai pas compris la question sur les rendus
+j'utilise github pages pour déployer mes application pour l'instant
+j'adore de fou ce framework
+9. Heroku
+un bot discord et une api flask déployés
+rien fait d'autre que ça
