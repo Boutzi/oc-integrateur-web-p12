@@ -11,6 +11,7 @@ import {
   HoverCardTrigger,
 } from "@/app/_components/ui/hover-card";
 import { Badge } from "@/app/_components/ui/badge";
+import currentLocation from "@/utils/currentLocation";
 
 interface Skill {
   name: string;
@@ -355,6 +356,7 @@ const allCategories = [
 ];
 
 export default function Skills() {
+  const basePath = currentLocation();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const toggleCategory = (category: string) => {
@@ -419,7 +421,7 @@ export default function Skills() {
                     <div className="flex flex-col items-center gap-2 text-md whitespace-nowrap">
                       <div className="aspect-square bg p-4">
                         <Image
-                          src={`/icons/${skill.icon}.svg`}
+                          src={`${basePath}/icons/${skill.icon}.svg`}
                           width={64}
                           height={64}
                           alt={`${skill.name} Logo`}
@@ -441,7 +443,7 @@ export default function Skills() {
               <div className="flex justify-between space-x-3">
                 <div className="aspect-square">
                   <Image
-                    src={`/icons/${skill.icon}.svg`}
+                    src={`${basePath}/icons/${skill.icon}.svg`}
                     width={256}
                     height={256}
                     alt={`${skill.name} Logo`}
