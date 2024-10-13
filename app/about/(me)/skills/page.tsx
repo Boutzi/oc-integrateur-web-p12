@@ -421,7 +421,7 @@ export default function Skills() {
                     <div className="flex flex-col items-center gap-2 text-md whitespace-nowrap">
                       <div className="aspect-square p-4 w-28">
                         <Image
-                          src={`/static/icons/${skill.icon}.svg`}
+                          src={`/icons/${skill.icon}.svg`}
                           width={64}
                           height={64}
                           alt={`${skill.name} Logo`}
@@ -444,7 +444,7 @@ export default function Skills() {
               <div className="flex justify-between space-x-3">
                 <div className="aspect-square w-256">
                   <Image
-                    src={`/static/icons/${skill.icon}.svg`}
+                    src={`/icons/${skill.icon}.svg`}
                     width={256}
                     height={256}
                     alt={`${skill.name} Logo`}
