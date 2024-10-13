@@ -2,13 +2,13 @@
 import * as React from "react";
 import { Check, LucideSettings } from "lucide-react";
 
-import { Button } from "@/app/_components/ui/button";
+import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/app/_components/ui/dropdown-menu";
+} from "./ui/dropdown-menu";
 
 export function Settings() {
   const [theme, setTheme] = React.useState("violet");

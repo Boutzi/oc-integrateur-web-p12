@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import Head from "next/head";
-import { ThemeProvider } from "@/app/_components/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import localFont from "next/font/local";
 import { Anek_Telugu } from "next/font/google";
 import "./globals.css";
-import { Header } from "./_components/Header";
-import { Footer } from "./_components/Footer";
-import { GlobalStatus } from "./_components/GlobalStatus";
-import { ProgressBar } from "./_components/ProgressBar";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { GlobalStatus } from "@/components/GlobalStatus";
+import { ProgressBar } from "@/components/ProgressBar";
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
@@ -30,6 +29,10 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Joe · Developer",
   description: "A graphic designer who got lost in the emptyness of code.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
 };
 
 export default function RootLayout({
@@ -39,10 +42,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <Head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased`}
       >

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Section } from "../_components/Section";
-import { Button } from "../_components/ui/button";
+import { Section } from "@/components/Section";
+import { Button } from "@/components/ui/button";
 
 export default function Error500() {
   return (
@@ -26,4 +26,4 @@ export default function Error500() {
       </div>
     </Section>
   );
-};
+}

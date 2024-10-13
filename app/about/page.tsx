@@ -1,4 +1,4 @@
-import { Bio } from "../_components/Bio";
+import { Bio } from "@/components/Bio";
 
 export default function About() {
   return <Bio />;

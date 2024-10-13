@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Badge } from "@/app/_components/ui/badge";
+import { Badge } from "./ui/badge";
 
 interface ExperienceCardProps {
   company: string;

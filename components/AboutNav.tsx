@@ -3,8 +3,8 @@ import { Download } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
-import currentLocation from "@/utils/currentLocation";
-import { useEffect, useState } from "react";
+// import currentLocation from "@/utils/currentLocation";
+// import { useEffect, useState } from "react";
 
 const menuItems = [
   { href: "/about", label: "Bio" },
@@ -15,16 +15,16 @@ const menuItems = [
 
 export const AboutNav = () => {
   const pathname = usePathname();
-  const [basePath, setBasePath] = useState("");
+  // const [basePath, setBasePath] = useState("");
 
-  useEffect(() => {
-    const path = currentLocation();
-    setBasePath(path);
-  }, []);
+  // useEffect(() => {
+  //   const path = currentLocation();
+  //   setBasePath(path);
+  // }, []);
 
-  if (!basePath) {
-    return null; 
-  }
+  // if (!basePath) {
+  //   return null;
+  // }
   return (
     <aside className="flex flex-col justify-stretch h-full rounded-lg mr-4 max-xl:mb-8 max-sm:items-center max-sm:w-full max-sm:mx-0">
       <div className="fixed max-xl:relative">
@@ -51,8 +51,15 @@ export const AboutNav = () => {
               </Link>
             ))}
             <div className="flex justify-center mt-4 max-xl:block max-xl:justify-normal max-xl:mt-0">
-              <Link href={`${basePath}/CV-Joseph-Girardi-Dev-2025.pdf`} target="_blank" prefetch={false}>
-                <Button variant={"outline"} className="flex gap-2 max-xl:rounded-full max-xl:h-8 max-xl:bg-accent-foreground max-xl:text-background">
+              <Link
+                href={`/CV-Joseph-Girardi-Dev-2025.pdf`}
+                target="_blank"
+                prefetch={false}
+              >
+                <Button
+                  variant={"outline"}
+                  className="flex gap-2 max-xl:rounded-full max-xl:h-8 max-xl:bg-accent-foreground max-xl:text-background"
+                >
                   <Download size={16} /> Download CV
                 </Button>
               </Link>

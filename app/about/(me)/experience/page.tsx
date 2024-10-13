@@ -1,4 +1,4 @@
-import { ExperienceCard } from "@/app/_components/ExperienceCard";
+import { ExperienceCard } from "@/components/ExperienceCard";
 
 const EXPERIENCE = [
   {

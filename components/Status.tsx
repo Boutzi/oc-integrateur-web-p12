@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useEffect, useState } from "react";
-import { Card } from "@/app/_components/ui/card";
+import { Card } from "./ui/card";
 import { Section } from "./Section";
 import { SideProject, SideProjectProps } from "./SideProject";
 import { Work, WORKS } from "./Work";

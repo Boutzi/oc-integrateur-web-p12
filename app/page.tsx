@@ -1,8 +1,8 @@
-import { Contact } from "./_components/Contact";
-import { Hero } from "./_components/Hero";
-import { BestSkills } from "./_components/BestSkills";
-import { Spacing } from "./_components/Spacing";
-import { Status } from "./_components/Status";
+import { Contact } from "@/components/Contact";
+import { Hero } from "@/components/Hero";
+import { BestSkills } from "@/components/BestSkills";
+import { Spacing } from "@/components/Spacing";
+import { Status } from "@/components/Status";
 
 export default function Home() {
   return (

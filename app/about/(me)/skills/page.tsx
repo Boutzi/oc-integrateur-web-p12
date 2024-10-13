@@ -1,16 +1,16 @@
 "use client";
 import { ReactNode, useState } from "react";
-import { Card, CardHeader, CardTitle } from "@/app/_components/ui/card";
-import { Progress } from "@/app/_components/ui/progress";
-import { Button } from "@/app/_components/ui/button";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { X } from "lucide-react";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/app/_components/ui/hover-card";
-import { Badge } from "@/app/_components/ui/badge";
+} from "@/components/ui/hover-card";
+import { Badge } from "@/components/ui/badge";
 import currentLocation from "@/utils/currentLocation";
 
 interface Skill {
@@ -419,18 +419,13 @@ export default function Skills() {
                 <CardHeader className="pb-2">
                   <CardTitle className="flex flex-col items-center gap-4 justify-between">
                     <div className="flex flex-col items-center gap-2 text-md whitespace-nowrap">
-                      <div className="aspect-square bg p-4">
+                      <div className="aspect-square p-4 w-28">
                         <Image
-                          src={`${basePath}/icons/${skill.icon}.svg`}
+                          src={`/icons/${skill.icon}.svg`}
                           width={64}
                           height={64}
                           alt={`${skill.name} Logo`}
-                          style={{
-                            width: "64px",
-                            height: "auto",
-                            maxWidth: "100%",
-                            maxHeight: "100%",
-                          }}
+                          className="w-auto"
                         />
                       </div>
                       {skill.name}
@@ -447,18 +442,13 @@ export default function Skills() {
             </HoverCardTrigger>
             <HoverCardContent className="w-80">
               <div className="flex justify-between space-x-3">
-                <div className="aspect-square">
+                <div className="aspect-square w-256">
                   <Image
                     src={`${basePath}/icons/${skill.icon}.svg`}
                     width={256}
                     height={256}
                     alt={`${skill.name} Logo`}
-                    style={{
-                      width: "256px",
-                      height: "auto",
-                      maxWidth: "100%",
-                      maxHeight: "100%",
-                    }}
+                    className="w-auto"
                   />
                 </div>
                 <div className="space-y-1">

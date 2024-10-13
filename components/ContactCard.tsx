@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Card } from "@/app/_components/ui/card";
+import { Card } from "./ui/card";
 import { GithubUserResponse } from "@/types/user.types";
 import { fetchGithubUserData } from "@/utils/getData";
 import { ArrowUpRight } from "lucide-react";
@@ -35,7 +35,8 @@ export const CONTACT: ContactProps[] = [
 ];
 
 export const ContactCard = (props: ContactProps) => {
-  const [githubUserData, setGithubUserData] = useState<GithubUserResponse | null>(null);
+  const [githubUserData, setGithubUserData] =
+    useState<GithubUserResponse | null>(null);
 
   useEffect(() => {
     const getUserData = async () => {
@@ -50,7 +51,8 @@ export const ContactCard = (props: ContactProps) => {
     getUserData();
   }, []);
 
-  const linkUrl = props.name === "GitHub" ? githubUserData?.html_url || "#" : props.url;
+  const linkUrl =
+    props.name === "GitHub" ? githubUserData?.html_url || "#" : props.url;
 
   return (
     <Link
@@ -61,7 +63,9 @@ export const ContactCard = (props: ContactProps) => {
       <Card className="p-2 bg-accent/10 flex items-center gap-3 flex-grow group">
         <div className="relative">
           <img
-            src={props.name === "GitHub" ? githubUserData?.avatar_url : props.image}
+            src={
+              props.name === "GitHub" ? githubUserData?.avatar_url : props.image
+            }
             alt={props.name}
             className="w10 h-10 rounded-full object-contain"
           />
@@ -89,4 +93,3 @@ export const ContactCard = (props: ContactProps) => {
     </Link>
   );
 };
-

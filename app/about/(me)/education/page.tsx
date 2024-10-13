@@ -1,4 +1,4 @@
-import { EducationCard } from "@/app/_components/EducationCard";
+import { EducationCard } from "@/components/EducationCard";
 
 const EDUCATION = [
   {
@@ -11,7 +11,8 @@ const EDUCATION = [
     course: "Web Integrator",
     honors: false,
     degree: "Level 5 (2 years degree)",
-    description: "I completed my Web Integrator certification at OpenClassrooms in 2024, earning a Level 5 degree. During the program, I developed skills in HTML, CSS, JavaScript, React, and Git, focusing on creating and maintaining dynamic websites.",
+    description:
+      "I completed my Web Integrator certification at OpenClassrooms in 2024, earning a Level 5 degree. During the program, I developed skills in HTML, CSS, JavaScript, React, and Git, focusing on creating and maintaining dynamic websites.",
     skills: [
       "HTML",
       "CSS",
@@ -33,29 +34,32 @@ const EDUCATION = [
     course: "Graphic Production",
     honors: true,
     degree: "Vocational Bac",
-    description: "I earned my Vocational Baccalaureate in Graphic Production from Lycée Les Iris (2009-2012). This program equipped me with design skills using Adobe Photoshop, Illustrator, and InDesign, as well as practical knowledge in print production processes.",
+    description:
+      "I earned my Vocational Baccalaureate in Graphic Production from Lycée Les Iris (2009-2012). This program equipped me with design skills using Adobe Photoshop, Illustrator, and InDesign, as well as practical knowledge in print production processes.",
     skills: ["PhotoShop", "Illustrator", "InDesign", "Print"],
   },
 ];
 
 const CERTIFICATIONS = [
   {
-    certification:"MOOC Cybersecurity",
+    certification: "MOOC Cybersecurity",
     logo: "https://upload.wikimedia.org/wikipedia/fr/archive/d/d9/20190420123211%21ANSSI_Logo.svg",
     year: "2023",
     issuer: "ANSSI",
-    description: "I completed a MOOC on Cybersecurity in 2023, issued by the French National Cybersecurity Agency (ANSSI). This course covered the basics of cybersecurity, including encryption, network security, and data protection.",
+    description:
+      "I completed a MOOC on Cybersecurity in 2023, issued by the French National Cybersecurity Agency (ANSSI). This course covered the basics of cybersecurity, including encryption, network security, and data protection.",
     skills: ["Risk management", "data protection", "best practices"],
   },
   {
-    certification:"Cloud Practitioner",
+    certification: "Cloud Practitioner",
     logo: "https://pbs.twimg.com/profile_images/1351580685568393216/lVp_QFmU_400x400.jpg",
     year: "---",
     issuer: "AWS",
-    description: "I'm currently preparing for the AWS Cloud Practitioner certification. This course will provide me with a solid understanding of cloud computing concepts, AWS services, security, and architecture.",
+    description:
+      "I'm currently preparing for the AWS Cloud Practitioner certification. This course will provide me with a solid understanding of cloud computing concepts, AWS services, security, and architecture.",
     skills: ["AWS Fundamentals", "Cloud Concepts", "Security", "Architecture"],
   },
-] 
+];
 
 export default function Education() {
   return (

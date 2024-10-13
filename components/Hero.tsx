@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { Button } from "@/app/_components/ui/button";
+import { Button } from "./ui/button";
 import { Section } from "./Section";
 import { Spacing } from "./Spacing";
 import Link from "next/link";
 import { Download } from "lucide-react";
-import currentLocation from "@/utils/currentLocation";
+// import currentLocation from "@/utils/currentLocation";
 
 export const Hero = () => {
-  const basePath = currentLocation(); 
+  // const basePath = currentLocation();
 
   return (
     // min-h-[calc(100vh-270px)]
@@ -38,7 +38,11 @@ export const Hero = () => {
               </Button>
             </Link>
           </div>
-          <Link href={`${basePath}/CV-Joseph-Girardi-Dev-2025.pdf`} target="_blank" prefetch={false}>
+          <Link
+            href={`/CV-Joseph-Girardi-Dev-2025.pdf`}
+            target="_blank"
+            prefetch={false}
+          >
             <Button className="rounded-full bg-foreground hover:bg-accent-foreground/70 flex gap-2">
               <Download size={16} /> Download CV
             </Button>

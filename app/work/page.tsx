@@ -1,4 +1,4 @@
-import { WorkList } from "../_components/WorkList";
+import { WorkList } from "@/components/WorkList";
 
 export default function Work() {
   return (

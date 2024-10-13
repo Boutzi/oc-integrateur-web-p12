@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { AboutNav } from "../_components/AboutNav";
-import { Section } from "../_components/Section";
+import { AboutNav } from "@/components/AboutNav";
+import { Section } from "@/components/Section";
 
 interface AboutLayoutProps {
   children: ReactNode;
