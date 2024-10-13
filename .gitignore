@@ -30,3 +30,4 @@ npm-debug.log.*
 .npmrc
 .lock-wscript
 .lock-stapshot
+/out
