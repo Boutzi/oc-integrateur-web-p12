@@ -4,34 +4,21 @@ import { Section } from "./Section";
 import Link from "next/link";
 import { LinkedinIcon } from "./icons/LinkedinIcon";
 import { GithubIcon } from "./icons/GithubIcon";
-import { MoonIcon, SunIcon, MenuIcon, X } from "lucide-react";
+import { MenuIcon, X } from "lucide-react";
 import { JoeIcon } from "./icons/JoeIcon";
 import NavLink from "./NavLink";
-import { Switch } from "./ui/switch";
+import { ModeToggle } from "./ModeToggle";
 
 export const Header = () => {
-  const [darkMode, setDarkMode] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   const handleCloseMenu = () => {
     setMenuOpen(false);
   };
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -62,13 +49,7 @@ export const Header = () => {
             </div>
 
             <div className="flex items-center gap-4 pr-4 pl-4 border-r border-accent-foreground/30 h-4">
-              <button onClick={toggleDarkMode} className={"p-0"}>
-                {darkMode ? (
-                  <MoonIcon className="size-5 hover:text-primary" />
-                ) : (
-                  <SunIcon className="size-5 hover:text-primary" />
-                )}
-              </button>
+              <ModeToggle />
             </div>
 
             <div className="flex items-center gap-4 pl-4">
@@ -131,14 +112,7 @@ export const Header = () => {
             </NavLink>
           </div>
           <div className="flex flex-row border-b gap-2 border-t border-accent-foreground/10 pb-3 pt-3 items-center pl-0">
-              {darkMode ? (
-                <MoonIcon className="size-6 text-accent-foreground/60" />
-              ) : (
-                <SunIcon className="size-6 text-accent-foreground/60" />
-              )}
-            <button onClick={toggleDarkMode} className={"p-0 flex items-center"}>
-              <Switch />
-            </button>
+            <ModeToggle />
           </div>
           <div className="flex gap-4 mt-2 pt-3">
             <Link

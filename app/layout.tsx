@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Head from "next/head";
+import { ThemeProvider } from "@/app/_components/theme-provider";
 import localFont from "next/font/local";
 import { Anek_Telugu } from "next/font/google";
 import "./globals.css";
@@ -45,11 +46,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased`}
       >
-        <ProgressBar />
-        <GlobalStatus />
-        <Header />
-        {children}
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ProgressBar />
+          <GlobalStatus />
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
