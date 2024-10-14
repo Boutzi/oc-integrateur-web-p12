@@ -58,7 +58,7 @@ export const GlobalStatus = () => {
     };
 
     fetchData();
-  }, []);
+  }, [setMode]);
 
   useEffect(() => {
     if (mode !== "") {
@@ -76,7 +76,7 @@ export const GlobalStatus = () => {
         setDescription(status?.devDescription || "");
       }
     }
-  }, [mode, status]);
+  }, [mode, status, handleClose]);
 
   // const handleButtonClick = (newMode: string) => {
   //   setMode(newMode);
