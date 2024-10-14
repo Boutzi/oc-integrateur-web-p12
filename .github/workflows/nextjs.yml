@@ -39,7 +39,7 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
-          
+
       - name: Git config
         run: |
           git config --local user.name "boutzi"
@@ -75,7 +75,7 @@ jobs:
 
           NEW_VERSION="$major.$minor.$patch"
           echo "Nouvelle version: $NEW_VERSION"
-          
+
           jq --arg new_version "$NEW_VERSION" '.version = $new_version' package.json > tmp.$$.json && mv tmp.$$.json package.json
 
           echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
@@ -120,7 +120,8 @@ jobs:
           NEXT_PUBLIC_MESSAGINGSENDERID: ${{ secrets.NEXT_PUBLIC_MESSAGINGSENDERID }}
           NEXT_PUBLIC_APPID: ${{ secrets.NEXT_PUBLIC_APPID }}
           NEXT_PUBLIC_MEASUREMENTID: ${{ secrets.NEXT_PUBLIC_MEASUREMENTID }}
-
+          NEXT_PUBLIC_S3_BUCKET_URL: ${{ secrets.NEXT_PUBLIC_S3_BUCKET_URL }}
+          NEXT_PUBLIC_S3_CV_URL: ${{ secrets.NEXT_PUBLIC_S3_CV_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
