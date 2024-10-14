@@ -1,0 +1,26 @@
+{
+  "home": {
+    "pageName": "home",
+    "pageRoute": "/",
+    "pageTitle": "Developer",
+    "pageDescription": "A graphic designer who got lost in the emptiness of code."
+  },
+  "about": {
+    "pageName": "about",
+    "pageRoute": "/about",
+    "pageTitle": "About Me",
+    "pageDescription": "I am a developer"
+  },
+  "work": {
+    "pageName": "work",
+    "pageRoute": "/work",
+    "pageTitle": "Discover the projects I've worked on",
+    "pageDescription": "My projects"
+  },
+  "contact": {
+    "pageName": "contact",
+    "pageRoute": "/contact",
+    "pageTitle": "Get in touch with me",
+    "pageDescription": "Contact me"
+  }
+}

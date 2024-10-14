@@ -8,7 +8,6 @@ export async function fetchDataFromBucket(
     );
     const data = await response.json();
     const specificObject = data[objectKey];
-    console.log(specificObject);
     return specificObject;
   } catch (error) {
     console.error("Error fetching data:", error);

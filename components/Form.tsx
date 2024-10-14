@@ -1,4 +1,5 @@
 "use client";
+import { useStatus } from "@/context/StatusContext";
 import { Section } from "./Section";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
@@ -6,26 +7,55 @@ import { Input } from "./ui/input";
 import { useRef } from "react";
 
 export const Form = () => {
+  const { setMode } = useStatus();
   const firstNameRef = useRef<HTMLInputElement | null>(null);
   const lastNameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const companyRef = useRef<HTMLInputElement | null>(null);
   const messageRef = useRef<HTMLTextAreaElement | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (
-      firstNameRef.current &&
-      lastNameRef.current &&
-      emailRef.current &&
-      companyRef.current &&
-      messageRef.current
-    ) {
-      console.log("First Name:", firstNameRef.current.value);
-      console.log("Last Name:", lastNameRef.current.value);
-      console.log("Email:", emailRef.current.value);
-      console.log("Company:", companyRef.current.value);
-      console.log("Message:", messageRef.current.value);
+
+    try {
+      if (
+        firstNameRef.current &&
+        lastNameRef.current &&
+        emailRef.current &&
+        companyRef.current &&
+        messageRef.current
+      ) {
+        const contactData = {
+          firstName: firstNameRef.current.value,
+          lastName: lastNameRef.current.value,
+          email: emailRef.current.value,
+          company: companyRef.current.value,
+          message: messageRef.current.value,
+        };
+
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(contactData),
+        });
+
+        if (response.ok) {
+          setMode("messageSent");
+          firstNameRef.current.value = "";
+          lastNameRef.current.value = "";
+          emailRef.current.value = "";
+          companyRef.current.value = "";
+          messageRef.current.value = "";
+        } else {
+          setMode("messageError");
+          console.error("Failed to send message:", response.statusText);
+        }
+      }
+    } catch (error) {
+      setMode("messageError");
+      console.error("Error while sending message:", error);
     }
   };
 

@@ -122,6 +122,8 @@ jobs:
           NEXT_PUBLIC_MEASUREMENTID: ${{ secrets.NEXT_PUBLIC_MEASUREMENTID }}
           NEXT_PUBLIC_S3_BUCKET_URL: ${{ secrets.NEXT_PUBLIC_S3_BUCKET_URL }}
           NEXT_PUBLIC_S3_CV_URL: ${{ secrets.NEXT_PUBLIC_S3_CV_URL }}
+          NEXT_PUBLIC_PROTONMAIL_USER: ${{ secrets.NEXT_PUBLIC_PROTONMAIL_USER }}
+          NEXT_PUBLIC_PROTONMAIL_PASSWORD: ${{ secrets.NEXT_PUBLIC_PROTONMAIL_PASSWORD }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
