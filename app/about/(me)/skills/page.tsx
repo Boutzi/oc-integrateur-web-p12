@@ -358,6 +358,7 @@ const allCategories = [
 export default function Skills() {
   // const basePath = currentLocation();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const bucketUrl = process.env.NEXT_PUBLIC_S3_BUCKET_URL;
 
   const toggleCategory = (category: string) => {
     setSelectedCategories((prev) =>
@@ -421,7 +422,7 @@ export default function Skills() {
                     <div className="flex flex-col items-center gap-2 text-md whitespace-nowrap">
                       <div className="aspect-square p-4 w-28">
                         <Image
-                          src={`./icons/${skill.icon}.svg`}
+                          src={`${bucketUrl}/icons/${skill.icon}.svg`}
                           width={64}
                           height={64}
                           alt={`${skill.name} Logo`}
@@ -444,7 +445,7 @@ export default function Skills() {
               <div className="flex justify-between space-x-3">
                 <div className="aspect-square w-256">
                   <Image
-                    src={`./icons/${skill.icon}.svg`}
+                    src={`${bucketUrl}/icons/${skill.icon}.svg`}
                     width={256}
                     height={256}
                     alt={`${skill.name} Logo`}

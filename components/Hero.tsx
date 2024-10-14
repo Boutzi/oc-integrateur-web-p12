@@ -1,14 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import { Button } from "./ui/button";
 import { Section } from "./Section";
 import { Spacing } from "./Spacing";
 import Link from "next/link";
 import { Download } from "lucide-react";
-// import currentLocation from "@/utils/currentLocation";
 
 export const Hero = () => {
-  // const basePath = currentLocation();
+  const cvUrl = process.env.NEXT_PUBLIC_CV_URL;
+  // const [data, setData] = useState();
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await fetchCVFromBucket();
+  //     setResume(data);
+  //   };
+
+  //   fetchData();
+  // }, []);
   return (
     // min-h-[calc(100vh-270px)]
     <Section className="flex max-lg:flex-col items-center justify-between gap-6 min-h-[calc(100vh-400px)] max-lg:pt-8 max-lg:pb-8 max-md:pt-0">
@@ -39,9 +48,10 @@ export const Hero = () => {
             </Link>
           </div>
           <Link
-            href={`/CV-Joseph-Girardi-Dev-2025.pdf`}
+            href={`${cvUrl}`}
             target="_blank"
             prefetch={false}
+            rel="noopener noreferrer"
           >
             <Button className="rounded-full bg-foreground hover:bg-accent-foreground/70 flex gap-2">
               <Download size={16} /> Download CV

@@ -14,6 +14,7 @@ const menuItems = [
 ];
 
 export const AboutNav = () => {
+  const cvUrl = process.env.NEXT_PUBLIC_CV_URL;
   const pathname = usePathname();
   // const [basePath, setBasePath] = useState("");
 
@@ -52,9 +53,10 @@ export const AboutNav = () => {
             ))}
             <div className="flex justify-center mt-4 max-xl:block max-xl:justify-normal max-xl:mt-0">
               <Link
-                href={`/CV-Joseph-Girardi-Dev-2025.pdf`}
+                href={`${cvUrl}`}
                 target="_blank"
                 prefetch={false}
+                rel="noopener noreferrer"
               >
                 <Button
                   variant={"outline"}
