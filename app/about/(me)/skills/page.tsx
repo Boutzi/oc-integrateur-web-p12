@@ -443,11 +443,11 @@ export default function Skills() {
             </HoverCardTrigger>
             <HoverCardContent className="w-80">
               <div className="flex justify-between space-x-3">
-                <div className="aspect-square w-256">
+                <div className="aspect-square w-48">
                   <Image
                     src={`${bucketUrl}/icons/${skill.icon}.svg`}
-                    width={256}
-                    height={256}
+                    width={64}
+                    height={64}
                     alt={`${skill.name} Logo`}
                     className="w-auto"
                   />
