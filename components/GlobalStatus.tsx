@@ -43,9 +43,7 @@ export const GlobalStatus = () => {
     const fetchData = async () => {
       try {
         const data = await fetchDataFromBucket("config", "status");
-
         setStatus(data);
-
         const hideDev = sessionStorage.getItem("hide-dev") === "true";
         const hidePub = sessionStorage.getItem("hide-pub") === "true";
 
