@@ -103,7 +103,7 @@ export const GlobalStatus = () => {
                 ? "green-700"
                 : mode === "messageError"
                 ? "destructive"
-                : "slate-500"
+                : "slate-400"
             } flex items-center z-50 border-b border-accent-foreground/0`}
           >
             <Section className="p-0 max-sm:p-2">
