@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Download } from "lucide-react";
 
 export const Hero = () => {
-  const cvUrl = process.env.NEXT_PUBLIC_CV_URL;
+  const cvUrl = process.env.NEXT_PUBLIC_S3_CV_URL;
   // const [data, setData] = useState();
 
   // useEffect(() => {

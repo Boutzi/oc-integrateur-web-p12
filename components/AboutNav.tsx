@@ -14,7 +14,7 @@ const menuItems = [
 ];
 
 export const AboutNav = () => {
-  const cvUrl = process.env.NEXT_PUBLIC_CV_URL;
+  const cvUrl = process.env.NEXT_PUBLIC_S3_CV_URL;
   const pathname = usePathname();
   // const [basePath, setBasePath] = useState("");
 
