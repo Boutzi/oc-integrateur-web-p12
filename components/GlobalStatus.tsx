@@ -141,6 +141,7 @@ export const GlobalStatus = () => {
           </div>
         </div>
       )}
+
       {/* <div className="flex flex-col items-center gap-2 absolute z-50 right-4 top-24 bg-accent/20 border p-4 rounded">
         <span className="text-primary font-bold">DevTool</span>
         <Button
