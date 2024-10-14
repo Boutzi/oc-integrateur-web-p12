@@ -1,9 +1,17 @@
-export function fetchIconFromBucket(iconId: string) {
-  return fetch(
-    `https://oc-integrateur-web-p12.s3.eu-west-3.amazonaws.com/icons/${iconId}.svg`
-  )
-    .then((res) => res.text())
-    .then((data) => {
-      console.log(data);
-    });
+export async function fetchDataFromBucket(
+  selectedData: string,
+  objectKey: string
+) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_S3_BUCKET_URL}/${selectedData}.json`
+    );
+    const data = await response.json();
+    const specificObject = data[objectKey];
+    console.log(specificObject);
+    return specificObject;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
 }
