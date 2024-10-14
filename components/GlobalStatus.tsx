@@ -10,19 +10,14 @@ import { Section } from "./Section";
 import { useEffect, useState } from "react";
 import VersionStatus from "./VersionStatus";
 import { fetchDataFromBucket } from "@/utils/getBucket";
-// import { Button } from "./ui/button";
 import { useStatus } from "@/context/StatusContext";
 
 interface Status {
   mode: string;
   devDescription: string;
-  devColor: string;
   publicityDescription: string;
-  publicityColor: string;
   messageSentDescription: string;
-  messageSentColor: "green-700";
   messageErrorDescription: string;
-  messageErrorColor: string;
 }
 
 export const GlobalStatus = () => {
@@ -31,7 +26,6 @@ export const GlobalStatus = () => {
   const [status, setStatus] = useState<Status | null>(null);
   const { mode, setMode } = useStatus();
   const [description, setDescription] = useState("");
-  const [color, setColor] = useState("");
 
   const handleClose = () => {
     if (mode === "dev" || mode === "pub") {
@@ -42,7 +36,6 @@ export const GlobalStatus = () => {
       setShow(false);
       setMode("");
       setDescription("");
-      setColor("");
     }, 300);
   };
 
@@ -75,26 +68,22 @@ export const GlobalStatus = () => {
       setShow(true);
       if (mode === "messageSent") {
         setDescription(status?.messageSentDescription || "");
-        setColor(status?.messageSentColor || "green-700");
         setTimeout(handleClose, 5000);
       } else if (mode === "messageError") {
         setDescription(status?.messageErrorDescription || "");
-        setColor(status?.messageErrorColor || "");
         setTimeout(handleClose, 5000);
       } else if (mode === "pub") {
         setDescription(status?.publicityDescription || "");
-        setColor(status?.publicityColor || "");
       } else if (mode === "dev") {
         setDescription(status?.devDescription || "");
-        setColor(status?.devColor || "");
       }
     }
   }, [mode, status]);
 
-  const handleButtonClick = (newMode: string) => {
-    setMode(newMode);
-    setShow(true);
-  };
+  // const handleButtonClick = (newMode: string) => {
+  //   setMode(newMode);
+  //   setShow(true);
+  // };
 
   return (
     <>
@@ -105,7 +94,17 @@ export const GlobalStatus = () => {
           }`}
         >
           <div
-            className={`sticky bg-${color} flex items-center z-50 border-b border-accent-foreground/0`}
+            className={`sticky bg-${
+              mode === "dev"
+                ? "orange-700"
+                : mode === "pub"
+                ? "sky-700"
+                : mode === "messageSent"
+                ? "green-700"
+                : mode === "messageError"
+                ? "destructive"
+                : "slate-500"
+            } flex items-center z-50 border-b border-accent-foreground/0`}
           >
             <Section className="p-0 max-sm:p-2">
               <span className="font-semibold text-white flex gap-2 items-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:w-full">

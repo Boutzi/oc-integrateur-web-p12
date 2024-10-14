@@ -2,12 +2,8 @@
   "status": {
     "mode": "pub",
     "devDescription": "Website under development, some features may not work as expected",
-    "devColor": "orange-700",
     "publicityDescription": "Looking for an apprenticeship as a developer around Bordeaux, feel free to reach out to me!",
-    "publicityColor": "sky-700",
     "messageSentDescription": "Your message has been sent, I will get back to you as soon as possible",
-    "messageSentColor": "green-700",
-    "messageErrorDescription": "An error occurred while sending your message, please try again",
-    "messageErrorColor": "destructive"
+    "messageErrorDescription": "An error occurred while sending your message, please try again"
   }
 }
