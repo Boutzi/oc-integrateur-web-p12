@@ -2,15 +2,10 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  host: "127.0.0.1",
-  port: 1025,
-  secure: false,
+  service: "gmail",
   auth: {
-    user: process.env.NEXT_PUBLIC_PROTONMAIL_USER,
-    pass: process.env.NEXT_PUBLIC_PROTONMAIL_PASSWORD,
-  },
-  tls: {
-    rejectUnauthorized: false,
+    user: process.env.NEXT_PUBLIC_GMAIL_USER,
+    pass: process.env.NEXT_PUBLIC_GMAIL_PASSWORD,
   },
 });
 
@@ -51,8 +46,8 @@ export async function POST(request: Request) {
     `;
 
     await transporter.sendMail({
-      from: process.env.NEXT_PUBLIC_PROTONMAIL_USER,
-      to: process.env.NEXT_PUBLIC_PROTONMAIL_USER,
+      from: process.env.NEXT_PUBLIC_GMAIL_USER,
+      to: process.env.NEXT_PUBLIC_PROTONMAIL_USER, // Envoyer à votre propre adresse pour recevoir le message
       subject: `Message from ${firstName} ${lastName} - ${company}`,
       html: htmlMessage,
     });

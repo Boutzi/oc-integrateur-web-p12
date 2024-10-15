@@ -1,9 +1,0 @@
-{
-  "status": {
-    "mode": "pub",
-    "devDescription": "Website under development, some features may not work as expected",
-    "publicityDescription": "Looking for an apprenticeship as a developer around Bordeaux, feel free to reach out to me!",
-    "messageSentDescription": "Your message has been sent, I will get back to you as soon as possible",
-    "messageErrorDescription": "An error occurred while sending your message, please try again"
-  }
-}
