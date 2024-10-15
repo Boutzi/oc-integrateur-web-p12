@@ -7,7 +7,7 @@ import {
   X,
 } from "lucide-react";
 import { Section } from "./Section";
-import { Suspense, useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import VersionStatus from "./VersionStatus";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { useStatus } from "@/context/StatusContext";
@@ -92,48 +92,46 @@ export const GlobalStatus = () => {
   return (
     <>
       {show && (
-        <Suspense>
-          <div
-            className={`transition-transform duration-300 ${
-              animate ? "translate-y-0" : "-translate-y-full"
-            }`}
-          >
-            <div className={backgroundClass}>
-              <Section className="p-0 max-sm:p-2">
-                <span className="font-semibold text-white flex gap-2 items-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:w-full">
-                  {mode === "dev" ? (
-                    <PencilRuler size={20} className="text-white" />
-                  ) : mode === "pub" ? (
-                    <BriefcaseBusiness size={20} className="text-white" />
-                  ) : mode === "messageSent" ? (
-                    <Check size={20} className="text-white" />
-                  ) : mode === "messageError" ? (
-                    <ShieldX size={20} className="text-white" />
-                  ) : (
-                    ""
-                  )}
-                  <div className="max-sm:text-sm max-sm:text-center">
-                    {description}
-                  </div>
-                  {mode === "dev" ? (
-                    <span className="text-white/90 text-xs font-semibold">
-                      <span className="max-sm:hidden">-</span> version{" "}
-                      <VersionStatus />
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                </span>
-              </Section>
-              <button
-                onClick={handleClose}
-                className="hover:bg-none p-0.5 hover:bg-accent/20"
-              >
-                <X size={24} className="text-white" />
-              </button>
-            </div>
+        <div
+          className={`transition-transform duration-300 ${
+            animate ? "translate-y-0" : "-translate-y-full"
+          }`}
+        >
+          <div className={backgroundClass}>
+            <Section className="p-0 max-sm:p-2">
+              <span className="font-semibold text-white flex gap-2 items-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:w-full">
+                {mode === "dev" ? (
+                  <PencilRuler size={20} className="text-white" />
+                ) : mode === "pub" ? (
+                  <BriefcaseBusiness size={20} className="text-white" />
+                ) : mode === "messageSent" ? (
+                  <Check size={20} className="text-white" />
+                ) : mode === "messageError" ? (
+                  <ShieldX size={20} className="text-white" />
+                ) : (
+                  ""
+                )}
+                <div className="max-sm:text-sm max-sm:text-center">
+                  {description}
+                </div>
+                {mode === "dev" ? (
+                  <span className="text-white/90 text-xs font-semibold">
+                    <span className="max-sm:hidden">-</span> version{" "}
+                    <VersionStatus />
+                  </span>
+                ) : (
+                  ""
+                )}
+              </span>
+            </Section>
+            <button
+              onClick={handleClose}
+              className="hover:bg-none p-0.5 hover:bg-accent/20"
+            >
+              <X size={24} className="text-white" />
+            </button>
           </div>
-        </Suspense>
+        </div>
       )}
     </>
   );

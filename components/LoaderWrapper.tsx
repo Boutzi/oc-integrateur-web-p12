@@ -22,5 +22,5 @@ export const LoaderWrapper = () => {
     }
   }, [isLoading, showLoader, hideLoader]); // Ajout d'isLoading comme dépendance
 
-  return <>{isLoading && <ProgressBar isLoading={isLoading} />}</>; // Affiche ProgressBar si isLoading est true
+  return <>{isLoading && <ProgressBar />}</>; // Affiche ProgressBar si isLoading est true
 };
