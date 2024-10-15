@@ -1,26 +1,14 @@
 "use client";
-import { WorkList } from "@/components/WorkList";
-// import { fetchDataFromBucket } from "@/utils/getBucket";
-// import { useEffect } from "react";
+import { Section } from "@/components/Section";
+import { WorkView } from "@/components/WorkView";
 
 export default function Work() {
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetchDataFromBucket("config", "status");
-  //       const data = await res.json();
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   return (
-    <main className="flex min-h-[calc(100vh_-_theme(spacing.44))] gap-4 md:gap-8 py-8">
-      <WorkList />
-    </main>
+    <Section>
+      <main className="flex flex-col min-h-[calc(100vh_-_theme(spacing.52))] gap-4 md:gap-8 pt-8">
+        <h1 className="text-5xl font-bold text-primary">Work</h1>
+        <WorkView />
+      </main>
+    </Section>
   );
 }
