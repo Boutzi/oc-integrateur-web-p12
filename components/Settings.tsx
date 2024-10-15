@@ -72,6 +72,9 @@ export function Settings() {
         >
           {theme === "pink" && <Check />}
         </DropdownMenuItem>
+        <div className="col-span-3 text-white bg-primary px-2 rounded">
+          Coming soon
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

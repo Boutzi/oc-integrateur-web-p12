@@ -84,7 +84,7 @@ jobs:
         run: |
           git add package.json
           git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
-          git push origin main || echo "Échec du push, vérifiez les permissions."
+          git push origin dev || echo "Échec du push, vérifiez les permissions."
 
       - name: Setup Node
         uses: actions/setup-node@v4

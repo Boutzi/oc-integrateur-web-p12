@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GlobalStatus } from "@/components/GlobalStatus";
 import { StatusProvider } from "@/context/StatusContext";
+import { UserProvider } from "@/context/UserContext";
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
@@ -27,8 +28,11 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Joe | Developer",
-  description: "A graphic designer who got lost in the emptyness of code.",
+  title: {
+    default: "Joe",
+    template: "%s | Joe",
+  },
+  description: "Joe, front-end developer in Bordeaux.",
 };
 
 export default function RootLayout({
@@ -42,19 +46,21 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased`}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {/* <LoaderProvider> */}
-            <GlobalStatus />
-            <Header />
-            {children}
-            <Footer />
-            {/* </LoaderProvider> */}
-          </ThemeProvider>
+          <UserProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {/* <LoaderProvider> */}
+              <GlobalStatus />
+              <Header />
+              {children}
+              <Footer />
+              {/* </LoaderProvider> */}
+            </ThemeProvider>
+          </UserProvider>
         </body>
       </html>
     </StatusProvider>

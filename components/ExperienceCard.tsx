@@ -10,7 +10,7 @@ import {
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 
-interface ExperienceCardProps {
+export interface ExperienceCardProps {
   company: string;
   logo: string;
   banner: string;

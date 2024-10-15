@@ -3,6 +3,7 @@ import { Download } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
+import { useUser } from "@/context/UserContext";
 // import currentLocation from "@/utils/currentLocation";
 // import { useEffect, useState } from "react";
 
@@ -14,18 +15,8 @@ const menuItems = [
 ];
 
 export const AboutNav = () => {
-  const cvUrl = process.env.NEXT_PUBLIC_S3_CV_URL;
+  const { user } = useUser();
   const pathname = usePathname();
-  // const [basePath, setBasePath] = useState("");
-
-  // useEffect(() => {
-  //   const path = currentLocation();
-  //   setBasePath(path);
-  // }, []);
-
-  // if (!basePath) {
-  //   return null;
-  // }
   return (
     <aside className="flex flex-col justify-stretch h-full rounded-lg mr-4 max-xl:mb-8 max-sm:items-center max-sm:w-full max-sm:mx-0">
       <div className="fixed max-xl:relative">
@@ -51,21 +42,25 @@ export const AboutNav = () => {
                 {link.label}
               </Link>
             ))}
-            <div className="flex justify-center mt-4 max-xl:block max-xl:justify-normal max-xl:mt-0">
-              <Link
-                href={`${cvUrl}`}
-                target="_blank"
-                prefetch={false}
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant={"outline"}
-                  className="flex gap-2 max-xl:rounded-full max-xl:h-8 max-xl:bg-accent-foreground max-xl:text-background"
+            {user?.allowCvDownload ? (
+              <div className="flex justify-center mt-4 max-xl:block max-xl:justify-normal max-xl:mt-0">
+                <Link
+                  href={`${user?.cvUrl}`}
+                  target="_blank"
+                  prefetch={false}
+                  rel="noopener noreferrer"
                 >
-                  <Download size={16} /> Download CV
-                </Button>
-              </Link>
-            </div>
+                  <Button
+                    variant={"outline"}
+                    className="flex gap-2 max-xl:rounded-full max-xl:h-8 max-xl:bg-accent-foreground max-xl:text-background"
+                  >
+                    <Download size={16} /> Download CV
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              ""
+            )}
           </nav>
         </div>
       </div>
