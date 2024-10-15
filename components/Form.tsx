@@ -33,7 +33,7 @@ export const Form = () => {
           message: messageRef.current.value,
         };
 
-        const response = await fetch("/api/contact", {
+        const response = await fetch("/oc-integrateur-web-p12/api/contact", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
