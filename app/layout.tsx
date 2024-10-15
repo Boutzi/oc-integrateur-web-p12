@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GlobalStatus } from "@/components/GlobalStatus";
 import { StatusProvider } from "@/context/StatusContext";
+import { UserProvider } from "@/context/UserContext";
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
@@ -45,19 +46,21 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased`}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {/* <LoaderProvider> */}
-            <GlobalStatus />
-            <Header />
-            {children}
-            <Footer />
-            {/* </LoaderProvider> */}
-          </ThemeProvider>
+          <UserProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {/* <LoaderProvider> */}
+              <GlobalStatus />
+              <Header />
+              {children}
+              <Footer />
+              {/* </LoaderProvider> */}
+            </ThemeProvider>
+          </UserProvider>
         </body>
       </html>
     </StatusProvider>

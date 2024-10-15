@@ -1,7 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+import { useUser } from "@/context/UserContext";
 import { Card } from "./ui/card";
 
+const calculateAge = (birthDate: string): number => {
+  const [day, month, year] = birthDate.split("-").map(Number);
+  const birth = new Date(year, month - 1, day);
+  const today = new Date();
+
+  let age = today.getFullYear() - birth.getFullYear();
+  const hasBirthdayPassed =
+    today.getMonth() > birth.getMonth() ||
+    (today.getMonth() === birth.getMonth() &&
+      today.getDate() >= birth.getDate());
+
+  if (!hasBirthdayPassed) {
+    age--;
+  }
+
+  return age;
+};
+
 export const Bio = () => {
+  const { user } = useUser();
+
+  if (!user || !user.birth) {
+    return <div>Loading...</div>;
+  }
+
+  const age = calculateAge(user.birth);
   return (
     <section className="flex flex-col gap-8">
       <div className="rounded-lg h-50 overflow-hidden max-md:hidden mx-auto ">
@@ -17,18 +44,21 @@ export const Bio = () => {
             <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
               <div className="w-20 h-20 rounded-full inline-flex items-center justify-center">
                 <img
-                  src="https://avatars.githubusercontent.com/u/130697355?v=4"
+                  src={`${user?.profilePictureUrl}`}
                   className="w-32 m-auto max-w-lg rounded-full max-md:w-32"
                   alt="Joe's picture"
                 />
               </div>
               <div className="flex flex-col items-center text-center justify-center">
                 <h2 className="font-medium title-font mt-4 text-lg">
-                  Joseph Girardi
+                  {user?.firstName} {user?.lastName}
                 </h2>
+                <span className="text-xs text-accent-foreground/70">
+                  {age} years old
+                </span>
                 <div className="w-12 h-1 bg-primary rounded mt-4 mb-4"></div>
                 <p className="text-base text-accent-foreground/60">
-                  Front-End developer
+                  {user?.mainRole}
                 </p>
               </div>
             </div>
