@@ -31,7 +31,7 @@ export const LoaderProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <LoaderContext.Provider value={{ isLoading, showLoader, hideLoader }}>
-      <ProgressBar isLoading={isLoading} />
+      <ProgressBar />
       {children}
     </LoaderContext.Provider>
   );
