@@ -4,7 +4,8 @@ import { Section } from "./Section";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Loader2 } from "lucide-react";
 
 export const Form = () => {
   const { setMode } = useStatus();
@@ -13,10 +14,10 @@ export const Form = () => {
   const emailRef = useRef<HTMLInputElement | null>(null);
   const companyRef = useRef<HTMLInputElement | null>(null);
   const messageRef = useRef<HTMLTextAreaElement | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       if (
         firstNameRef.current &&
@@ -33,6 +34,7 @@ export const Form = () => {
           message: messageRef.current.value,
         };
 
+        setIsLoading(true);
         const response = await fetch("/api/contact", {
           method: "POST",
           headers: {
@@ -43,6 +45,7 @@ export const Form = () => {
 
         if (response.ok) {
           setMode("messageSent");
+          setIsLoading(false);
           firstNameRef.current.value = "";
           lastNameRef.current.value = "";
           emailRef.current.value = "";
@@ -50,11 +53,13 @@ export const Form = () => {
           messageRef.current.value = "";
         } else {
           setMode("messageError");
+          setIsLoading(false);
           console.error("Failed to send message:", response.statusText);
         }
       }
     } catch (error) {
       setMode("messageError");
+      setIsLoading(false);
       console.error("Error while sending message:", error);
     }
   };
@@ -134,8 +139,15 @@ export const Form = () => {
             />
           </div>
           <div className="m-auto items-center mt-4">
-            <Button className="rounded-full font-semibold text-lg w-36">
-              Send
+            <Button className="relative w-36 font-semibold text-lg">
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <span className="sr-only">Loading...</span>
+                </>
+              ) : (
+                "Send"
+              )}
             </Button>
           </div>
         </div>
