@@ -6,7 +6,6 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GlobalStatus } from "@/components/GlobalStatus";
-import { ProgressBar } from "@/components/ProgressBar";
 import { StatusProvider } from "@/context/StatusContext";
 
 const AnekTelugu = Anek_Telugu({
@@ -49,11 +48,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <ProgressBar />
+            {/* <LoaderProvider> */}
             <GlobalStatus />
             <Header />
             {children}
             <Footer />
+            {/* </LoaderProvider> */}
           </ThemeProvider>
         </body>
       </html>

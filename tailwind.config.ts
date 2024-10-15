@@ -15,13 +15,13 @@ const config: Config = {
     },
     extend: {
       animation: {
-        'ping-once': 'pingOnce 1s ease-out forwards',
+        "ping-once": "pingOnce 1s ease-out forwards",
       },
       keyframes: {
         pingOnce: {
-          '0%': { transform: 'scale(1)', opacity: '1' },
-          '75%': { transform: 'scale(1.5)', opacity: '0' },
-          '100%': { transform: 'scale(2)', opacity: '0' },
+          "0%": { transform: "scale(1)", opacity: "1" },
+          "75%": { transform: "scale(1.5)", opacity: "0" },
+          "100%": { transform: "scale(2)", opacity: "0" },
         },
       },
       backgroundImage: {

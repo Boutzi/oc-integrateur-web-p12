@@ -356,7 +356,6 @@ const allCategories = [
 ];
 
 export default function Skills() {
-  // const basePath = currentLocation();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const bucketUrl = process.env.NEXT_PUBLIC_S3_BUCKET_URL;
 
