@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useUser } from "@/context/UserContext";
 import { Card } from "./ui/card";
+import Image from "next/image";
 
 const calculateAge = (birthDate: string): number => {
   const [day, month, year] = birthDate.split("-").map(Number);
@@ -31,11 +31,12 @@ export const Bio = () => {
   const age = calculateAge(user.birth);
   return (
     <section className="flex flex-col gap-8">
-      <div className="rounded-lg h-50 overflow-hidden max-md:hidden mx-auto ">
-        <img
+      <div className="rounded-lg overflow-hidden max-md:hidden mx-auto relative group w-full h-52">
+        <Image
+          src="https://oc-integrateur-web-p12.s3.eu-west-3.amazonaws.com/banners/profile.jpg"
           alt="content"
-          className="object-cover object-center h-full w-full"
-          src="https://media.licdn.com/dms/image/v2/D5616AQFRUI1yi0J6Rg/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1702319166552?e=1733961600&v=beta&t=BjRd6tZXhY9mQIb7bMZLVPPBI4NVJfCdLdTmrN4ruq0"
+          className="w-full h-auto object-cover object-center rounded-lg"
+          fill
         />
       </div>
       <Card className="mx-auto flex flex-col p-8 gap-4 w-full">
@@ -43,9 +44,11 @@ export const Bio = () => {
           <div className="flex flex-col sm:flex-row mt-10">
             <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
               <div className="w-20 h-20 rounded-full inline-flex items-center justify-center">
-                <img
+                <Image
                   src={`${user?.profilePictureUrl}`}
                   className="w-32 m-auto max-w-lg rounded-full max-md:w-32"
+                  width={128}
+                  height={128}
                   alt="Joe's picture"
                 />
               </div>

@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
+import Image from "next/image";
 
 export interface ExperienceCardProps {
   company: string;
@@ -25,21 +26,27 @@ export interface ExperienceCardProps {
 export const ExperienceCard = (props: ExperienceCardProps) => {
   return (
     <Card className="mx-auto flex p-8 gap-6 max-md:flex-col">
-      <div className="-m-8 mr-0 max-md:hidden">
-        <img
-          src={props.banner}
-          alt={`${props.company} office`}
-          className="h-full max-w-xs w-xs object-cover object-center rounded-lg rounded-r-none"
-        />
+      <div className="relative group -m-8 mr-0 max-md:hidden">
+        <div className="h-full w-64">
+          <Image
+            src={props.banner}
+            alt={`${props.company} office`}
+            fill
+            className="w-full h-auto object-cover object-center rounded-lg rounded-r-none"
+          />
+        </div>
       </div>
       <div>
         <CardHeader className="border-b flex-row gap-4 items-start p-0 pb-4">
-          <div className="w-16 h-16 bg-white rounded-lg">
-            <img
-              src={props.logo}
-              alt={`${props.company} logo`}
-              className="w-16 h-16 object-contain rounded"
-            />
+          <div className=" relative group">
+            <div className="w-16 h-16 bg-white rounded-lg">
+              <Image
+                src={props.logo}
+                alt={`${props.company} logo`}
+                fill
+                className="w-full h-auto object-cover object-center rounded-lg p-1"
+              />
+            </div>
           </div>
           <div className="flex flex-col items-start gap-1">
             <div className="flex items-start justify-between w-full">

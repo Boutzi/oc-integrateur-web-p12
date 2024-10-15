@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Building, Calendar, MapPin, School, ScrollText } from "lucide-react";
 import {
   Card,
@@ -9,11 +8,11 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
+import Image from "next/image";
 
 export interface EducationCardProps {
   school?: string;
   logo: string;
-  banner?: string;
   location?: string;
   year: string;
   course?: string;
@@ -30,12 +29,15 @@ export const EducationCard = (props: EducationCardProps) => {
     <Card className="mx-auto flex p-8 gap-6 max-md:flex-col">
       <div>
         <CardHeader className="border-b flex-row gap-4 items-start p-0 pb-4">
-          <div className="w-24 h-24 bg-white p-2 rounded-lg aspect-square">
-            <img
-              src={props.logo}
-              alt={`${props.school} logo`}
-              className=" object-contain rounded aspect-square"
-            />
+          <div className=" relative group">
+            <div className="bg-white rounded-lg w-24 h-24 aspect-square">
+              <Image
+                src={props.logo}
+                alt={`${props.school} logo`}
+                fill
+                className="w-full h-auto object-cover object-center rounded-lg p-2"
+              />
+            </div>
           </div>
           <div className="flex flex-col items-start gap-1">
             <div className="flex items-start justify-between w-full">
