@@ -27,8 +27,11 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Joe | Developer",
-  description: "A graphic designer who got lost in the emptyness of code.",
+  title: {
+    default: "Joe",
+    template: "%s | Joe",
+  },
+  description: "Joe, front-end developer in Bordeaux.",
 };
 
 export default function RootLayout({

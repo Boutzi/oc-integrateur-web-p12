@@ -2,6 +2,12 @@ import Link from "next/link";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/button";
 
+export const metadata = {
+  title: "Error 404 - Page not found",
+  description:
+    "View my portfolio of innovative projects and creative solutions.",
+};
+
 const NotFoundPage = () => {
   return (
     <Section className="flex justify-between gap-4 min-h-[calc(100vh-170px)] max-lg:pt-8 max-lg:pb-8">
