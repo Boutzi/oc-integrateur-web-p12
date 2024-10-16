@@ -100,21 +100,21 @@ export const Header = () => {
               className="text-xl"
               onClick={handleCloseMenu}
             >
-              About
+              {t("aboutRoute")}
             </NavLink>
             <NavLink
               href={"/work"}
               className="text-xl"
               onClick={handleCloseMenu}
             >
-              Work
+              {t("workRoute")}
             </NavLink>
             <NavLink
               href={"/contact"}
               className="text-xl"
               onClick={handleCloseMenu}
             >
-              Contact
+              {t("contactRoute")}
             </NavLink>
           </div>
           <div className="flex flex-row border-b gap-2 border-t border-accent-foreground/10 pb-3 pt-3 items-center pl-0">
