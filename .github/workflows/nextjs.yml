@@ -94,9 +94,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          static_site_generator: next
-          generator_config_file: ./next.config.mjs
 
       - name: Restore cache
         uses: actions/cache@v4
@@ -126,11 +123,6 @@ jobs:
           NEXT_PUBLIC_GMAIL_USER: ${{ secrets.NEXT_PUBLIC_GMAIL_USER }}
           NEXT_PUBLIC_GMAIL_PASSWORD: ${{ secrets.NEXT_PUBLIC_GMAIL_PASSWORD }}
           NEXT_PUBLIC_PROTONMAIL_USER: ${{ secrets.NEXT_PUBLIC_PROTONMAIL_PASSWORD }}
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
 
   deploy:
     environment:
