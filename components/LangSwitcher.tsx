@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { Check } from "lucide-react";
 import { useChangeLocale, useCurrentLocale } from "@/locales/client";
 import { FranceIcon } from "./icons/FranceIcon";
 import { UnitedKingdomIcon } from "./icons/UnitedKingdomIcon";

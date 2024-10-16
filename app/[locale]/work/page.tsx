@@ -1,4 +1,3 @@
-"use client";
 import { Section } from "@/components/Section";
 import { WorkView } from "@/components/WorkView";
 

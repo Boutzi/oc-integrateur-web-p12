@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useI18n } from "@/locales/client";
+import Image from "next/image";
 
 type ContactProps = {
   image: string | undefined;
@@ -17,18 +18,15 @@ type ContactProps = {
 
 export const CONTACT: ContactProps[] = [
   {
-    image: undefined,
-    mediumImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbqj9Ii13d6hx5a9kyLnC5A8A96LDSaSZv_w&s",
+    image: "/github.jpg",
+    mediumImage: "/github.jpg",
     name: "GitHub",
     description: undefined,
     url: "",
   },
   {
-    image:
-      "https://media.licdn.com/dms/image/v2/D5603AQH8Q7y36OVrBQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1702319071117?e=1733961600&v=beta&t=Q_t3dw9N83VFN1u2S4HGTN5MPXA2-sRRMR2stzyJUDk",
-    mediumImage:
-      "https://store-images.s-microsoft.com/image/apps.1719.9007199266245564.44dc7699-748d-4c34-ba5e-d04eb48f7960.abf46174-2d32-4f53-a6cd-644d5b2be452",
+    image: "/linkedin-profile.jpg",
+    mediumImage: "/linkedin.jpg",
     name: "Linkedin",
     description: 107,
     url: "https://www.linkedin.com/in/joseph-girardi/",
@@ -63,20 +61,33 @@ export const ContactCard = (props: ContactProps) => {
       className="w-full hover:bg-accent/20 rounded-xl"
     >
       <Card className="p-2 bg-accent/10 flex items-center gap-3 flex-grow group">
-        <div className="relative">
-          <img
+        <div className="relative group">
+          <Image
             src={
-              props.name === "GitHub" ? githubUserData?.avatar_url : props.image
+              props.name === "GitHub"
+                ? githubUserData?.avatar_url || "/default-avatar.jpg" // Valeur par défaut
+                : props.image || "/default-image.jpg" // Valeur par défaut
             }
             alt={props.name}
-            className="w10 h-10 rounded-full object-contain"
+            width={40}
+            height={40}
+            priority
+            className="rounded-full"
           />
-          <img
-            src={props.mediumImage}
-            alt={props.name}
-            className="w-4 h-4 absolute -bottom-1 -right-1 rounded-full object-contain"
-          />
+          <div className="absolute -bottom-1 -right-1 w-4 h-4">
+            {" "}
+            {/* 16px / 4 = 4px (taille relative) */}
+            <Image
+              src={props.mediumImage}
+              alt={props.name}
+              fill // Permet à l'image de remplir son conteneur
+              sizes="16" // Spécifie la taille de l'image
+              priority
+              className="rounded-full object-contain"
+            />
+          </div>
         </div>
+
         <div className="mr-auto">
           <div className="flex items-center gap-2">
             <p className="text-lg font-semibold">{props.name}</p>
@@ -85,7 +96,6 @@ export const ContactCard = (props: ContactProps) => {
             {props.name === "GitHub"
               ? `${githubUserData?.followers} ${t("statusCard.followers")}`
               : `${props.description} ${t("statusCard.connections")}`}{" "}
-            // Utilisation de la traduction pour "connections"
           </p>
         </div>
         <ArrowUpRight
