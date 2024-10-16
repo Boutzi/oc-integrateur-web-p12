@@ -1,11 +1,5 @@
 import { ExperienceContainer } from "@/components/ExperienceContainer";
 
-// Définition des types pour les paramètres
-interface Params {
-  locale: string;
-}
-
-// Fonction pour générer les paramètres statiques
 export async function generateStaticParams() {
   const locales = ["en", "fr", "kr"];
   const paths = locales.map((locale) => ({
@@ -15,7 +9,6 @@ export async function generateStaticParams() {
   return paths;
 }
 
-// Composant Experience
-export default function Experience({ params }: { params: Params }) {
+export default function Experience() {
   return <ExperienceContainer />;
 }
