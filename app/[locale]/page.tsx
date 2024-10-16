@@ -5,6 +5,15 @@ import { Spacing } from "@/components/Spacing";
 import { Status } from "@/components/Status";
 import { Suspense } from "react";
 
+export async function generateStaticParams() {
+  const locales = ["en", "fr", "kr"];
+  const paths = locales.map((locale) => ({
+    locale,
+  }));
+
+  return paths;
+}
+
 export default function Home() {
   return (
     <main className="">
