@@ -1,0 +1,50 @@
+name: Development CI (Continuous Integration)
+
+on:
+  push:
+    branches: ["dev"]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  security-and-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+
+      - name: Install dependencies
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+      - name: ESLint
+        run: |
+          if [[ "${{ steps.detect-package-manager.outputs.manager }}" == "yarn" ]]; then
+            yarn eslint . --ext .js,.jsx,.ts,.tsx
+          else
+            npx eslint . --ext .js,.jsx,.ts,.tsx
+          fi
+
+      - name: Depencies audit
+        run: |
+          if [[ "${{ steps.detect-package-manager.outputs.manager }}" == "yarn" ]]; then
+            yarn audit --groups dependencies --level moderate
+          else
+            npm audit --audit-level=moderate
+          fi
+
+      - name: Run Unit Tests
+        run: ${{ steps.detect-package-manager.outputs.runner }} jest --coverage

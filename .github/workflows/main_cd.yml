@@ -2,7 +2,7 @@ name: Deploy Next.js PORTFOLIO to Pages
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["main"]
 
   workflow_dispatch:
 
@@ -123,14 +123,3 @@ jobs:
           NEXT_PUBLIC_GMAIL_USER: ${{ secrets.NEXT_PUBLIC_GMAIL_USER }}
           NEXT_PUBLIC_GMAIL_PASSWORD: ${{ secrets.NEXT_PUBLIC_GMAIL_PASSWORD }}
           NEXT_PUBLIC_PROTONMAIL_USER: ${{ secrets.NEXT_PUBLIC_PROTONMAIL_PASSWORD }}
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

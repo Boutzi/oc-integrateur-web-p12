@@ -119,6 +119,8 @@ export const Header = () => {
           </div>
           <div className="flex flex-row border-b gap-2 border-t border-accent-foreground/10 pb-3 pt-3 items-center pl-0">
             <ModeToggle />
+            <LangSwitcher />
+            <Settings />
           </div>
           <div className="flex gap-4 mt-2 pt-3">
             <Link
