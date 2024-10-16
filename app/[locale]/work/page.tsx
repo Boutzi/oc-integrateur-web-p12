@@ -2,6 +2,15 @@
 import { Section } from "@/components/Section";
 import { WorkView } from "@/components/WorkView";
 
+export async function generateStaticParams() {
+  const locales = ["en", "fr", "kr"];
+  const paths = locales.map((locale) => ({
+    locale,
+  }));
+
+  return paths;
+}
+
 export default function Work() {
   return (
     <Section>

@@ -2,6 +2,15 @@ import Link from "next/link";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/button";
 
+export async function generateStaticParams() {
+  const locales = ["en", "fr", "kr"];
+  const paths = locales.map((locale) => ({
+    locale,
+  }));
+
+  return paths;
+}
+
 export default function Error500() {
   return (
     <Section className="flex justify-between gap-4 min-h-[calc(100vh-170px)] max-lg:pt-8 max-lg:pb-8">
