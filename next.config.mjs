@@ -1,6 +1,7 @@
 // next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "next start",
   images: {
     remotePatterns: [
       {
@@ -13,10 +14,6 @@ const nextConfig = {
       },
     ],
   },
-  // i18n: {
-  //   locales: ["en", "fr", "kr"],
-  //   defaultLocale: "en",
-  // },
 };
 
 export default nextConfig;
