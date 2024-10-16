@@ -2,6 +2,7 @@
 import { useUser } from "@/context/UserContext";
 import { Card } from "./ui/card";
 import Image from "next/image";
+import { useI18n } from "@/locales/client";
 
 const calculateAge = (birthDate: string): number => {
   const [day, month, year] = birthDate.split("-").map(Number);
@@ -23,6 +24,7 @@ const calculateAge = (birthDate: string): number => {
 
 export const Bio = () => {
   const { user } = useUser();
+  const t = useI18n(); // Utilisation de la fonction de traduction
 
   if (!user || !user.birth) {
     return <div>Loading...</div>;
@@ -49,7 +51,7 @@ export const Bio = () => {
                   className="w-32 m-auto max-w-lg rounded-full max-md:w-32"
                   width={128}
                   height={128}
-                  alt="Joe's picture"
+                  alt={t("bio.profilePictureAlt")} // Traduction pour l'ALT de l'image
                 />
               </div>
               <div className="flex flex-col items-center text-center justify-center">
@@ -57,7 +59,7 @@ export const Bio = () => {
                   {user?.firstName} {user?.lastName}
                 </h2>
                 <span className="text-xs text-accent-foreground/70">
-                  {age} years old
+                  {age} {t("bio.yearsOld")} {/* Traduction pour "years old" */}
                 </span>
                 <div className="w-12 h-1 bg-primary rounded mt-4 mb-4"></div>
                 <p className="text-base text-accent-foreground/60">
@@ -67,22 +69,17 @@ export const Bio = () => {
             </div>
             <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-accent sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
               <h2 className="font-caption text-2xl font-bold leading-relaxed max-md:text-lg">
-                Who am I?
+                {t("bio.whoAmI")} {/* Traduction pour "Who am I?" */}
               </h2>
               <p className="leading-relaxed text-lg mb-4">
-                I am a versatile person, often described as
-                &quot;multipotential&quot;. I have explored different
-                professional horizons, and today I can say that I thrive in
-                various sectors.
+                {t("bio.introduction")} {/* Traduction de l'introduction */}
                 <br />
                 <br />
-                My organizational skills and attention to detail are key assets.
-                I take on projects of all sizes and contribute to their
-                development to improve their quality and efficiency.
+                {t("bio.skills")} {/* Traduction des compétences */}
                 <br />
-                <br />I strive to become a key player in every company I work
-                for, not by imposing my ideas, but by relying on the quality of
-                my work.
+                <br />
+                {t("bio.keyPlayer")}{" "}
+                {/* Traduction de "I strive to become a key player..." */}
               </p>
             </div>
           </div>

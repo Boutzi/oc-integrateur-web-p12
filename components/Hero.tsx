@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { CTA } from "./CTA";
 import { useUser } from "@/context/UserContext";
+import { useCurrentLocale, useI18n } from "@/locales/client";
 
 interface HeroProps {
   titleIntro: string;
@@ -17,20 +18,22 @@ interface HeroProps {
 }
 
 export const Hero = () => {
+  const locale = useCurrentLocale();
   const { user } = useUser();
   const [hero, setHero] = useState<HeroProps | null>(null);
+  const t = useI18n();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchDataFromBucket("config", "hero");
+        const data = await fetchDataFromBucket(locale, "config", "hero");
         setHero(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, []);
+  }, [locale]);
 
   return (
     <>
@@ -53,9 +56,14 @@ export const Hero = () => {
             </div>
             <div className="flex gap-4 max-lg:m-auto max-sm:flex-col max-sm:items-center">
               <div className="flex gap-4 max-sm:items-center">
-                <CTA label="Contact me" url="/contact" classes="" target="" />
                 <CTA
-                  label="View on GitHub"
+                  label={t("heroSection.contact")}
+                  url="/contact"
+                  classes=""
+                  target=""
+                />
+                <CTA
+                  label={t("heroSection.viewOnGitHub")}
                   url={`${user?.githubUrl}`}
                   classes="bg-foreground hover:bg-accent-foreground/70"
                   target="_blank"
@@ -63,7 +71,7 @@ export const Hero = () => {
               </div>
               {user?.allowCvDownload ? (
                 <CTA
-                  label="Download CV"
+                  label={t("heroSection.downloadCV")}
                   url={`${user?.cvUrl}`}
                   classes="bg-foreground hover:bg-accent-foreground/70 gap-2"
                   target="_blank"

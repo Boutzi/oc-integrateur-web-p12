@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/hover-card";
 import { Badge } from "@/components/ui/badge";
 import { fetchDataFromBucket } from "@/utils/getBucket";
+import { useCurrentLocale, useI18n } from "@/locales/client";
 // import currentLocation from "@/utils/currentLocation";
 // .sort((a, b) => a.name.localeCompare(b.name));
 interface Skill {
@@ -23,6 +24,8 @@ interface Skill {
 }
 
 export default function SkillsContainer() {
+  const locale = useCurrentLocale();
+  const t = useI18n();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const bucketUrl = process.env.NEXT_PUBLIC_S3_BUCKET_URL;
   const [categories, setCategories] = useState<string[]>([]);
@@ -31,14 +34,14 @@ export default function SkillsContainer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchDataFromBucket("skills", "categories");
+        const data = await fetchDataFromBucket(locale, "skills", "categories");
         setCategories(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, [categories]);
+  }, [categories, locale]);
 
   const toggleCategory = (category: string) => {
     setSelectedCategories((prev) =>
@@ -51,7 +54,7 @@ export default function SkillsContainer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchDataFromBucket("skills", "skills");
+        const data = await fetchDataFromBucket(locale, "skills", "skills");
         data.sort((a: { name: string }, b: { name: string }) =>
           a.name.localeCompare(b.name)
         );
@@ -61,7 +64,7 @@ export default function SkillsContainer() {
       }
     };
     fetchData();
-  }, [skills]);
+  }, [skills, locale]);
 
   const filteredSkills =
     selectedCategories.length === 0
@@ -78,7 +81,7 @@ export default function SkillsContainer() {
 
   return (
     <div className="container">
-      <h1 className="text-3xl font-bold mb-8 text-center">My Skills</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center">{t("mySkills")}</h1>
 
       <div className="mb-4 flex flex-wrap gap-2 justify-center">
         {categories.map((category, index) => (
@@ -100,7 +103,7 @@ export default function SkillsContainer() {
             className="aspect-square rounded-full flex gap-1 bg-destructive hover:bg-destructive/80"
             onClick={resetFilters}
           >
-            <X size={16} /> Reset Filters
+            <X size={16} /> {t("resetFilters")}
           </Button>
         )}
       </div>

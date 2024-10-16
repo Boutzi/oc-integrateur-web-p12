@@ -11,6 +11,7 @@ import { useEffect, useState, useCallback } from "react";
 import VersionStatus from "./VersionStatus";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { useStatus } from "@/context/StatusContext";
+import { useCurrentLocale, useI18n } from "@/locales/client";
 
 interface Status {
   mode: string;
@@ -21,6 +22,8 @@ interface Status {
 }
 
 export const GlobalStatus = () => {
+  const locale = useCurrentLocale();
+  const t = useI18n();
   const [show, setShow] = useState(false);
   const [animate, setAnimate] = useState<boolean>(true);
   const [status, setStatus] = useState<Status | null>(null);
@@ -42,7 +45,7 @@ export const GlobalStatus = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchDataFromBucket("config", "status");
+        const data = await fetchDataFromBucket(locale, "config", "status");
         setStatus(data);
         const hideDev = sessionStorage.getItem("hide-dev") === "true";
         const hidePub = sessionStorage.getItem("hide-pub") === "true";
@@ -58,7 +61,7 @@ export const GlobalStatus = () => {
     };
 
     fetchData();
-  }, [setMode]);
+  }, [setMode, locale]);
 
   useEffect(() => {
     if (mode !== "") {
@@ -116,7 +119,7 @@ export const GlobalStatus = () => {
                 </div>
                 {mode === "dev" ? (
                   <span className="text-white/90 text-xs font-semibold">
-                    <span className="max-sm:hidden">-</span> version{" "}
+                    <span className="max-sm:hidden">-</span> {t("version")}{" "}
                     <VersionStatus />
                   </span>
                 ) : (

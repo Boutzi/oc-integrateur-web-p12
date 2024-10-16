@@ -11,9 +11,11 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { getRepositories } from "@/utils/getData";
+import { useI18n } from "@/locales/client";
 
 export const Status = () => {
   const [repos, setRepos] = useState<SideProjectProps[]>([]);
+  const t = useI18n();
 
   useEffect(() => {
     const fetchRepositories = async () => {
@@ -32,10 +34,10 @@ export const Status = () => {
             variant="outline"
             className="rounded-full text-primary border-primary"
           >
-            Activity
+            {t("status.activity")}
           </Badge>
           <h2 className="font-caption font-extralight text-5xl max-sm:text-3xl">
-            Live status
+            {t("status.LiveStatus")}
           </h2>
         </div>
       </ScrollAnimation>
@@ -44,7 +46,7 @@ export const Status = () => {
           <ScrollAnimation animated={true} animationType="slide-x">
             <Card className="w-full p-4 flex flex-col gap-2">
               <p className="text-sm text-muted-foreground">
-                Starred Github repositories
+                {t("status.StarredRepositories")}
               </p>
               <div className="flex flex-col gap-3">
                 {repos?.map((repo: SideProjectProps, index) =>
@@ -81,7 +83,7 @@ export const Status = () => {
                 className="flex items-center -m-4 mt-1 p-2 bg-accent/20 hover:bg-accent/50 text-foreground rounded-t-none rounded-lg border-t"
               >
                 <div className="m-auto flex gap-2 text-md items-center">
-                  <span className="">View all repositories on GitHub</span>
+                  <span className="">{t("heroSection.viewOnGitHub")}</span>
                   <ArrowUpRight className="" size={18} />
                 </div>
               </Link>
@@ -92,7 +94,7 @@ export const Status = () => {
           <ScrollAnimation animated={true} animationType="-slide-x">
             <Card className="flex-1 p-4">
               <p className="text-sm text-muted-foreground">
-                Lastest jobs & courses
+                {t("status.LastestJobs")}
               </p>
               <div className="flex flex-col gap-4 py-2">
                 {WORKS.map((work, index) => (
@@ -107,7 +109,9 @@ export const Status = () => {
                 className="flex items-center -m-4 mt-1 p-2 bg-accent/20 hover:bg-accent/50 text-foreground rounded-t-none rounded-lg border-t"
               >
                 <div className="m-auto flex gap-2 text-md items-center">
-                  <span className="">View all experiences on Linkedin</span>
+                  <span className="">
+                    {t("heroSection.viewAllExperiences")}
+                  </span>
                   <ArrowUpRight className="" size={18} />
                 </div>
               </Link>
@@ -115,7 +119,9 @@ export const Status = () => {
           </ScrollAnimation>
           <ScrollAnimation animated={true} animationType="-slide-y">
             <Card className="flex-1 p-4">
-              <p className="text-sm text-muted-foreground">Connect with Me</p>
+              <p className="text-sm text-muted-foreground">
+                {t("heroSection.connectWithMe")}
+              </p>
               <div className="flex gap-4 pt-2 max-lg:flex-col">
                 {CONTACT.map((contact, index) => (
                   <ContactCard key={index} {...contact} />
