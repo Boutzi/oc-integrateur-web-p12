@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
+import { useI18n } from "@/locales/client";
 
 export const Form = () => {
   const { setMode } = useStatus();
@@ -15,6 +16,8 @@ export const Form = () => {
   const companyRef = useRef<HTMLInputElement | null>(null);
   const messageRef = useRef<HTMLTextAreaElement | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const t = useI18n();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,18 +74,17 @@ export const Form = () => {
         onSubmit={handleSubmit}
       >
         <h1 className="font-caption text-5xl font-bold text-primary max-md:text-4xl max-sm:text-3xl">
-          Let&apos;s talk!
+          {t("contact.getInTouch")}
         </h1>
         <h2 className="font-caption font-extralight text-xl max-sm:text-xl">
-          If you have a question, a job opportunity, or a project in mind, don’t
-          hesitate to reach out. I’m eager to connect and discuss how we can
-          work together.
+          {t("contact.invitation")}
         </h2>
         <div className="flex flex-col gap-4 mt-8">
           <div className="flex gap-4 max-lg:flex-col">
             <div className="flex flex-[2] flex-col gap-1">
               <label htmlFor="first-name" className="text-xs">
-                First Name
+                {t("contact.firstName")}
+                <span className="text-primary ml-1 text-md">*</span>
               </label>
               <Input
                 ref={firstNameRef}
@@ -93,7 +95,8 @@ export const Form = () => {
             </div>
             <div className="flex flex-[2] flex-col gap-1">
               <label htmlFor="last-name" className="text-xs">
-                Last Name
+                {t("contact.lastName")}
+                <span className="text-primary ml-1 text-md">*</span>
               </label>
               <Input
                 ref={lastNameRef}
@@ -106,7 +109,8 @@ export const Form = () => {
           <div className="flex gap-4 max-lg:flex-col">
             <div className="flex flex-[2] flex-col gap-1">
               <label htmlFor="email" className="text-xs">
-                Email
+                {t("contact.email")}
+                <span className="text-primary ml-1 text-md">*</span>
               </label>
               <Input
                 ref={emailRef}
@@ -117,7 +121,7 @@ export const Form = () => {
             </div>
             <div className="flex flex-[2] flex-col gap-1">
               <label htmlFor="company" className="text-xs">
-                Company
+                {t("contact.company")}
               </label>
               <Input
                 ref={companyRef}
@@ -128,12 +132,13 @@ export const Form = () => {
           </div>
           <div className="flex flex-[2] flex-col gap-1">
             <label htmlFor="message" className="text-xs">
-              Your message
+              {t("contact.yourMessage")}
+              <span className="text-primary ml-1 text-md">*</span>
             </label>
             <Textarea
               ref={messageRef}
               id="message"
-              placeholder="Type your message here."
+              placeholder={t("contact.messagePlaceholder")}
               className="flex-1 rounded-lg p-3 hover:bg-accent/20 resize-y min-h-[130px]"
               required
             />
@@ -146,7 +151,7 @@ export const Form = () => {
                   <span className="sr-only">Loading...</span>
                 </>
               ) : (
-                "Send"
+                t("contact.sendButton")
               )}
             </Button>
           </div>

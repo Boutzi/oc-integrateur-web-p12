@@ -1,10 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
+"use client";
 import { Card } from "./ui/card";
 import { GithubUserResponse } from "@/types/user.types";
 import { fetchGithubUserData } from "@/utils/getData";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useI18n } from "@/locales/client";
 
 type ContactProps = {
   image: string | undefined;
@@ -37,6 +38,7 @@ export const CONTACT: ContactProps[] = [
 export const ContactCard = (props: ContactProps) => {
   const [githubUserData, setGithubUserData] =
     useState<GithubUserResponse | null>(null);
+  const t = useI18n();
 
   useEffect(() => {
     const getUserData = async () => {
@@ -81,8 +83,9 @@ export const ContactCard = (props: ContactProps) => {
           </div>
           <p className="text-xs text-muted-foreground">
             {props.name === "GitHub"
-              ? `${githubUserData?.followers} followers`
-              : `${props.description} connections`}
+              ? `${githubUserData?.followers} ${t("statusCard.followers")}`
+              : `${props.description} ${t("statusCard.connections")}`}{" "}
+            // Utilisation de la traduction pour "connections"
           </p>
         </div>
         <ArrowUpRight

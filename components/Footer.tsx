@@ -8,10 +8,12 @@ import { ArrowBigUp } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { usePathname } from "next/navigation";
 import VersionStatus from "./VersionStatus";
+import { useI18n } from "@/locales/client";
 // import currentLocation from "@/utils/currentLocation";
 
 export const Footer = () => {
   const pathname = usePathname();
+  const t = useI18n();
   // const basePath = currentLocation();
 
   return (
@@ -38,7 +40,7 @@ export const Footer = () => {
           </Link>
         </div>
         <span className="text-xs text-accent-foreground/50">
-          version <VersionStatus />
+          {t("version")} <VersionStatus />
         </span>
         <div className="flex gap-4">
           <Link target="_blank" href={"https://github.com/Boutzi"}>

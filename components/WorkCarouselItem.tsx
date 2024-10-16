@@ -14,6 +14,7 @@ import {
 } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { ChevronDown } from "lucide-react";
+import { useI18n } from "@/locales/client";
 
 export interface CarouselItem {
   id: number;
@@ -25,6 +26,7 @@ export interface CarouselItem {
 
 export const WorkCarouselItem = (props: CarouselItem) => {
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
+  const t = useI18n();
 
   const handleMouseEnter = (id: number) => {
     if (expandedItem === null) {
@@ -85,7 +87,7 @@ export const WorkCarouselItem = (props: CarouselItem) => {
                 className="border-2 rounded-full text-foreground/60 hover:border-foreground hover:bg-inherit hover:text-foreground"
               >
                 <ChevronDown className="h-6 w-6" />
-                <span className="sr-only">More info</span>
+                <span className="sr-only">{t("moreInfo")}</span>
               </Button>
             </DialogTrigger>
             <DialogContent>
@@ -104,7 +106,6 @@ export const WorkCarouselItem = (props: CarouselItem) => {
                   blablablablablablablablablablablabla
                   blablablablablablablablablablablabla
                 </DialogDescription>
-                <DialogFooter>Fin</DialogFooter>
               </DialogHeader>
             </DialogContent>
           </Dialog>

@@ -9,8 +9,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { useI18n } from "@/locales/client";
 
 export function Settings() {
+  const t = useI18n();
   const [theme, setTheme] = React.useState("violet");
 
   const handleChange = (theme: string) => {
@@ -29,7 +31,7 @@ export function Settings() {
           className="bg-transparent border-none hover:bg-accent/30 shadow-none"
         >
           <LucideSettings className="h-[1.2rem] w-[1.2rem] text-foreground" />
-          <span className="sr-only">Toggle theme</span>
+          <span className="sr-only">{t("toggleTheme")}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

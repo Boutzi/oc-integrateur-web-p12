@@ -4,25 +4,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { useUser } from "@/context/UserContext";
-// import currentLocation from "@/utils/currentLocation";
-// import { useEffect, useState } from "react";
-
-const menuItems = [
-  { href: "/about", label: "Bio" },
-  { href: "/about/experience", label: "Experience" },
-  { href: "/about/education", label: "Education" },
-  { href: "/about/skills", label: "Skills" },
-];
+import { useI18n } from "@/locales/client";
 
 export const AboutNav = () => {
   const { user } = useUser();
   const pathname = usePathname();
+  const t = useI18n();
+
+  const menuItems = [
+    { href: "/about", label: t("aboutNav.bio") },
+    { href: "/about/experience", label: t("aboutNav.experience") },
+    { href: "/about/education", label: t("aboutNav.education") },
+    { href: "/about/skills", label: t("aboutNav.skills") },
+  ];
+
   return (
     <aside className="flex flex-col justify-stretch h-full rounded-lg mr-4 max-xl:mb-8 max-sm:items-center max-sm:w-full max-sm:mx-0">
       <div className="fixed max-xl:relative">
         <div className="mx-auto grid w-full max-w-6xl gap-2">
           <h1 className="font-caption text-5xl font-bold text-primary max-md:text-4xl max-sm:text-3xl max-sm:text-center max-sm:mb-4">
-            About me
+            {t("aboutRoute")}
           </h1>
         </div>
         <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
@@ -54,7 +55,8 @@ export const AboutNav = () => {
                     variant={"outline"}
                     className="flex gap-2 max-xl:rounded-full max-xl:h-8 max-xl:bg-accent-foreground max-xl:text-background"
                   >
-                    <Download size={16} /> Download CV
+                    <Download size={16} /> {t("heroSection.downloadCV")}{" "}
+                    {/* Traduction du texte "Download CV" */}
                   </Button>
                 </Link>
               </div>

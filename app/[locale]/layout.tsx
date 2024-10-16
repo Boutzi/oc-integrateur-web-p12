@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { GlobalStatus } from "@/components/GlobalStatus";
 import { StatusProvider } from "@/context/StatusContext";
 import { UserProvider } from "@/context/UserContext";
+import { Providers } from "./providers";
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
@@ -37,8 +38,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: {
+    locale: string;
+  };
 }>) {
   return (
     <StatusProvider>
@@ -46,21 +51,23 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased`}
         >
-          <UserProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem
-              disableTransitionOnChange
-            >
-              {/* <LoaderProvider> */}
-              <GlobalStatus />
-              <Header />
-              {children}
-              <Footer />
-              {/* </LoaderProvider> */}
-            </ThemeProvider>
-          </UserProvider>
+          <Providers locale={params.locale}>
+            <UserProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="dark"
+                enableSystem
+                disableTransitionOnChange
+              >
+                {/* <LoaderProvider> */}
+                <GlobalStatus />
+                <Header />
+                {children}
+                <Footer />
+                {/* </LoaderProvider> */}
+              </ThemeProvider>
+            </UserProvider>
+          </Providers>
         </body>
       </html>
     </StatusProvider>

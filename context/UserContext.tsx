@@ -1,4 +1,5 @@
 "use client";
+import { useCurrentLocale } from "@/locales/client";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import {
   createContext,
@@ -31,12 +32,13 @@ interface UserType {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<UserType | undefined>(undefined); // Initialise à undefined
+  const [user, setUser] = useState<UserType | undefined>(undefined);
+  const locale = useCurrentLocale();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchDataFromBucket("config", "profile");
+        const data = await fetchDataFromBucket(locale, "config", "profile");
         if (data) {
           setUser(data);
         } else {
@@ -47,7 +49,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [locale]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
