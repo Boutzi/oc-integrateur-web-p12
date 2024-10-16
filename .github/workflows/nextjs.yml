@@ -111,7 +111,7 @@ jobs:
 
       - name: Next.js build
         run: |
-          cat next.config.js
+          cat next.config.mjs
           ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
           NEXT_PUBLIC_GITHUB_BEARER_TOKEN: ${{ secrets.NEXT_PUBLIC_GITHUB_BEARER_TOKEN }}
