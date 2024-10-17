@@ -1,4 +1,4 @@
-name: Deploy Next.js PORTFOLIO to Pages
+name: Merge dev into main with version bump
 
 on:
   pull_request:
@@ -19,8 +19,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout both dev and main branches
+        run: |
+          git fetch origin
+          git checkout dev
+          git checkout -b dev-branch
+          git checkout main
+          git checkout -b main-branch
 
       - name: Detect package manager
         id: detect-package-manager
@@ -38,7 +43,6 @@ jobs:
           else
             echo "Unable to determine package manager"
             exit 1
-          fi
 
       - name: Git config
         run: |
@@ -49,11 +53,6 @@ jobs:
       - name: Increment version (package.json)
         id: increment_version
         run: |
-          if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
-            echo "Ceci est un commit de fusion, aucune action sur la version."
-            exit 0
-          fi
-
           CURRENT_VERSION=$(jq -r '.version' package.json)
           IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
 
@@ -82,13 +81,13 @@ jobs:
 
       - name: Commit and push version bump to dev
         run: |
+          git checkout dev-branch
           git add package.json
           git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
           git push origin dev || echo "Échec du push, vérifiez les permissions."
 
       - name: Merge dev into main
         run: |
-          git fetch origin
-          git checkout main
-          git merge dev
-          git push origin main
+          git checkout main-branch
+          git merge dev-branch --no-ff || echo "Conflict detected. Please resolve manually."
+          git push origin main || echo "Échec du push, vérifiez les permissions."
