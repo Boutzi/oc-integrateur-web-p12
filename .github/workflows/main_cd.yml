@@ -66,12 +66,4 @@ jobs:
       - name: Commit and push version bump to dev
         run: |
           git add package.json
-          git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
-          git push origin dev || echo "Échec du push, vérifiez les permissions."
-
-      - name: Merge dev into main
-        run: |
-          git checkout main  # Ensure you're on the main branch
-          git pull origin main  # Update local main
-          git merge dev --no-ff || echo "Conflict detected. Please resolve manually."
-          git push origin main || echo "Échec du push, vérifiez les permissions."
+          git commit -m "Bump version to ${{ env.new_version }}" || echo
