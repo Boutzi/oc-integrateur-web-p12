@@ -10,6 +10,26 @@ export default {
     education: "Education",
     skills: "Skills",
   },
+  layout: {
+    root: "Front-end developer in Bordeaux",
+    rootDescription:
+      "A graphic designer who got lost in the void, in the emptiness of code.",
+    about: "About Me",
+    aboutDescription: "Learn more about me and my background.",
+    work: "Work",
+    workDescription: "My work in web and software development.",
+    contact: "Contact me",
+    contactDescription: "Contact layout",
+    education: "Education",
+    educationDescription:
+      "Uncover my academic background and the knowledge I've gained.",
+    experience: "Experience",
+    experienceDescription:
+      "Discover my professional experiences and the projects I've contributed to.",
+    skills: "Skills",
+    skillsDescription:
+      "Here’s a look at the technologies I’m skilled in (or almost)!",
+  },
   heroSection: {
     contact: "Contact me",
     viewOnGitHub: "View on GitHub",

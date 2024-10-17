@@ -9,6 +9,7 @@ import { GlobalStatus } from "@/components/GlobalStatus";
 import { StatusProvider } from "@/context/StatusContext";
 import { UserProvider } from "@/context/UserContext";
 import { Providers } from "./providers";
+import { getI18n } from "@/locales/server";
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
@@ -28,13 +29,17 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Joe",
-    template: "%s | Joe",
-  },
-  description: "Joe, front-end developer in Bordeaux.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+
+  return {
+    title: {
+      default: `Joe | ${t("layout.root")}`,
+      template: "%s | Joe",
+    },
+    description: t("layout.rootDescription"),
+  };
+}
 
 export default function RootLayout({
   children,

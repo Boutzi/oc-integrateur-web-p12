@@ -2,18 +2,23 @@ import { ReactNode } from "react";
 import { AboutNav } from "@/components/AboutNav";
 import { Section } from "@/components/Section";
 import { Metadata } from "next";
+import { getI18n } from "@/locales/server";
 
 interface AboutLayoutProps {
   children: ReactNode;
 }
 
-export const metadata: Metadata = {
-  title: {
-    default: "About Me",
-    template: "%s | Joe",
-  },
-  description: "Explore my journey, a passionate front-end developer.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getI18n();
+
+  return {
+    title: {
+      default: t("layout.about"),
+      template: "%s | Joe",
+    },
+    description: t("layout.aboutDescription"),
+  };
+}
 
 export default function AboutLayout({ children }: AboutLayoutProps) {
   return (
