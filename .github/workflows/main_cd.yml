@@ -42,18 +42,22 @@ jobs:
 
           echo "Version actuelle: $CURRENT_VERSION"
 
-          if [[ "${{ github.event.head_commit.message }}" == *"major"* ]]; then
-            major=$((major + 1))
-            minor=0
-            patch=0
-          elif [[ "${{ github.event.head_commit.message }}" == *"feat"* ]]; then
-            minor=$((minor + 1))
-            patch=0
-          elif [[ "${{ github.event.head_commit.message }}" == *"fix"* ]]; then
-            patch=$((patch + 1))
+          PR_TITLE="${{ github.event.pull_request.title }}"
+
+          echo "Pull Request Title: $PR_TITLE"
+
+          if [[ "$PR_TITLE" == *"major"* ]]; then
+              major=$((major + 1))
+              minor=0
+              patch=0
+          elif [[ "$PR_TITLE" == *"feat"* ]]; then
+              minor=$((minor + 1))
+              patch=0
+          elif [[ "$PR_TITLE" == *"fix"* ]]; then
+              patch=$((patch + 1))
           else
-            echo "Aucun incrément de version spécifié. Aucune modification."
-            exit 0
+              echo "Aucun incrément de version spécifié. Aucune modification."
+              exit 0
           fi
 
           NEW_VERSION="$major.$minor.$patch"
