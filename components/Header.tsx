@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Section } from "./Section";
 import Link from "next/link";
 import { LinkedinIcon } from "./icons/LinkedinIcon";
