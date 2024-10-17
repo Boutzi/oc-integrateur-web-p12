@@ -47,7 +47,7 @@ export default function LangSwitcher() {
 
   return (
     <Select value={locale} onValueChange={handleLocaleChange}>
-      <SelectTrigger className="w-9 h-9 p-0 border-none bg-background hover:bg-accent/50 focus:ring-2 focus:ring-ring focus:ring-offset-2">
+      <SelectTrigger className="w-9 h-9 p-0 border-none hover:bg-accent/50 focus:ring-2 focus:ring-ring focus:ring-offset-2 shadow-none">
         <SelectValue>
           <CurrentLanguage language={locale} />
         </SelectValue>

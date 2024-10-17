@@ -39,7 +39,7 @@ export const Header = () => {
   // }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 border-b bg-background z-40">
+    <header className="sticky top-0 border-b bg-background/80 backdrop-blur z-40">
       <Section className="flex items-center justify-between p-0 max-sm:pt-2 max-sm:pb-2">
         <Link href={"/"} onClick={handleCloseMenu} prefetch={false}>
           <JoeIcon size={48} className="p-0" />

@@ -27,6 +27,19 @@ const config: Config = {
       backgroundImage: {
         "grid-pattern":
           "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 fill=%22none%22 stroke=%22rgba(226, 232, 240, 0.09)%22 stroke-width=%220.1%22><line x1=%220%22 y1=%220%22 x2=%2210%22 y2=%2210%22/><line x1=%2210%22 y1=%220%22 x2=%220%22 y2=%2210%22/></svg>')",
+        "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",
+        "radial-to-t": "radial-gradient(at top, var(--tw-gradient-stops))",
+        "radial-to-b": "radial-gradient(at bottom, var(--tw-gradient-stops))",
+        "radial-to-l": "radial-gradient(at left, var(--tw-gradient-stops))",
+        "radial-to-r": "radial-gradient(at right, var(--tw-gradient-stops))",
+        "radial-to-tl":
+          "radial-gradient(at top left, var(--tw-gradient-stops))",
+        "radial-to-tr":
+          "radial-gradient(at top right, var(--tw-gradient-stops))",
+        "radial-to-bl":
+          "radial-gradient(at bottom left, var(--tw-gradient-stops))",
+        "radial-to-br":
+          "radial-gradient(at bottom right, var(--tw-gradient-stops))",
       },
       backgroundSize: {
         "grid-size": "32px 32px",
