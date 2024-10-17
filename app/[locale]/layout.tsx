@@ -54,7 +54,7 @@ export default function RootLayout({
     <StatusProvider>
       <html lang="en" className="h-full">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased bg-gradient-to-r from-[#efeffd] from-20% via-[#ede5ff] to-80% to-[#efeffd] dark:from-[#050510] dark:from-20% dark:via-[#100a1d] dark:to-80% dark:to-[#050510]`}
         >
           <Providers locale={params.locale}>
             <UserProvider>

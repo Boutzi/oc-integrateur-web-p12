@@ -83,11 +83,9 @@ export const Hero = () => {
             </div>
           </div>
           <div className="flex-[2] ml-auto max-lg:m-auto content-end">
-            <img
-              src={`${user?.profilePictureUrl}`}
-              className="w-96 m-auto max-w-lg rounded-full max-md:w-64"
-              alt="Joe's picture"
-            />
+            <div className="relative bg-primary flex w-80 h-80 rotate-45 max-lg:hidden">
+              <div className="absolute flex w-80 h-80 top-80 left-80 bg-gradient-to-tl from-background/0 from-60% to-primary/5"></div>
+            </div>
           </div>
         </Section>
       )}

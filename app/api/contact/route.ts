@@ -28,7 +28,7 @@ export async function POST(request: Request) {
                       <p><strong>Last Name: <strong>${lastName}</strong></p>
                       <p><strong>Email: <strong>${email}</strong></p>
                       <p><strong>Company: <strong>${company}</strong></p>
-                      <p>Message:</p>
+                      <p>Message: </p>
                       <p>${message}</p>
                     </td>
                   </tr>
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
 
     await transporter.sendMail({
       from: process.env.NEXT_PUBLIC_GMAIL_USER,
-      to: process.env.NEXT_PUBLIC_PROTONMAIL_USER, // Envoyer à votre propre adresse pour recevoir le message
+      to: process.env.NEXT_PUBLIC_PROTONMAIL_USER,
       subject: `Message from ${firstName} ${lastName} - ${company}`,
       html: htmlMessage,
     });
