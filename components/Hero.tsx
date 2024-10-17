@@ -8,7 +8,6 @@ import { fetchDataFromBucket } from "@/utils/getBucket";
 import { CTA } from "./CTA";
 import { useUser } from "@/context/UserContext";
 import { useCurrentLocale, useI18n } from "@/locales/client";
-import Image from "next/image";
 
 interface HeroProps {
   titleIntro: string;
