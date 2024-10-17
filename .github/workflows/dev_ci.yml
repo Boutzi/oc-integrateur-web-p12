@@ -25,26 +25,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
 
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} i
+        run: npm install
 
       - name: ESLint
-        run: |
-          if [[ "${{ steps.detect-package-manager.outputs.manager }}" == "yarn" ]]; then
-            yarn run lint
-          else
-            npx run lint
-          fi
+        run: npm run lint
 
       - name: Depencies audit
-        run: |
-          if [[ "${{ steps.detect-package-manager.outputs.manager }}" == "yarn" ]]; then
-            yarn audit --groups dependencies --level moderate
-          else
-            npm audit --audit-level=moderate
-          fi
+        run: npm audit --audit-level=moderate
 
       - name: Run Unit Tests
-        run: ${{ steps.detect-package-manager.outputs.runner }} jest --coverage
+        run: npm jest --coverage
