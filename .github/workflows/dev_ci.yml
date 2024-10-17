@@ -33,9 +33,9 @@ jobs:
       - name: ESLint
         run: |
           if [[ "${{ steps.detect-package-manager.outputs.manager }}" == "yarn" ]]; then
-            yarn eslint . --c .js,.jsx,.ts,.tsx
+            yarn run lint
           else
-            npx eslint . --c .js,.jsx,.ts,.tsx
+            npx run lint
           fi
 
       - name: Depencies audit
