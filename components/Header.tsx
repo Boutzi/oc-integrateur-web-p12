@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Section } from "./Section";
 import Link from "next/link";
 import { LinkedinIcon } from "./icons/LinkedinIcon";
@@ -24,19 +24,19 @@ export const Header = () => {
     setMenuOpen(false);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (menuOpen && !target.closest("header")) {
-        setMenuOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     const target = event.target as HTMLElement;
+  //     if (menuOpen && !target.closest("header")) {
+  //       setMenuOpen(false);
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuOpen]);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [menuOpen]);
 
   return (
     <header className="sticky top-0 border-b bg-background z-40">

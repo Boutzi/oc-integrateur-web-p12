@@ -2,12 +2,12 @@ export default {
   version: "version",
   toggleTheme: "Changer de thème",
   aboutRoute: "À propos",
-  workRoute: "Travail",
+  workRoute: "Projets",
   contactRoute: "Contact",
   aboutNav: {
     bio: "Bio",
     experience: "Expérience",
-    education: "Éducation",
+    education: "Formations",
     skills: "Compétences",
   },
   heroSection: {

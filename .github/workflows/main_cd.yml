@@ -1,7 +1,7 @@
 name: Deploy Next.js PORTFOLIO to Pages
 
 on:
-  push:
+  pull_request:
     branches: ["main"]
 
   workflow_dispatch:
@@ -80,46 +80,15 @@ jobs:
 
           echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
 
-      - name: Commit and push new version
+      - name: Commit and push version bump to dev
         run: |
           git add package.json
           git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
           git push origin dev || echo "Échec du push, vérifiez les permissions."
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-
-      - name: Next.js build
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
-        env:
-          NEXT_PUBLIC_GITHUB_BEARER_TOKEN: ${{ secrets.NEXT_PUBLIC_GITHUB_BEARER_TOKEN }}
-          NEXT_PUBLIC_APIKEY: ${{ secrets.NEXT_PUBLIC_APIKEY }}
-          NEXT_PUBLIC_AUTHDOMAIN: ${{ secrets.NEXT_PUBLIC_AUTHDOMAIN }}
-          NEXT_PUBLIC_PROJECTID: ${{ secrets.NEXT_PUBLIC_PROJECTID }}
-          NEXT_PUBLIC_STORAGEBUCKET: ${{ secrets.NEXT_PUBLIC_STORAGEBUCKET }}
-          NEXT_PUBLIC_MESSAGINGSENDERID: ${{ secrets.NEXT_PUBLIC_MESSAGINGSENDERID }}
-          NEXT_PUBLIC_APPID: ${{ secrets.NEXT_PUBLIC_APPID }}
-          NEXT_PUBLIC_MEASUREMENTID: ${{ secrets.NEXT_PUBLIC_MEASUREMENTID }}
-          NEXT_PUBLIC_S3_BUCKET_URL: ${{ secrets.NEXT_PUBLIC_S3_BUCKET_URL }}
-          NEXT_PUBLIC_S3_CV_URL: ${{ secrets.NEXT_PUBLIC_S3_CV_URL }}
-          NEXT_PUBLIC_GMAIL_USER: ${{ secrets.NEXT_PUBLIC_GMAIL_USER }}
-          NEXT_PUBLIC_GMAIL_PASSWORD: ${{ secrets.NEXT_PUBLIC_GMAIL_PASSWORD }}
-          NEXT_PUBLIC_PROTONMAIL_USER: ${{ secrets.NEXT_PUBLIC_PROTONMAIL_PASSWORD }}
+      - name: Merge dev into main
+        run: |
+          git fetch origin
+          git checkout main
+          git merge dev
+          git push origin main
