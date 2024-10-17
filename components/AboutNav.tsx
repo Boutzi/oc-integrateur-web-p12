@@ -37,7 +37,7 @@ export const AboutNav = () => {
                 href={link.href}
                 className={`${
                   pathname === link.href &&
-                  "whitespace-nowrap font-semibold text-primary max-xl:border max-xl:bg-primary max-xl:py-1 max-xl:px-3 max-xl:rounded-full max-xl:text-white"
+                  "whitespace-nowrap md:whitespace-nowrap sm:whitespace-nowrap lg:whitespace-nowrap font-semibold text-primary max-xl:border max-xl:bg-primary max-xl:py-1 max-xl:px-3 max-xl:rounded-full max-xl:text-white"
                 } hover:text-primary max-xl:border max-xl:border-accent max-xl:text-foreground max-xl:py-1 max-xl:px-3 max-xl:rounded-full max-xl:hover:bg-primary max-xl:hover:text-white max-xl:font-semibold`}
               >
                 {link.label}
