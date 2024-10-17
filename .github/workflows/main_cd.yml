@@ -21,12 +21,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Git config
+      - name: Set up Git config
         run: |
           git config --local user.name "boutzi"
           git config --local user.email "joe@arkaans.com"
-          git pull
+
+      - name: Checkout dev branch
+        run: |
+          git checkout dev
+          git pull origin dev
 
       - name: Increment version (package.json)
         id: increment_version
@@ -65,7 +71,7 @@ jobs:
 
       - name: Merge dev into main
         run: |
-          git fetch origin
-          git checkout main
+          git checkout main  # Ensure you're on the main branch
+          git pull origin main  # Update local main
           git merge dev --no-ff || echo "Conflict detected. Please resolve manually."
           git push origin main || echo "Échec du push, vérifiez les permissions."
