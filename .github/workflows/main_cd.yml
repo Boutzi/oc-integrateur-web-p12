@@ -19,13 +19,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout both dev and main branches
-        run: |
-          git fetch origin
-          git checkout dev
-          git checkout -b dev-branch
-          git checkout main
-          git checkout -b main-branch
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Ensures the repo is checked out before running any Git commands.
 
       - name: Detect package manager
         id: detect-package-manager
@@ -81,13 +76,13 @@ jobs:
 
       - name: Commit and push version bump to dev
         run: |
-          git checkout dev-branch
           git add package.json
           git commit -m "Bump version to ${{ env.new_version }}" || echo "Aucune modification à valider."
           git push origin dev || echo "Échec du push, vérifiez les permissions."
 
       - name: Merge dev into main
         run: |
-          git checkout main-branch
-          git merge dev-branch --no-ff || echo "Conflict detected. Please resolve manually."
+          git fetch origin
+          git checkout main
+          git merge dev --no-ff || echo "Conflict detected. Please resolve manually."
           git push origin main || echo "Échec du push, vérifiez les permissions."
