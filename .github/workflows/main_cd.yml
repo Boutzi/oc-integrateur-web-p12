@@ -1,4 +1,4 @@
-name: Deploy Next.js PORTFOLIO to Pages
+name: Merge dev into main with version bump
 
 on:
   pull_request:
@@ -19,41 +19,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-
-      - name: Git config
+      - name: Set up Git config
         run: |
           git config --local user.name "boutzi"
           git config --local user.email "joe@arkaans.com"
-          git pull
+
+      - name: Checkout dev branch
+        run: |
+          git checkout dev
+          git pull origin dev
 
       - name: Increment version (package.json)
         id: increment_version
         run: |
-          if [[ "${{ github.event.head_commit.message }}" == *"Merge"* ]]; then
-            echo "Ceci est un commit de fusion, aucune action sur la version."
-            exit 0
-          fi
-
           CURRENT_VERSION=$(jq -r '.version' package.json)
           IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
 
@@ -88,7 +71,7 @@ jobs:
 
       - name: Merge dev into main
         run: |
-          git fetch origin
-          git checkout main
-          git merge dev
-          git push origin main
+          git checkout main  # Ensure you're on the main branch
+          git pull origin main  # Update local main
+          git merge dev --no-ff || echo "Conflict detected. Please resolve manually."
+          git push origin main || echo "Échec du push, vérifiez les permissions."
