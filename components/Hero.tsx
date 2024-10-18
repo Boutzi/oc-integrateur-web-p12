@@ -17,7 +17,7 @@ interface HeroProps {
   subSecond: string;
 }
 
-export const Hero = () => {
+function Hero() {
   const locale = useLocale();
   const { user } = useUser();
   const [hero, setHero] = useState<HeroProps | null>(null);
@@ -91,4 +91,6 @@ export const Hero = () => {
       )}
     </>
   );
-};
+}
+
+export default Hero;

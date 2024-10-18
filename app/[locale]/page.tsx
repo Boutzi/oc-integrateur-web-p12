@@ -1,5 +1,5 @@
 import { Contact } from "@/components/Contact";
-import { Hero } from "@/components/Hero";
+import Hero from "@/components/Hero";
 import { BestSkills } from "@/components/BestSkills";
 import { Spacing } from "@/components/Spacing";
 import { Status } from "@/components/Status";
