@@ -10,11 +10,11 @@ import NavLink from "./NavLink";
 import { ModeToggle } from "./ModeToggle";
 import { Settings } from "./Settings";
 import LangSwitcher from "./LangSwitcher";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const t = useI18n();
+  const t = useTranslations();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -47,9 +47,9 @@ export const Header = () => {
         <nav className="hidden sm:flex items-center">
           <ul className="inline-flex items-center">
             <div className="flex items-center gap-4 pr-4 border-r border-accent-foreground/30 h-4">
-              <NavLink href={"/about"}>{t("aboutRoute")}</NavLink>
-              <NavLink href={"/work"}>{t("workRoute")}</NavLink>
-              <NavLink href={"/contact"}>{t("contactRoute")}</NavLink>
+              <NavLink href={`/about`}>{t("aboutRoute")}</NavLink>
+              <NavLink href={`/work`}>{t("workRoute")}</NavLink>
+              <NavLink href={`/contact`}>{t("contactRoute")}</NavLink>
             </div>
 
             <div className="flex items-center px-2 border-r border-accent-foreground/30 h-4">

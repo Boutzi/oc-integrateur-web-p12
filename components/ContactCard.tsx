@@ -5,8 +5,8 @@ import { fetchGithubUserData } from "@/utils/getData";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useI18n } from "@/locales/client";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 type ContactProps = {
   image: string | undefined;
@@ -36,7 +36,7 @@ export const CONTACT: ContactProps[] = [
 export const ContactCard = (props: ContactProps) => {
   const [githubUserData, setGithubUserData] =
     useState<GithubUserResponse | null>(null);
-  const t = useI18n();
+  const t = useTranslations();
 
   useEffect(() => {
     const getUserData = async () => {

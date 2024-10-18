@@ -2,7 +2,7 @@
 import { useUser } from "@/context/UserContext";
 import { Card } from "./ui/card";
 import Image from "next/image";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 
 const calculateAge = (birthDate: string): number => {
   const [day, month, year] = birthDate.split("-").map(Number);
@@ -24,7 +24,7 @@ const calculateAge = (birthDate: string): number => {
 
 export const Bio = () => {
   const { user } = useUser();
-  const t = useI18n(); // Utilisation de la fonction de traduction
+  const t = useTranslations(); // Utilisation de la fonction de traduction
 
   if (!user || !user.birth) {
     return <div>Loading...</div>;

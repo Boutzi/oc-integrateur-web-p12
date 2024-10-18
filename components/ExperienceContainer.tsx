@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import { ExperienceCard, ExperienceCardProps } from "./ExperienceCard";
 import { fetchDataFromBucket } from "@/utils/getBucket";
-import { useCurrentLocale } from "@/locales/client";
+import { useLocale } from "next-intl";
 
 export const ExperienceContainer = () => {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   const [experience, setExperience] = useState<ExperienceCardProps[]>([]);
 
   useEffect(() => {
