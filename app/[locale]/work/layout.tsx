@@ -1,19 +1,31 @@
-import { getI18n } from "@/locales/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { ReactNode } from "react";
 
 interface AboutLayoutProps {
   children: ReactNode;
 }
 
-export const metadata = async () => {
-  const t = await getI18n();
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
     title: t("layout.work"),
     description: t("layout.workDescription"),
   };
-};
-
-export default function AboutLayout({ children }: AboutLayoutProps) {
+}
+interface AboutLayoutParams {
+  params: {
+    locale: string;
+  };
+}
+export default function AboutLayout({
+  children,
+  params: { locale },
+}: AboutLayoutProps & AboutLayoutParams) {
+  unstable_setRequestLocale(locale);
   return children;
 }

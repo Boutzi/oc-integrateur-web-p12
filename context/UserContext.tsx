@@ -1,5 +1,5 @@
 "use client";
-import { useCurrentLocale } from "@/locales/client";
+import { useLocale } from "next-intl";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import {
   createContext,
@@ -33,7 +33,7 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<UserType | undefined>(undefined);
-  const locale = useCurrentLocale();
+  const locale = useLocale();
 
   useEffect(() => {
     const fetchData = async () => {

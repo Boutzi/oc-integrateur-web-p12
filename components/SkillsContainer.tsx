@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/hover-card";
 import { Badge } from "@/components/ui/badge";
 import { fetchDataFromBucket } from "@/utils/getBucket";
-import { useCurrentLocale, useI18n } from "@/locales/client";
+import { useLocale, useTranslations } from "next-intl";
 // import currentLocation from "@/utils/currentLocation";
 // .sort((a, b) => a.name.localeCompare(b.name));
 interface Skill {
@@ -24,8 +24,8 @@ interface Skill {
 }
 
 export default function SkillsContainer() {
-  const locale = useCurrentLocale();
-  const t = useI18n();
+  const locale = useLocale();
+  const t = useTranslations();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const bucketUrl = process.env.NEXT_PUBLIC_S3_BUCKET_URL;
   const [categories, setCategories] = useState<string[]>([]);

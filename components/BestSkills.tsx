@@ -5,10 +5,10 @@ import { ReactIcon } from "./icons/ReactIcon";
 import { TailwindIcon } from "./icons/TailwindIcon";
 import { PythonIcon } from "./icons/PythonIcon";
 import { ScrollAnimation } from "./ScrollAnimation";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 
 export const BestSkills = () => {
-  const t = useI18n();
+  const t = useTranslations();
 
   return (
     <ScrollAnimation animated={true} animationType="fade">

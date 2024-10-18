@@ -4,12 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { useUser } from "@/context/UserContext";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 
 export const AboutNav = () => {
   const { user } = useUser();
   const pathname = usePathname();
-  const t = useI18n();
+  const t = useTranslations();
 
   const menuItems = [
     { href: "/about", label: t("aboutNav.bio") },

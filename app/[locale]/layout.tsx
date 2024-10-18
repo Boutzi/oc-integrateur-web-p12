@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import localFont from "next/font/local";
 import { Anek_Telugu } from "next/font/google";
@@ -8,8 +7,14 @@ import { Footer } from "@/components/Footer";
 import { GlobalStatus } from "@/components/GlobalStatus";
 import { StatusProvider } from "@/context/StatusContext";
 import { UserProvider } from "@/context/UserContext";
-import { Providers } from "./providers";
-import { getI18n } from "@/locales/server";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
+import { unstable_setRequestLocale } from "next-intl/server";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 const AnekTelugu = Anek_Telugu({
   subsets: ["latin"],
@@ -29,8 +34,12 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getI18n();
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
     title: {
@@ -41,22 +50,22 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  params,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
-  params: {
-    locale: string;
-  };
+  params: { locale: string };
 }>) {
+  unstable_setRequestLocale(locale);
+  const messages = await getMessages();
   return (
     <StatusProvider>
-      <html lang="en" className="h-full">
+      <html lang={locale} className="h-full">
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased bg-gradient-to-r from-[#efeffd] from-20% via-[#ede5ff] to-80% to-[#efeffd] dark:from-[#050510] dark:from-20% dark:via-[#100a1d] dark:to-80% dark:to-[#050510]`}
         >
-          <Providers locale={params.locale}>
+          <NextIntlClientProvider messages={messages}>
             <UserProvider>
               <ThemeProvider
                 attribute="class"
@@ -72,7 +81,7 @@ export default function RootLayout({
                 {/* </LoaderProvider> */}
               </ThemeProvider>
             </UserProvider>
-          </Providers>
+          </NextIntlClientProvider>
         </body>
       </html>
     </StatusProvider>

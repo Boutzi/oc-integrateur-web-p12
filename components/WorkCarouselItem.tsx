@@ -13,7 +13,7 @@ import {
 } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { ChevronDown } from "lucide-react";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 
 export interface CarouselItem {
   id: number;
@@ -25,7 +25,7 @@ export interface CarouselItem {
 
 export const WorkCarouselItem = (props: CarouselItem) => {
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
-  const t = useI18n();
+  const t = useTranslations();
 
   const handleMouseEnter = (id: number) => {
     if (expandedItem === null) {

@@ -9,10 +9,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 
 export function Settings() {
-  const t = useI18n();
+  const t = useTranslations();
   const [theme, setTheme] = React.useState("violet");
 
   const handleChange = (theme: string) => {
