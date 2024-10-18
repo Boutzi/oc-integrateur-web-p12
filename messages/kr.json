@@ -1,5 +1,22 @@
 {
-  "landingPage": "환영합니다",
+  "Metadata": {
+    "layout": {
+      "root": "보르도에 있는 프론트엔드 개발자",
+      "rootDescription": "창의적인 아이디어를 디지털 경험으로 바꾸는, 코드에 열정을 가진 디자이너.",
+      "about": "저에 대해",
+      "aboutDescription": "저의 경력, 열정, 그리고 저를 움직이는 동기를 알아보세요.",
+      "work": "프로젝트",
+      "workDescription": "웹 및 소프트웨어 개발에서의 저의 프로젝트를 확인해보세요.",
+      "contact": "연락하기",
+      "contactDescription": "새로운 기회를 위해 저와 연락해보세요.",
+      "education": "학력",
+      "educationDescription": "저의 학문적 배경과 습득한 지식을 살펴보세요.",
+      "experience": "경력",
+      "experienceDescription": "제가 참여한 프로젝트와 그동안의 경력을 자세히 알아보세요.",
+      "skills": "기술",
+      "skillsDescription": "제가 능숙하게 다루는 기술들과 프로젝트를 실현시키는 능력을 확인해보세요."
+    }
+  },
   "version": "버전",
   "toggleTheme": "테마 전환",
   "aboutRoute": "소개",
@@ -11,22 +28,7 @@
     "education": "교육",
     "skills": "기술"
   },
-  "layout": {
-    "root": "보르도에 있는 프론트엔드 개발자",
-    "rootDescription": "창의적인 아이디어를 디지털 경험으로 바꾸는, 코드에 열정을 가진 디자이너.",
-    "about": "저에 대해",
-    "aboutDescription": "저의 경력, 열정, 그리고 저를 움직이는 동기를 알아보세요.",
-    "work": "프로젝트",
-    "workDescription": "웹 및 소프트웨어 개발에서의 저의 프로젝트를 확인해보세요.",
-    "contact": "연락하기",
-    "contactDescription": "새로운 기회를 위해 저와 연락해보세요.",
-    "education": "학력",
-    "educationDescription": "저의 학문적 배경과 습득한 지식을 살펴보세요.",
-    "experience": "경력",
-    "experienceDescription": "제가 참여한 프로젝트와 그동안의 경력을 자세히 알아보세요.",
-    "skills": "기술",
-    "skillsDescription": "제가 능숙하게 다루는 기술들과 프로젝트를 실현시키는 능력을 확인해보세요."
-  },
+
   "heroSection": {
     "contact": "연락하기",
     "viewOnGitHub": "GitHub에서 보기",
