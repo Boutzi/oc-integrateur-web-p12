@@ -1,5 +1,22 @@
 {
-  "landingPage": "Page d'accueil",
+  "Metadata": {
+    "layout": {
+      "root": "Développeur Front-end à Bordeaux",
+      "rootDescription": "Un créatif passionné de code, transformant des idées en expériences numériques captivantes.",
+      "about": "À propos de moi",
+      "aboutDescription": "Découvrez mon parcours, mes passions et ce qui m'inspire.",
+      "work": "Réalisations",
+      "workDescription": "Explorez mes projets en développement web et logiciel.",
+      "contact": "Contactez-moi",
+      "contactDescription": "Entrons en contact pour discuter de nouvelles opportunités.",
+      "education": "Mon parcours académique",
+      "educationDescription": "Plongez dans mon parcours universitaire et les compétences que j'ai acquises.",
+      "experience": "Expériences professionnelles",
+      "experienceDescription": "Découvrez mes expériences passées et les projets qui ont marqué mon parcours.",
+      "skills": "Compétences",
+      "skillsDescription": "Un aperçu des technologies que je maîtrise pour donner vie à vos projets."
+    }
+  },
   "version": "version",
   "toggleTheme": "Changer de thème",
   "aboutRoute": "À propos",
@@ -10,22 +27,6 @@
     "experience": "Expérience",
     "education": "Formations",
     "skills": "Compétences"
-  },
-  "layout": {
-    "root": "Développeur Front-end à Bordeaux",
-    "rootDescription": "Un créatif passionné de code, transformant des idées en expériences numériques captivantes.",
-    "about": "À propos de moi",
-    "aboutDescription": "Découvrez mon parcours, mes passions et ce qui m'inspire.",
-    "work": "Réalisations",
-    "workDescription": "Explorez mes projets en développement web et logiciel.",
-    "contact": "Contactez-moi",
-    "contactDescription": "Entrons en contact pour discuter de nouvelles opportunités.",
-    "education": "Mon parcours académique",
-    "educationDescription": "Plongez dans mon parcours universitaire et les compétences que j'ai acquises.",
-    "experience": "Expériences professionnelles",
-    "experienceDescription": "Découvrez mes expériences passées et les projets qui ont marqué mon parcours.",
-    "skills": "Compétences",
-    "skillsDescription": "Un aperçu des technologies que je maîtrise pour donner vie à vos projets."
   },
   "heroSection": {
     "contact": "Contactez-moi",
