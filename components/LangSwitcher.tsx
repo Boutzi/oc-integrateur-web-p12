@@ -72,5 +72,5 @@ const CurrentLanguage: React.FC<{ language: Language }> = ({ language }) => {
     </div>
   );
 };
-export const dynamic = "force-dynamic";
+
 export default LangSwitcher;
