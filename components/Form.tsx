@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 
 export const Form = () => {
   const { setMode } = useStatus();
@@ -17,7 +17,7 @@ export const Form = () => {
   const messageRef = useRef<HTMLTextAreaElement | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const t = useI18n();
+  const t = useTranslations();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

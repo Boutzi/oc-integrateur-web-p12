@@ -4,10 +4,10 @@ import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { ScrollAnimation } from "./ScrollAnimation";
-import { getI18n } from "@/locales/server";
+import { useTranslations } from "next-intl";
 
-export const Contact = async () => {
-  const t = await getI18n();
+export const Contact = () => {
+  const t = useTranslations();
 
   return (
     <Section className="flex flex-col items-start justify-between gap-4">

@@ -2,11 +2,11 @@
 import { useEffect, useState } from "react";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { EducationCard, EducationCardProps } from "./EducationCard";
-import { useCurrentLocale, useI18n } from "@/locales/client";
+import { useLocale, useTranslations } from "next-intl";
 
 export const EducationContainer = () => {
-  const locale = useCurrentLocale();
-  const t = useI18n();
+  const locale = useLocale();
+  const t = useTranslations();
   const [education, setEducation] = useState<EducationCardProps[]>([]);
   const [certifications, setCertifications] = useState<EducationCardProps[]>(
     []

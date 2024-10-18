@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { CTA } from "./CTA";
 import { useUser } from "@/context/UserContext";
-import { useCurrentLocale, useI18n } from "@/locales/client";
+import { useLocale, useTranslations } from "next-intl";
 
 interface HeroProps {
   titleIntro: string;
@@ -18,10 +18,10 @@ interface HeroProps {
 }
 
 export const Hero = () => {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   const { user } = useUser();
   const [hero, setHero] = useState<HeroProps | null>(null);
-  const t = useI18n();
+  const t = useTranslations();
 
   useEffect(() => {
     const fetchData = async () => {

@@ -11,11 +11,11 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { getRepositories } from "@/utils/getData";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 
 export const Status = () => {
   const [repos, setRepos] = useState<SideProjectProps[]>([]);
-  const t = useI18n();
+  const t = useTranslations();
 
   useEffect(() => {
     const fetchRepositories = async () => {

@@ -11,7 +11,7 @@ import { useEffect, useState, useCallback } from "react";
 import VersionStatus from "./VersionStatus";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { useStatus } from "@/context/StatusContext";
-import { useCurrentLocale, useI18n } from "@/locales/client";
+import { useLocale, useTranslations } from "next-intl";
 
 interface Status {
   mode: string;
@@ -22,8 +22,8 @@ interface Status {
 }
 
 export const GlobalStatus = () => {
-  const locale = useCurrentLocale();
-  const t = useI18n();
+  const locale = useLocale();
+  const t = useTranslations();
   const [show, setShow] = useState(false);
   const [animate, setAnimate] = useState<boolean>(true);
   const [status, setStatus] = useState<Status | null>(null);

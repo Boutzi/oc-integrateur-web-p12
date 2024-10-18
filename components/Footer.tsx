@@ -8,12 +8,12 @@ import { ArrowBigUp } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { usePathname } from "next/navigation";
 import VersionStatus from "./VersionStatus";
-import { useI18n } from "@/locales/client";
+import { useTranslations } from "next-intl";
 // import currentLocation from "@/utils/currentLocation";
 
 export const Footer = () => {
   const pathname = usePathname();
-  const t = useI18n();
+  const t = useTranslations();
   // const basePath = currentLocation();
 
   return (
