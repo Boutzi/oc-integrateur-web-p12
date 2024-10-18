@@ -5,10 +5,12 @@ import { Spacing } from "@/components/Spacing";
 import { Status } from "@/components/Status";
 import { Suspense } from "react";
 import { unstable_setRequestLocale } from "next-intl/server";
-import { useLocale } from "next-intl";
 
-export default function Home() {
-  const locale = useLocale();
+export default function Home({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   unstable_setRequestLocale(locale);
   return (
     <main className="">

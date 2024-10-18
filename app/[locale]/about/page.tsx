@@ -1,9 +1,11 @@
 import { Bio } from "@/components/Bio";
-import { useLocale } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-export default function About() {
-  const locale = useLocale();
+export default function About({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   unstable_setRequestLocale(locale);
   return <Bio />;
 }

@@ -1,10 +1,12 @@
 import { Section } from "@/components/Section";
 import { WorkView } from "@/components/WorkView";
-import { useLocale } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-export default function Work() {
-  const locale = useLocale();
+export default function Work({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   unstable_setRequestLocale(locale);
   return (
     <Section>
