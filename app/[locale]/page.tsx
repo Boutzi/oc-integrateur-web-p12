@@ -4,8 +4,12 @@ import { BestSkills } from "@/components/BestSkills";
 import { Spacing } from "@/components/Spacing";
 import { Status } from "@/components/Status";
 import { Suspense } from "react";
+import { unstable_setRequestLocale } from "next-intl/server";
+import { useLocale } from "next-intl";
 
 export default function Home() {
+  const locale = useLocale();
+  unstable_setRequestLocale(locale);
   return (
     <main className="">
       <div className="pt-28 pb-28 border-b max-md:pt-4 max-md:pb-16 relative group overflow-hidden">
