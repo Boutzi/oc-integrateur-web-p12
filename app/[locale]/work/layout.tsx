@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { ReactNode } from "react";
 
 interface AboutLayoutProps {
@@ -17,7 +17,15 @@ export async function generateMetadata({
     description: t("layout.workDescription"),
   };
 }
-
-export default function AboutLayout({ children }: AboutLayoutProps) {
+interface AboutLayoutParams {
+  params: {
+    locale: string;
+  };
+}
+export default function AboutLayout({
+  children,
+  params: { locale },
+}: AboutLayoutProps & AboutLayoutParams) {
+  unstable_setRequestLocale(locale);
   return children;
 }
