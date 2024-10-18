@@ -33,6 +33,22 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: {
+      default: `Joe | ${t("layout.root")}`,
+      template: "%s | Joe",
+    },
+    description: t("layout.rootDescription"),
+  };
+}
+
 export default async function RootLayout({
   children,
   params: { locale },
@@ -68,20 +84,4 @@ export default async function RootLayout({
       </html>
     </StatusProvider>
   );
-}
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({ locale, namespace: "landingPage" });
-
-  return {
-    title: {
-      default: `Joe | ${t("layout.root")}`,
-      template: "%s | Joe",
-    },
-    description: t("layout.rootDescription"),
-  };
 }
