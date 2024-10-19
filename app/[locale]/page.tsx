@@ -26,7 +26,8 @@ export default function Home({
         </Suspense>
         <Spacing size="md" />
       </div>
-      <div className="bg-secondary pt-28 pb-28 max-sm:pt-16 max-sm:pb-16 border-b bg-grid-pattern bg-grid-size">
+      {/* bg-grid-pattern bg-grid-size */}
+      <div className="bg-secondary pt-28 pb-28 max-sm:pt-16 max-sm:pb-16 border-b">
         <Spacing size="md" />
         <Suspense>
           <BestSkills />

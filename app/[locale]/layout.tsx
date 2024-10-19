@@ -64,7 +64,7 @@ export default async function RootLayout({
     <StatusProvider>
       <html lang={locale} className="h-full">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased bg-gradient-to-r from-main-gradient from-20% via-main-gradient-via to-80% to-main-gradient`}
+          className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased bg-gradient-to-r from-backgradient from-20% via-backgradientvia to-80% to-backgradient`}
         >
           <NextIntlClientProvider messages={messages}>
             <UserProvider>

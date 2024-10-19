@@ -91,7 +91,7 @@ export function Settings() {
               handleChange("blue");
             }
           }}
-          className="size-8 cursor-pointer aspect-square bg-blue-700 hover:outline-foreground outline-2"
+          className="size-8 cursor-pointer aspect-square bg-blue-600 hover:outline-foreground outline-2"
         >
           {(color === "blue" && <Check />) ||
             (color === "blue-dark" && <Check />)}
@@ -105,7 +105,7 @@ export function Settings() {
               handleChange("green");
             }
           }}
-          className="size-8 cursor-pointer aspect-square bg-green-700 hover:outline-foreground outline-2"
+          className="size-8 cursor-pointer aspect-square bg-green-600 hover:outline-foreground outline-2"
         >
           {(color === "green" && <Check />) ||
             (color === "green-dark" && <Check />)}
