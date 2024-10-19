@@ -1,7 +1,9 @@
 "use client";
 
-import * as React from "react";
+import { useState } from "react";
 import { WorkCarousel } from "./WorkCarousel";
+import { ViewerProps, WorkViewer } from "./WorkViewer";
+import { useTranslations } from "next-intl";
 
 // Mock data for the carousel items
 const items = [
@@ -55,14 +57,27 @@ const items = [
   },
 ];
 
-export const WorkView = () => {
+export const WorkContainer = () => {
+  const t = useTranslations();
+  const [selectedItem, setSelectedItem] = useState<ViewerProps>({
+    title: "undefined",
+    description: "undefined",
+    image: "/empty.webp",
+  });
+
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 mb-24">
-      <div className="flex flex-col gap-12 z-30">
-        <WorkCarousel category="Featured Projects" data={items} />
-        <WorkCarousel category="Python projects" data={items} />
-        <WorkCarousel category="JS/TS projects" data={items} />
-        <WorkCarousel category="C# projects" data={items} />
+    <div className="w-full max-w-6xl mx-auto mb-24">
+      <div className="flex flex-col gap-4">
+        <WorkCarousel
+          category={`${t("work.description")}`}
+          data={items}
+          setSelectedItem={(id) => setSelectedItem(items[id - 1])}
+        />
+        <WorkViewer
+          title={selectedItem.title}
+          image={selectedItem.image}
+          description={selectedItem.description}
+        />
       </div>
     </div>
   );

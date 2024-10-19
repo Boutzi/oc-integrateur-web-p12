@@ -3,17 +3,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent } from "./ui/card";
 import { CarouselItem } from "./ui/carousel";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
-import { Button } from "./ui/button";
-import { ChevronDown } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 export interface CarouselItem {
   id: number;
@@ -21,11 +10,11 @@ export interface CarouselItem {
   description: string;
   image: string;
   origin: string;
+  clicked: () => void;
 }
 
 export const WorkCarouselItem = (props: CarouselItem) => {
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
-  const t = useTranslations();
 
   const handleMouseEnter = (id: number) => {
     if (expandedItem === null) {
@@ -39,32 +28,25 @@ export const WorkCarouselItem = (props: CarouselItem) => {
 
   return (
     <CarouselItem
-      className=" pl-2 md:pl-4 md:basis-1/3 lg:basis-1/4 overflow-visible hover:z-50 z-40 relative group"
+      className=" pl-2 md:pl-4 md:basis-1/3 lg:basis-1/5 overflow-visible relative group select-none"
       onMouseEnter={() => handleMouseEnter(props.id)}
       onMouseLeave={handleMouseLeave}
+      onClick={props.clicked}
     >
-      <Card
-        className={`border-none cursor-pointer transition-transform duration-300 ease-in-out transform z-40 rounded-none ${
-          props.origin
-        } ${
-          expandedItem === props.id
-            ? "scale-150 delay-500 -translate-y-14"
-            : "duration-300"
-        }`}
-      >
+      <Card className={`border-none cursor-pointer rounded overflow-hidden`}>
         <CardContent className="p-0">
-          <div className="aspect-w-16 aspect-h-9 overflow-hidden shadow-md">
+          <div className="aspect-w-16 aspect-h-10 overflow-hidden shadow-md">
             <Image
               src={props.image}
               alt={props.title}
               fill
               priority
               sizes="(max-width: 500px) 100vw, (max-width: 860px) 50vw, 33vw"
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover hover:opacity-75"
             />
           </div>
         </CardContent>
-        <div
+        {/* <div
           className={`absolute shadow-md bg-primary-foreground flex rounded-b-sm justify-between z-50 w-full p-2 transition-opacity duration-300 ease-in-out transform ${
             expandedItem === props.id
               ? "opacity-100 delay-500"
@@ -77,8 +59,8 @@ export const WorkCarouselItem = (props: CarouselItem) => {
               {props.description}
             </p>
           </div>
-          <Dialog>
-            <DialogTrigger asChild>
+          <div>
+            <div>
               <Button
                 onClick={() => setExpandedItem(null)}
                 variant="ghost"
@@ -88,27 +70,9 @@ export const WorkCarouselItem = (props: CarouselItem) => {
                 <ChevronDown className="h-6 w-6" />
                 <span className="sr-only">{t("moreInfo")}</span>
               </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>{props.title}</DialogTitle>
-                <DialogDescription>{props.description}</DialogDescription>
-                <DialogDescription>
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                  blablablablablablablablablablablabla
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
-        </div>
+            </div>
+          </div>
+        </div> */}
       </Card>
     </CarouselItem>
   );

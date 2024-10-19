@@ -1,3 +1,4 @@
+"use client";
 import {
   Carousel,
   CarouselContent,
@@ -7,6 +8,7 @@ import {
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { WorkCarouselItem } from "./WorkCarouselItem";
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 export interface CarouselCategory {
   category: string;
@@ -16,11 +18,13 @@ export interface CarouselCategory {
     description: string;
     image: string;
   }[];
+  setSelectedItem: (id: number) => void;
 }
 
 export const WorkCarousel = (props: CarouselCategory) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const dataLength = props.data.length;
+  const t = useTranslations();
 
   const handleNext = useCallback(
     (e: React.MouseEvent) => {
@@ -40,16 +44,20 @@ export const WorkCarousel = (props: CarouselCategory) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <h2 className="text-2xl font-bold z-10">{props.category}</h2>
-      <div className="overflow-visible z-40">
+      <h1 className="text-5xl font-bold text-primary">
+        {t("Metadata.layout.work")}
+      </h1>
+      <h2 className="text-2xl font-bold">{props.category}</h2>
+      <div className="overflow-visible">
         <Carousel
           opts={{
             align: "start",
-            loop: true,
+            loop: false,
+            skipSnaps: true,
           }}
-          className="w-full overflow-visible z-40"
+          className="w-full overflow-visible"
         >
-          <CarouselContent className="-ml-2 md:-ml-4 z-40">
+          <CarouselContent className="-ml-2 md:-ml-4">
             {props.data.map((item) => (
               <WorkCarouselItem
                 key={item.id}
@@ -60,10 +68,11 @@ export const WorkCarousel = (props: CarouselCategory) => {
                 origin={
                   item.id - 1 === currentIndex
                     ? "origin-left"
-                    : item.id - 1 === (currentIndex + 3) % props.data.length
+                    : item.id - 1 === (currentIndex + 4) % props.data.length
                     ? "origin-right"
                     : "origin-center"
                 }
+                clicked={() => props.setSelectedItem(item.id)}
               />
             ))}
           </CarouselContent>

@@ -258,7 +258,7 @@ body {
   .green-dark {
     --backgradient: 140 100% 3%;
     --backgradientvia: 140 100% 8%;
-    --background: 126 58% 1%;
+    --background: 126 58% 4%;
     --foreground: 126 12% 98%;
     --muted: 126 13% 9%;
     --muted-foreground: 126 10% 64%;
@@ -281,7 +281,7 @@ body {
   .orange-dark {
     --backgradient: 30 100% 3%;
     --backgradientvia: 30 100% 8%;
-    --background: 0 0% 6.67%;
+    --background: 0 10% 4%;
     --foreground: 0 0% 93.33%;
     --muted: 0 0% 13.33%;
     --muted-foreground: 0 0% 70.59%;
@@ -304,7 +304,7 @@ body {
   .pink-dark {
     --backgradient: 330 100% 3%;
     --backgradientvia: 330 100% 8%;
-    --background: 0 0% 7%;
+    --background: 0 10% 4%;
     --foreground: 0 0% 87%;
     --muted: 0 12% 15%;
     --muted-foreground: 0 12% 65%;
