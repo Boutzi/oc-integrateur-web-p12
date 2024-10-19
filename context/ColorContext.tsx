@@ -16,8 +16,8 @@ const ColorContext = createContext<ColorContextType | undefined>(undefined);
 
 export const ColorProvider = ({ children }: { children: ReactNode }) => {
   const [color, setColor] = useState<string>(() => {
-    // Récupérer la couleur du localStorage ou utiliser une couleur par défaut
-    return localStorage.getItem("color") || "violet-dark";
+    const userColor = localStorage.getItem("color") || "violet-dark";
+    return userColor;
   });
 
   // Mettre à jour le localStorage lorsque la couleur change
