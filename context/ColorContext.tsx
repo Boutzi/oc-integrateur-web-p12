@@ -15,12 +15,15 @@ interface ColorContextType {
 const ColorContext = createContext<ColorContextType | undefined>(undefined);
 
 export const ColorProvider = ({ children }: { children: ReactNode }) => {
-  const [color, setColor] = useState<string>(() => {
-    const userColor = localStorage.getItem("color") || "violet-dark";
-    return userColor;
-  });
+  const [color, setColor] = useState<string>("violet-dark");
 
-  // Mettre à jour le localStorage lorsque la couleur change
+  useEffect(() => {
+    const storedColor = localStorage.getItem("color");
+    if (storedColor) {
+      setColor(storedColor);
+    }
+  }, []);
+
   useEffect(() => {
     localStorage.setItem("color", color);
   }, [color]);
