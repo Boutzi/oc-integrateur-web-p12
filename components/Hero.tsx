@@ -59,13 +59,13 @@ function Hero() {
                 <CTA
                   label={t("heroSection.contact")}
                   url="/contact"
-                  classes=""
+                  classes="text-background"
                   target=""
                 />
                 <CTA
                   label={t("heroSection.viewOnGitHub")}
                   url={`${user?.githubUrl}`}
-                  classes="bg-foreground hover:bg-accent-foreground/70"
+                  classes="bg-foreground hover:bg-accent-foreground/70 text-background"
                   target="_blank"
                 />
               </div>
@@ -73,7 +73,7 @@ function Hero() {
                 <CTA
                   label={t("heroSection.downloadCV")}
                   url={`${user?.cvUrl}`}
-                  classes="bg-foreground hover:bg-accent-foreground/70 gap-2"
+                  classes="bg-foreground hover:bg-accent-foreground/70 gap-2 text-background"
                   target="_blank"
                   icon={Download}
                 />

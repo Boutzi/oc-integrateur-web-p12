@@ -25,7 +25,7 @@ export const Contact = () => {
       </h3>
       <Link href={"/contact"} passHref>
         <ScrollAnimation animated={true} animationType="slide-x">
-          <Button className="rounded-full font-semibold bg-accent-foreground flex items-center my-8">
+          <Button className="rounded-full font-semibold bg-accent-foreground flex items-center my-8 text-background">
             {t("contact.contactMe")}
             <ArrowRight size={16} className="ml-1" />
           </Button>
