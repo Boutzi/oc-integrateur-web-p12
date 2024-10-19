@@ -11,6 +11,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { ColorProvider } from "@/context/ColorContext";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -63,7 +64,7 @@ export default async function RootLayout({
     <StatusProvider>
       <html lang={locale} className="h-full">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased bg-gradient-to-r from-[#efeffd] from-20% via-[#ede5ff] to-80% to-[#efeffd] dark:from-[#050510] dark:from-20% dark:via-[#100a1d] dark:to-80% dark:to-[#050510]`}
+          className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased bg-gradient-to-r from-main-gradient from-20% via-main-gradient-via to-80% to-main-gradient`}
         >
           <NextIntlClientProvider messages={messages}>
             <UserProvider>
@@ -73,12 +74,14 @@ export default async function RootLayout({
                 enableSystem
                 disableTransitionOnChange
               >
-                {/* <LoaderProvider> */}
-                <GlobalStatus />
-                <Header />
-                {children}
-                <Footer />
-                {/* </LoaderProvider> */}
+                <ColorProvider>
+                  {/* <LoaderProvider> */}
+                  <GlobalStatus />
+                  <Header />
+                  {children}
+                  <Footer />
+                  {/* </LoaderProvider> */}
+                </ColorProvider>
               </ThemeProvider>
             </UserProvider>
           </NextIntlClientProvider>

@@ -15,7 +15,7 @@ export const BestSkills = () => {
       <Section className="flex flex-col items-start justify-between gap-4">
         <Badge
           variant="outline"
-          className="rounded-full text-violet-400 border-violet-400"
+          className="rounded-full text-primary border-primary"
         >
           {t("skills")}
         </Badge>

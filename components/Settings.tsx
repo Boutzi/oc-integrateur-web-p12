@@ -10,18 +10,35 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
+import { useColor } from "@/context/ColorContext";
 
 export function Settings() {
   const t = useTranslations();
-  const [theme, setTheme] = React.useState("violet");
+  const { theme } = useTheme();
+  const { color, setColor } = useColor();
 
-  const handleChange = (theme: string) => {
-    setTheme(theme);
+  const handleChange = (newColor: string) => {
+    setColor(newColor);
   };
 
   React.useEffect(() => {
-    document.documentElement.classList.add(theme);
-  }, [theme]);
+    document.documentElement.classList.remove(
+      "gray",
+      "violet",
+      "blue",
+      "green",
+      "orange",
+      "pink",
+      "gray-dark",
+      "violet-dark",
+      "blue-dark",
+      "green-dark",
+      "orange-dark",
+      "pink-dark"
+    );
+    document.documentElement.classList.add(color);
+  }, [color, theme]);
 
   return (
     <DropdownMenu>
@@ -39,44 +56,92 @@ export function Settings() {
         className="grid grid-cols-3 gap-2 p-2 text-black"
       >
         <DropdownMenuItem
-          onClick={() => handleChange("gray")}
+          onClick={() => {
+            if (theme === "dark") {
+              handleChange("gray-dark");
+            } else {
+              handleChange("gray");
+            }
+          }}
           className="size-8 cursor-pointer aspect-square bg-gray-100 hover:outline-foreground outline-2"
         >
-          {theme === "gray" && <Check />}
+          {(color === "gray" && <Check />) ||
+            (color === "gray-dark" && <Check />)}
         </DropdownMenuItem>
+
         <DropdownMenuItem
-          onClick={() => handleChange("violet")}
+          onClick={() => {
+            if (theme === "dark") {
+              handleChange("violet-dark");
+            } else {
+              handleChange("violet");
+            }
+          }}
           className="size-8 cursor-pointer aspect-square bg-violet-700 hover:outline-foreground outline-2"
         >
-          {theme === "violet" && <Check />}
+          {(color === "violet" && <Check />) ||
+            (color === "violet-dark" && <Check />)}
         </DropdownMenuItem>
+
         <DropdownMenuItem
-          onClick={() => handleChange("blue")}
+          onClick={() => {
+            if (theme === "dark") {
+              handleChange("blue-dark");
+            } else {
+              handleChange("blue");
+            }
+          }}
           className="size-8 cursor-pointer aspect-square bg-blue-700 hover:outline-foreground outline-2"
         >
-          {theme === "blue" && <Check />}
+          {(color === "blue" && <Check />) ||
+            (color === "blue-dark" && <Check />)}
         </DropdownMenuItem>
+
         <DropdownMenuItem
-          onClick={() => handleChange("green")}
+          onClick={() => {
+            if (theme === "dark") {
+              handleChange("green-dark");
+            } else {
+              handleChange("green");
+            }
+          }}
           className="size-8 cursor-pointer aspect-square bg-green-700 hover:outline-foreground outline-2"
         >
-          {theme === "green" && <Check />}
+          {(color === "green" && <Check />) ||
+            (color === "green-dark" && <Check />)}
         </DropdownMenuItem>
+
         <DropdownMenuItem
-          onClick={() => handleChange("orange")}
+          onClick={() => {
+            if (theme === "dark") {
+              handleChange("orange-dark");
+            } else {
+              handleChange("orange");
+            }
+          }}
           className="size-8 cursor-pointer aspect-square bg-orange-700 hover:outline-foreground outline-2"
         >
-          {theme === "orange" && <Check />}
+          {(color === "orange" && <Check />) ||
+            (color === "orange-dark" && <Check />)}
         </DropdownMenuItem>
+
         <DropdownMenuItem
-          onClick={() => handleChange("pink")}
+          onClick={() => {
+            if (theme === "dark") {
+              handleChange("pink-dark");
+            } else {
+              handleChange("pink");
+            }
+          }}
           className="size-8 cursor-pointer aspect-square bg-pink-700 hover:outline-foreground outline-2"
         >
-          {theme === "pink" && <Check />}
+          {(color === "pink" && <Check />) ||
+            (color === "pink-dark" && <Check />)}
         </DropdownMenuItem>
-        <div className="col-span-3 text-white bg-primary px-2 rounded">
+
+        {/* <div className="col-span-3 text-white bg-primary px-2 rounded">
           Coming soon
-        </div>
+        </div> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

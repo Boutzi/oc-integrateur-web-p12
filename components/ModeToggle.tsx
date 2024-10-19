@@ -6,13 +6,18 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { useColor } from "@/context/ColorContext";
 
 export function ModeToggle() {
   const t = useTranslations();
+  const { color, setColor } = useColor();
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
+    const prevColor = color.includes("-dark");
+    const newColor = prevColor ? color.replace("-dark", "") : `${color}-dark`;
+    setColor(newColor);
   };
 
   return (
