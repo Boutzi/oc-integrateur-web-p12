@@ -17,6 +17,7 @@ export interface CarouselCategory {
     title: string;
     description: string;
     image: string;
+    language?: string;
   }[];
   setSelectedItem: (id: number) => void;
 }
@@ -44,10 +45,9 @@ export const WorkCarousel = (props: CarouselCategory) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <h1 className="text-5xl font-bold text-primary">
+      <h1 className="text-5xl font-bold text-primary mb-2">
         {t("Metadata.layout.work")}
       </h1>
-      <h2 className="text-2xl font-bold">{props.category}</h2>
       <div className="overflow-visible">
         <Carousel
           opts={{
@@ -63,6 +63,7 @@ export const WorkCarousel = (props: CarouselCategory) => {
                 key={item.id}
                 id={item.id}
                 title={item.title}
+                language={item.language}
                 description={item.description}
                 image={item.image ? item.image : "/empty.webp"}
                 origin={

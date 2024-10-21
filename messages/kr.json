@@ -62,6 +62,9 @@
     "skills": "제 조직 기술과 세부 사항에 대한 주의는 중요한 자산입니다. 저는 모든 규모의 프로젝트를 맡아 그 품질과 효율성을 향상시키기 위해 기여합니다.",
     "keyPlayer": "저는 제가 일하는 모든 회사에서 주요 인물로 자리 잡기 위해 노력하며, 제 아이디어를 강요하는 것이 아니라 제 작업의 질에 의존합니다."
   },
+  "work": {
+    "description": "description for work"
+  },
   "contact": {
     "getInTouch": "연락하기",
     "openToOpportunities": "새로운 기회에 열려 있습니다",

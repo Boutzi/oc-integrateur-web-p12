@@ -3,6 +3,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent } from "./ui/card";
 import { CarouselItem } from "./ui/carousel";
+import { PythonIcon } from "./icons/PythonIcon";
+import { JavaScriptIcon } from "./icons/JavaScriptIcon";
+import { TypeScriptIcon } from "./icons/TypeScriptIcon";
+import { CSharpIcon } from "./icons/CSharpIcon";
+import { JavaIcon } from "./icons/JavaIcon";
+import { Code } from "lucide-react";
 
 export interface CarouselItem {
   id: number;
@@ -10,6 +16,7 @@ export interface CarouselItem {
   description: string;
   image: string;
   origin: string;
+  language?: string;
   clicked: () => void;
 }
 
@@ -33,8 +40,12 @@ export const WorkCarouselItem = (props: CarouselItem) => {
       onMouseLeave={handleMouseLeave}
       onClick={props.clicked}
     >
-      <Card className={`border-none cursor-pointer rounded overflow-hidden`}>
-        <CardContent className="p-0">
+      <Card
+        className={`cursor-pointer rounded overflow-hidden border-accent-foreground/40 ${
+          props.id ? "border-2" : ""
+        }`}
+      >
+        <CardContent className="p-0 relative group">
           <div className="aspect-w-16 aspect-h-10 overflow-hidden shadow-md">
             <Image
               src={props.image}
@@ -44,6 +55,24 @@ export const WorkCarouselItem = (props: CarouselItem) => {
               sizes="(max-width: 500px) 100vw, (max-width: 860px) 50vw, 33vw"
               className="w-full h-auto object-cover hover:opacity-75"
             />
+            <div className="absolute inset-0 flex items-center justify-center bg-transparent group-hover:bg-foreground/80">
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity rounded-full text-foreground/60 hover:bg-none hover:text-foreground">
+                {props.language === "Python" ? (
+                  <PythonIcon className="h-16 w-16" />
+                ) : props.language === "JavaScript" ? (
+                  <JavaScriptIcon className="h-16 w-16" />
+                ) : props.language === "TypeScript" ? (
+                  <TypeScriptIcon className="h-16 w-16" />
+                ) : props.language === "CSharp" ? (
+                  <CSharpIcon className="h-16 w-16" />
+                ) : props.language === "Java" ? (
+                  <JavaIcon className="h-16 w-16" />
+                ) : (
+                  <Code size={32} className="text-background" />
+                )}
+                <span className="sr-only"></span>
+              </div>
+            </div>
           </div>
         </CardContent>
         {/* <div
@@ -59,19 +88,7 @@ export const WorkCarouselItem = (props: CarouselItem) => {
               {props.description}
             </p>
           </div>
-          <div>
-            <div>
-              <Button
-                onClick={() => setExpandedItem(null)}
-                variant="ghost"
-                size="icon"
-                className="border-2 rounded-full text-foreground/60 hover:border-foreground hover:bg-inherit hover:text-foreground"
-              >
-                <ChevronDown className="h-6 w-6" />
-                <span className="sr-only">{t("moreInfo")}</span>
-              </Button>
-            </div>
-          </div>
+          
         </div> */}
       </Card>
     </CarouselItem>

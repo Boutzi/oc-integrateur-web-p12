@@ -1,38 +1,61 @@
 import Image from "next/image";
+import { Card } from "./ui/card";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+  SidebarTrigger,
+  useSidebar,
+} from "./ui/sidebar";
 
 export interface ViewerProps {
   title: string;
   description?: string;
   image?: string;
+  imageFull?: string;
+  language?: string;
 }
 
 export const WorkViewer = (props: ViewerProps) => {
-  return (
-    <div className="flex flex-col">
-      <div className="flex border">
-        <div className="relative group flex gap-4 flex-[5]  w-full min-h-[500px] p-4">
-          <Image
-            src={`${props.image || "/empty.webp"}`}
-            alt="project view"
-            fill
-            className="w-full h-full object-cover"
-          />
-        </div>
+  const { open } = useSidebar();
 
-        <div className="flex border-l flex-col flex-[2]  w-full min-h-[550px] p-4">
-          <h2 className="text-3xl font-semibold mb-4">{props.title}</h2>
-          <div className="text-md">
-            <p>Info 1</p>
-            <p>Info 2</p>
-            <p>Info 3</p>
-            <p>Info 4</p>
+  return (
+    <div>
+      <Card className="flex flex-col p-0 overflow-hidden rounded-lg border-2 max-h-[calc(100svh-435px)]">
+        <div className="relative group">
+          <div className="relative group gap-4 h-full">
+            <Image
+              src={`${props.imageFull || "/empty.webp"}`}
+              alt="project view"
+              width={1120}
+              height={476}
+              priority
+              className="w-full h-auto object-contain rounded-lg"
+            />
           </div>
+
+          <Sidebar
+            className={`absolute right-0 h-auto p-0 border-l backdrop-blur`}
+            side="right"
+            variant="inset"
+            collapsible="icon"
+          >
+            <SidebarTrigger
+              className={`${open ? "mx-4" : "mx-auto"} items-center mt-4`}
+            />
+            <SidebarHeader className={`${open ? "" : "hidden"} p-4`}>
+              {props.title}
+            </SidebarHeader>
+            <SidebarContent className={`${open ? "" : "hidden"} p-4`}>
+              desc.
+            </SidebarContent>
+          </Sidebar>
         </div>
-      </div>
-      <div className="h-128 w-full mt-8">
-        <h3 className="text-2xl font-light">Description détaillée</h3>
+      </Card>
+      {/* <div className="h-128 w-full mt-8">
+        <h3 className="text-5xl font-thin text-center">{props.title}</h3>
         <p>{props.description}</p>
-      </div>
+      </div> */}
     </div>
   );
 };

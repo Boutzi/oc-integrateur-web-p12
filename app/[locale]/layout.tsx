@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import localFont from "next/font/local";
 import { Anek_Telugu } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GlobalStatus } from "@/components/GlobalStatus";
