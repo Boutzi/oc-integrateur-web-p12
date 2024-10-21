@@ -5,7 +5,7 @@
       "rootDescription": "Un créatif passionné de code, transformant des idées en expériences numériques captivantes.",
       "about": "À propos de moi",
       "aboutDescription": "Découvrez mon parcours, mes passions et ce qui m'inspire.",
-      "work": "Réalisations",
+      "work": "Projets",
       "workDescription": "Explorez mes projets en développement web et logiciel.",
       "contact": "Contactez-moi",
       "contactDescription": "Entrons en contact pour discuter de nouvelles opportunités.",
@@ -60,6 +60,9 @@
     "introduction": "Je suis une personne polyvalente, souvent décrite comme multipotentielle. J’ai exploré divers horizons professionnels et je m’épanouis dans plusieurs domaines.",
     "skills": "Mes compétences organisationnelles et mon attention aux détails sont des atouts précieux. Je gère des projets de toutes tailles, contribuant à leur développement pour améliorer leur qualité et leur efficacité.",
     "keyPlayer": "Je m'efforce d'être un acteur clé au sein de chaque entreprise pour laquelle je travaille, en mettant l'accent sur la qualité de mon travail plutôt que sur l'imposition de mes idées."
+  },
+  "work": {
+    "description": "description for work"
   },
   "contact": {
     "getInTouch": "Entrer en contact",
