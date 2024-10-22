@@ -15,7 +15,6 @@ export const WorkContainer = () => {
     const fetchData = async () => {
       try {
         const data = await fetchDataFromBucket(locale, "work", "projects");
-        console.log("Setting selectedItem:", data[0]);
         setWorks(data);
         setSelectedItem(data[0]);
       } catch (error) {

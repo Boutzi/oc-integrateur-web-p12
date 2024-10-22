@@ -2,7 +2,9 @@
 import * as React from "react";
 import { FranceIcon } from "./icons/FranceIcon";
 import { UnitedKingdomIcon } from "./icons/UnitedKingdomIcon";
+import { ItalyIcon } from "./icons/ItalyIcon";
 import { KoreaIcon } from "./icons/KoreaIcon";
+import { JapanIcon } from "./icons/JapanIcon";
 
 import {
   Select,
@@ -15,7 +17,7 @@ import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation"; // Assurez-vous que ça vient de next/navigation
 import { Link } from "@/i18n/routing";
 
-type Language = "en" | "fr" | "kr";
+type Language = "en" | "fr" | "it" | "kr" | "jp";
 
 interface LanguageInfo {
   name: string;
@@ -25,7 +27,9 @@ interface LanguageInfo {
 const languages: Record<Language, LanguageInfo> = {
   en: { name: "English", Icon: UnitedKingdomIcon },
   fr: { name: "Français", Icon: FranceIcon },
+  it: { name: "Italiano", Icon: ItalyIcon },
   kr: { name: "한국어", Icon: KoreaIcon },
+  jp: { name: "日本語", Icon: JapanIcon },
 };
 
 const LangSwitcher: React.FC = () => {
@@ -53,7 +57,7 @@ const LangSwitcher: React.FC = () => {
               locale={code as Language}
               className="flex items-center"
             >
-              <Icon className="mr-2 h-5 w-5 rounded-full" />
+              <Icon className="mr-2 h-5 w-5 rounded-full " />
               <span>{name}</span>
             </Link>
           </SelectItem>
