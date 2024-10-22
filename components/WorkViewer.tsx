@@ -30,10 +30,10 @@ export const WorkViewer = (props: ViewerProps) => {
 
           <div className={`my-8`}>
             <h2 className="text-6xl text-primary mx-auto text-center font-thin max-md:pt-4">
-              {props.title}
+              {props?.title}
             </h2>
             <ul className="flex flex-wrap gap-2 items-center mx-auto my-4 justify-center">
-              {props.technos?.map((item, index) => {
+              {props?.technos?.map((item, index) => {
                 return (
                   <li key={index}>
                     <Badge variant={"outline"} className="">
