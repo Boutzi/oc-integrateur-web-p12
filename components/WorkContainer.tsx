@@ -37,16 +37,16 @@ export const WorkContainer = () => {
           />
           <WorkViewer
             id={selectedItem?.id}
-            title={selectedItem?.title}
-            date={selectedItem?.date}
-            image={selectedItem?.image}
-            descriptionOne={selectedItem?.descriptionOne}
-            descriptionTwo={selectedItem?.descriptionTwo}
-            descriptionThree={selectedItem?.descriptionThree}
-            imageFull={selectedItem?.imageFull}
-            visitOnGithub={selectedItem?.visitOnGithub}
-            technos={selectedItem?.technos}
-            language={selectedItem?.language}
+            title={selectedItem?.title ?? "Untitled"}
+            date={selectedItem?.date ?? "Unknown date"}
+            image={selectedItem?.image ?? "/default-image.jpg"}
+            descriptionOne={selectedItem?.descriptionOne ?? ""}
+            descriptionTwo={selectedItem?.descriptionTwo ?? ""}
+            descriptionThree={selectedItem?.descriptionThree ?? ""}
+            imageFull={selectedItem?.imageFull ?? "/default-image-full.jpg"}
+            visitOnGithub={selectedItem?.visitOnGithub ?? ""}
+            technos={selectedItem?.technos ?? []}
+            language={selectedItem?.language ?? "Unknown language"}
           />
         </div>
       </div>
