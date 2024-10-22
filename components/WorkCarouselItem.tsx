@@ -9,11 +9,14 @@ import { TypeScriptIcon } from "./icons/TypeScriptIcon";
 import { CSharpIcon } from "./icons/CSharpIcon";
 import { JavaIcon } from "./icons/JavaIcon";
 import { Code } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export interface CarouselItem {
   id: number;
   title: string;
-  description: string;
+  descriptionOne?: string;
+  descriptionTwo?: string;
+  descriptionThree?: string;
   image: string;
   origin: string;
   language?: string;
@@ -22,6 +25,7 @@ export interface CarouselItem {
 
 export const WorkCarouselItem = (props: CarouselItem) => {
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
+  const t = useTranslations();
 
   const handleMouseEnter = (id: number) => {
     if (expandedItem === null) {
@@ -49,7 +53,7 @@ export const WorkCarouselItem = (props: CarouselItem) => {
           <div className="aspect-w-16 aspect-h-10 overflow-hidden shadow-md">
             <Image
               src={props.image}
-              alt={props.title}
+              alt={`${props.title} ${t("work.itemAlt")}`}
               fill
               priority
               sizes="(max-width: 500px) 100vw, (max-width: 860px) 50vw, 33vw"

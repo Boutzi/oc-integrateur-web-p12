@@ -1,81 +1,55 @@
 "use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { WorkCarousel } from "./WorkCarousel";
 import { ViewerProps, WorkViewer } from "./WorkViewer";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { SidebarProvider } from "./ui/sidebar";
-
-const items = [
-  {
-    id: 1,
-    title: "Portfolio",
-    description: "Description for Portfolio",
-    image: "/joe.png",
-    imageFull: "/portfolio.png",
-    visitOnGithub: "https://github.com/Boutzi/oc-integrateur-web-p12",
-    language: "TypeScript",
-  },
-  {
-    id: 2,
-    title: "Winpolar",
-    description: "Description for Winpolar",
-    image: "/winpolar-logo.png",
-    imageFull: "/winpolar.png",
-    language: "CSharp",
-  },
-  {
-    id: 3,
-    title: "PyGo Score",
-    description: "Description for PyGo Score",
-    image: "/pygo-logo.png",
-    imageFull: "/portfolio.png",
-    language: "Python",
-  },
-  {
-    id: 4,
-    title: "Pomodoro App",
-    description: "Description for Pomodoro App",
-    image: "/pomodoro-logo.png",
-    imageFull: "/pomodoro.png",
-    language: "CSharp",
-  },
-  {
-    id: 5,
-    title: "Arkaans Copilot",
-    description: "Description for Arkaans Copilot",
-    image: "/arkaans-logo.png",
-    imageFull: "/arkaans.png",
-    language: "JavaScript",
-  },
-  {
-    id: 6,
-    title: "Awesome Picker",
-    description: "Description for Awesome Picker",
-    image: "/arkaans-logo.png",
-    imageFull: "/portfolio.png",
-    language: "JavaScript",
-  },
-];
+import { fetchDataFromBucket } from "@/utils/getBucket";
 
 export const WorkContainer = () => {
   const t = useTranslations();
-  const [selectedItem, setSelectedItem] = useState<ViewerProps>(items[0]);
+  const locale = useLocale();
+  const [works, setWorks] = useState<ViewerProps[]>([]);
+  const [selectedItem, setSelectedItem] = useState<ViewerProps | null>(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchDataFromBucket(locale, "work", "projects");
+        console.log("Setting selectedItem:", data[0]);
+        setWorks(data);
+        setSelectedItem(data[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [locale]);
+
+  if (!selectedItem) {
+    return <div>Loading...</div>;
+  }
   return (
     <SidebarProvider>
       <div className="w-full max-w-6xl mx-auto mb-4">
         <div className="flex flex-col gap-4">
           <WorkCarousel
             category={`${t("work.description")}`}
-            data={items}
-            setSelectedItem={(id) => setSelectedItem(items[id - 1])}
+            data={works}
+            setSelectedItem={(id) => setSelectedItem(works[id - 1])}
           />
           <WorkViewer
-            title={selectedItem.title}
-            image={selectedItem.image}
-            description={selectedItem.description}
-            imageFull={selectedItem.imageFull}
+            id={selectedItem?.id}
+            title={selectedItem?.title}
+            date={selectedItem.date}
+            image={selectedItem?.image}
+            descriptionOne={selectedItem?.descriptionOne}
+            descriptionTwo={selectedItem?.descriptionTwo}
+            descriptionThree={selectedItem?.descriptionThree}
+            imageFull={selectedItem?.imageFull}
+            visitOnGithub={selectedItem?.visitOnGithub}
+            technos={selectedItem?.technos}
+            language={selectedItem?.language}
           />
         </div>
       </div>

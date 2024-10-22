@@ -1,61 +1,103 @@
 import Image from "next/image";
-import { Card } from "./ui/card";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarTrigger,
-  useSidebar,
-} from "./ui/sidebar";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { ArrowTopRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import { Badge } from "./ui/badge";
+import { Ban } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export interface ViewerProps {
+  id: number | undefined;
   title: string;
-  description?: string;
-  image?: string;
-  imageFull?: string;
-  language?: string;
+  date: string;
+  descriptionOne?: string;
+  descriptionTwo?: string;
+  descriptionThree?: string;
+  image: string;
+  imageFull: string;
+  language: string;
+  technos: string[];
+  visitOnGithub: string | null;
 }
 
 export const WorkViewer = (props: ViewerProps) => {
-  const { open } = useSidebar();
-
+  const t = useTranslations();
   return (
-    <div>
-      <Card className="flex flex-col p-0 overflow-hidden rounded-lg border-2 max-h-[calc(100svh-435px)]">
-        <div className="relative group">
-          <div className="relative group gap-4 h-full">
+    <div className="relative group">
+      <div className="flex p-0">
+        <div className={`flex-1  h-auto p-0 backdrop-blur`}>
+          <div className={`items-center mt-4`} />
+
+          <div className={`my-8`}>
+            <h2 className="text-6xl text-primary mx-auto text-center font-thin">
+              {props.title}
+            </h2>
+            <ul className="flex flex-wrap gap-2 items-center mx-auto my-4 justify-center">
+              {props.technos?.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <Badge variant={"outline"} className="">
+                      {item}
+                    </Badge>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="flex-1 items-center">
             <Image
               src={`${props.imageFull || "/empty.webp"}`}
-              alt="project view"
+              alt={`${props.title} ${t("work.imageAlt")}`}
               width={1120}
               height={476}
               priority
-              className="w-full h-auto object-contain rounded-lg"
+              className="w-[70%] h-auto object-contain mx-auto border shadow-lg"
             />
           </div>
-
-          <Sidebar
-            className={`absolute right-0 h-auto p-0 border-l backdrop-blur`}
-            side="right"
-            variant="inset"
-            collapsible="icon"
-          >
-            <SidebarTrigger
-              className={`${open ? "mx-4" : "mx-auto"} items-center mt-4`}
-            />
-            <SidebarHeader className={`${open ? "" : "hidden"} p-4`}>
-              {props.title}
-            </SidebarHeader>
-            <SidebarContent className={`${open ? "" : "hidden"} p-4`}>
-              desc.
-            </SidebarContent>
-          </Sidebar>
+          <h3 className="text-sm text-accent-foreground text-center mt-2">
+            {t("work.releasedOn")} {props.date}
+          </h3>
+          <div className="absolute top-0 right-0">
+            {props.visitOnGithub === null ? (
+              <Button className="bg-destructive text-white hover:bg-destructive cursor-default">
+                <GitHubLogoIcon className="mr-1" />
+                {t("work.privateRepo")} <Ban className="ml-1" size={16} />
+              </Button>
+            ) : (
+              <Link
+                href={`${props.visitOnGithub}`}
+                className=""
+                target="_blank"
+              >
+                <Button className="bg-foreground text-background hover:bg-foreground/80">
+                  <GitHubLogoIcon className="mr-1" />
+                  {t("work.githubRepo")} <ArrowTopRightIcon className="ml-1" />
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
-      </Card>
-      {/* <div className="h-128 w-full mt-8">
-        <h3 className="text-5xl font-thin text-center">{props.title}</h3>
-        <p>{props.description}</p>
-      </div> */}
+      </div>
+      <div className="my-8 space-y-4 max-w-prose mx-auto">
+        <p
+          style={{ textIndent: "1.5rem", hyphens: "auto" }}
+          className="leading-relaxed text-accent-foreground text-lg text-justify"
+        >
+          {props.descriptionOne}
+        </p>
+        <p
+          style={{ textIndent: "1.5rem", hyphens: "auto" }}
+          className="leading-relaxed text-accent-foreground text-lg text-justify"
+        >
+          {props.descriptionTwo}
+        </p>
+        <p
+          style={{ textIndent: "1.5rem", hyphens: "auto" }}
+          className="leading-relaxed text-accent-foreground text-lg text-justify"
+        >
+          {props.descriptionThree}
+        </p>
+      </div>
     </div>
   );
 };

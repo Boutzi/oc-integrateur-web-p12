@@ -63,7 +63,12 @@
     "keyPlayer": "I strive to become a key player in every company I work for, not by imposing my ideas, but by relying on the quality of my work."
   },
   "work": {
-    "description": "description for work"
+    "title": "My projects",
+    "releasedOn": "Released on",
+    "imageAlt": "view",
+    "itemAlt": "logo",
+    "privateRepo": "Private repository",
+    "githubRepo": "GitHub repository"
   },
   "contact": {
     "getInTouch": "Get in touch",
