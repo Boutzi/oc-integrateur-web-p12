@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 
 export interface ViewerProps {
   id: number | undefined;
-  title: string | undefined;
+  title: string;
   date: string | undefined;
   descriptionOne?: string | undefined;
   descriptionTwo?: string | undefined;
