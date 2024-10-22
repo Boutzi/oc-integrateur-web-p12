@@ -57,7 +57,7 @@ const LangSwitcher: React.FC = () => {
               locale={code as Language}
               className="flex items-center"
             >
-              <Icon className="mr-2 h-5 w-5 rounded-full " />
+              <Icon className="mr-2 h-5 w-5 rounded-full" />
               <span>{name}</span>
             </Link>
           </SelectItem>
