@@ -63,7 +63,6 @@ export const Status = () => {
       try {
         const data = await fetchDataFromBucket(locale, "work", "projects");
         setWorks(data[0]);
-        console.log(data[0]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -80,9 +79,6 @@ export const Status = () => {
     fetchRepositories();
   }, []);
 
-  // if (!education || !experience || !works) {
-  //   return <div>Loading...</div>;
-  // }
   return (
     <Section className="flex flex-col gap-4">
       <ScrollAnimation animated={true} animationType="fade">

@@ -2,6 +2,7 @@
 import * as React from "react";
 import { FranceIcon } from "./icons/FranceIcon";
 import { UnitedKingdomIcon } from "./icons/UnitedKingdomIcon";
+import { ItalyIcon } from "./icons/ItalyIcon";
 import { KoreaIcon } from "./icons/KoreaIcon";
 
 import {
@@ -15,7 +16,7 @@ import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation"; // Assurez-vous que ça vient de next/navigation
 import { Link } from "@/i18n/routing";
 
-type Language = "en" | "fr" | "kr";
+type Language = "en" | "fr" | "it" | "kr";
 
 interface LanguageInfo {
   name: string;
@@ -25,6 +26,7 @@ interface LanguageInfo {
 const languages: Record<Language, LanguageInfo> = {
   en: { name: "English", Icon: UnitedKingdomIcon },
   fr: { name: "Français", Icon: FranceIcon },
+  it: { name: "Italiano", Icon: ItalyIcon },
   kr: { name: "한국어", Icon: KoreaIcon },
 };
 

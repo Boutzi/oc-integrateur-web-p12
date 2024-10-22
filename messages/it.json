@@ -1,0 +1,97 @@
+{
+  "Metadata": {
+    "layout": {
+      "root": "Sviluppatore front-end a Bordeaux",
+      "rootDescription": "Un graphic designer che si è perso nel vuoto, nell'assenza di codice.",
+      "about": "Chi Sono",
+      "aboutDescription": "Scopri di più su di me e sul mio background.",
+      "work": "Lavoro",
+      "workDescription": "Il mio lavoro nello sviluppo web e software.",
+      "contact": "Contattami",
+      "contactDescription": "Layout di contatto",
+      "education": "Istruzione",
+      "educationDescription": "Scopri il mio background accademico e le conoscenze che ho acquisito.",
+      "experience": "Esperienza",
+      "experienceDescription": "Scopri le mie esperienze professionali e i progetti a cui ho contribuito.",
+      "skills": "Competenze",
+      "skillsDescription": "Ecco uno sguardo alle tecnologie in cui sono competente (o quasi)!"
+    }
+  },
+  "version": "versione",
+  "toggleTheme": "Cambia tema",
+  "aboutRoute": "Chi Sono",
+  "workRoute": "Lavoro",
+  "contactRoute": "Contatto",
+  "aboutNav": {
+    "bio": "Biografia",
+    "experience": "Esperienza",
+    "education": "Istruzione",
+    "skills": "Competenze"
+  },
+  "heroSection": {
+    "contact": "Contattami",
+    "viewOnGitHub": "Guarda su GitHub",
+    "downloadCV": "Scarica CV",
+    "viewAllExperiences": "Guarda di più su Linkedin",
+    "connectWithMe": "Connettiti con me"
+  },
+  "status": {
+    "activity": "Attività",
+    "LiveStatus": "Stato live",
+    "StarredRepositories": "Repository GitHub contrassegnati",
+    "LastestJobs": "Ultimi corsi, lavori e progetti"
+  },
+  "skills": "Competenze",
+  "mySkills": "Le Mie Competenze",
+  "resetFilters": "Ripristina filtri",
+  "bestSkills": {
+    "title": "Mi piace lavorare su...",
+    "react": "React.js",
+    "reactDescription": "Esperto nella costruzione di applicazioni web dinamiche e reattive utilizzando React e Next.js, con un focus sul rendering lato server, generazione di siti statici e routing efficiente per prestazioni migliorate.",
+    "tailwind": "Tailwind CSS",
+    "tailwindDescription": "Competente nell'utilizzo di Tailwind CSS per creare design personalizzati e reattivi rapidamente, garantendo uno sviluppo UI pulito e scalabile con uno stile utility-first.",
+    "python": "Python",
+    "pythonDescription": "Abile nella programmazione in Python per varie applicazioni, dallo sviluppo web alla manipolazione dei dati, con un focus su codice pulito e automazione."
+  },
+  "bio": {
+    "profilePictureAlt": "Immagine di Joe",
+    "yearsOld": "anni",
+    "whoAmI": "Chi sono?",
+    "introduction": "Sono una persona versatile, spesso descritta come \"multipotenziale\". Ho esplorato diversi orizzonti professionali e oggi posso dire che prospero in vari settori.",
+    "skills": "Le mie capacità organizzative e attenzione ai dettagli sono risorse chiave. Mi occupo di progetti di tutte le dimensioni e contribuisco al loro sviluppo per migliorare qualità ed efficienza.",
+    "keyPlayer": "Mi sforzo di diventare un attore chiave in ogni azienda per cui lavoro, non imponendo le mie idee, ma facendo affidamento sulla qualità del mio lavoro."
+  },
+  "work": {
+    "title": "I miei progetti",
+    "releasedOn": "Pubblicato il",
+    "imageAlt": "visualizza",
+    "itemAlt": "visualizza",
+    "privateRepo": "Repository privato",
+    "githubRepo": "Repository GitHub"
+  },
+  "contact": {
+    "getInTouch": "Mettiti in contatto",
+    "openToOpportunities": "Aperto a nuove opportunità",
+    "connect": "Colleghiamoci e facciamolo accadere!",
+    "contactMe": "Contattami",
+    "invitation": "Se hai una domanda, un'opportunità di lavoro o un progetto in mente, non esitare a contattarmi. Sono desideroso di connettermi e discutere di come possiamo lavorare insieme.",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "email": "Email",
+    "company": "Azienda",
+    "yourMessage": "Il tuo messaggio",
+    "messagePlaceholder": "Scrivi il tuo messaggio qui.",
+    "sendButton": "Invia"
+  },
+  "statusCard": {
+    "followers": "seguaci",
+    "connections": "connessioni"
+  },
+  "education": {
+    "title": "Istruzione"
+  },
+  "certifications": {
+    "title": "Certificazioni"
+  },
+  "moreInfo": "Ulteriori informazioni"
+}
