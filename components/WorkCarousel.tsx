@@ -9,16 +9,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { WorkCarouselItem } from "./WorkCarouselItem";
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { ViewerProps } from "./WorkViewer";
 
 export interface CarouselCategory {
-  category: string;
-  data: {
-    id: number;
-    title: string;
-    description: string;
-    image: string;
-    language?: string;
-  }[];
+  data: ViewerProps[];
   setSelectedItem: (id: number) => void;
 }
 
@@ -46,7 +40,7 @@ export const WorkCarousel = (props: CarouselCategory) => {
   return (
     <div className="flex flex-col gap-2">
       <h1 className="text-5xl font-bold text-primary mb-2">
-        {t("Metadata.layout.work")}
+        {t("work.title")}
       </h1>
       <div className="overflow-visible">
         <Carousel
@@ -58,22 +52,21 @@ export const WorkCarousel = (props: CarouselCategory) => {
           className="w-full overflow-visible"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {props.data.map((item) => (
+            {props.data.map((item, index) => (
               <WorkCarouselItem
                 key={item.id}
-                id={item.id}
+                id={index + 1}
                 title={item.title}
                 language={item.language}
-                description={item.description}
                 image={item.image ? item.image : "/empty.webp"}
                 origin={
-                  item.id - 1 === currentIndex
+                  index === currentIndex
                     ? "origin-left"
-                    : item.id - 1 === (currentIndex + 4) % props.data.length
+                    : index === (currentIndex + 4) % props.data.length
                     ? "origin-right"
                     : "origin-center"
                 }
-                clicked={() => props.setSelectedItem(item.id)}
+                clicked={() => props.setSelectedItem(index + 1)}
               />
             ))}
           </CarouselContent>

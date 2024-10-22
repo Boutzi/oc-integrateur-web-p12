@@ -33,14 +33,14 @@
     "contact": "연락하기",
     "viewOnGitHub": "GitHub에서 보기",
     "downloadCV": "이력서 다운로드",
-    "viewAllExperiences": "LinkedIn에서 모든 경험 보기",
+    "viewAllExperiences": "LinkedIn에서 더 보기",
     "connectWithMe": "연결하기"
   },
   "status": {
     "activity": "활동",
     "LiveStatus": "실시간 상태",
     "StarredRepositories": "즐겨찾기 GitHub 저장소",
-    "LastestJobs": "최신 직업 및 과정"
+    "LastestJobs": "최신 과정, 직업 및 프로젝트"
   },
   "skills": "기술",
   "mySkills": "내 기술",
@@ -63,7 +63,12 @@
     "keyPlayer": "저는 제가 일하는 모든 회사에서 주요 인물로 자리 잡기 위해 노력하며, 제 아이디어를 강요하는 것이 아니라 제 작업의 질에 의존합니다."
   },
   "work": {
-    "description": "description for work"
+    "title": "내 프로젝트",
+    "releasedOn": "출시일",
+    "imageAlt": "스크린샷",
+    "itemAlt": "로고",
+    "privateRepo": "비공개 저장소",
+    "githubRepo": "GitHub 저장소"
   },
   "contact": {
     "getInTouch": "연락하기",

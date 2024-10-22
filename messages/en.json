@@ -33,14 +33,14 @@
     "contact": "Contact me",
     "viewOnGitHub": "View on GitHub",
     "downloadCV": "Download CV",
-    "viewAllExperiences": "View all experiences on Linkedin",
+    "viewAllExperiences": "View more on Linkedin",
     "connectWithMe": "Connect with Me"
   },
   "status": {
     "activity": "Activity",
     "LiveStatus": "Live Status",
     "StarredRepositories": "Starred Github repositories",
-    "LastestJobs": "Latest jobs & courses"
+    "LastestJobs": "Latest course, job & project"
   },
   "skills": "Skills",
   "mySkills": "My Skills",
@@ -63,7 +63,12 @@
     "keyPlayer": "I strive to become a key player in every company I work for, not by imposing my ideas, but by relying on the quality of my work."
   },
   "work": {
-    "description": "description for work"
+    "title": "My projects",
+    "releasedOn": "Released on",
+    "imageAlt": "view",
+    "itemAlt": "view",
+    "privateRepo": "Private repository",
+    "githubRepo": "GitHub repository"
   },
   "contact": {
     "getInTouch": "Get in touch",

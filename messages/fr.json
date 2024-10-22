@@ -32,14 +32,14 @@
     "contact": "Contactez-moi",
     "viewOnGitHub": "Voir sur GitHub",
     "downloadCV": "Télécharger mon CV",
-    "viewAllExperiences": "Découvrez toutes mes expériences sur LinkedIn",
+    "viewAllExperiences": "Voir plus sur LinkedIn",
     "connectWithMe": "Connectez-vous avec moi"
   },
   "status": {
     "activity": "Activités",
     "LiveStatus": "Statut en direct",
     "StarredRepositories": "Dépôts GitHub favoris",
-    "LastestJobs": "Derniers emplois et projets"
+    "LastestJobs": "Dernier diplôme, emploi et projet"
   },
   "skills": "Compétences",
   "mySkills": "Mes compétences",
@@ -62,7 +62,12 @@
     "keyPlayer": "Je m'efforce d'être un acteur clé au sein de chaque entreprise pour laquelle je travaille, en mettant l'accent sur la qualité de mon travail plutôt que sur l'imposition de mes idées."
   },
   "work": {
-    "description": "description for work"
+    "title": "Mes projets",
+    "releasedOn": "Publié le",
+    "imageAlt": "capture d'écran",
+    "itemAlt": "logo",
+    "privateRepo": "Dépôt privé",
+    "githubRepo": "Dépôt GitHub"
   },
   "contact": {
     "getInTouch": "Entrer en contact",
