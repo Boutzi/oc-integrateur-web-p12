@@ -1,0 +1,97 @@
+{
+  "Metadata": {
+    "layout": {
+      "root": "ボルドーのフロントエンド開発者",
+      "rootDescription": "コードの虚無に迷い込んだグラフィックデザイナー。",
+      "about": "私について",
+      "aboutDescription": "私と私の背景についてもっと知る。",
+      "work": "仕事",
+      "workDescription": "ウェブおよびソフトウェア開発における私の仕事。",
+      "contact": "お問い合わせ",
+      "contactDescription": "お問い合わせのレイアウト",
+      "education": "教育",
+      "educationDescription": "私の学歴と得た知識を明らかにする。",
+      "experience": "経験",
+      "experienceDescription": "私の職業経験と貢献したプロジェクトを発見する。",
+      "skills": "スキル",
+      "skillsDescription": "私が得意とする技術を見てみましょう（ほぼ全て）！"
+    }
+  },
+  "version": "バージョン",
+  "toggleTheme": "テーマを切り替える",
+  "aboutRoute": "私について",
+  "workRoute": "仕事",
+  "contactRoute": "お問い合わせ",
+  "aboutNav": {
+    "bio": "バイオ",
+    "experience": "経験",
+    "education": "教育",
+    "skills": "スキル"
+  },
+  "heroSection": {
+    "contact": "お問い合わせ",
+    "viewOnGitHub": "GitHubで見る",
+    "downloadCV": "履歴書をダウンロード",
+    "viewAllExperiences": "Linkedinでさらに見る",
+    "connectWithMe": "私とつながる"
+  },
+  "status": {
+    "activity": "アクティビティ",
+    "LiveStatus": "ライブステータス",
+    "StarredRepositories": "スター付きGitHubリポジトリ",
+    "LastestJobs": "最新のコース、仕事、プロジェクト"
+  },
+  "skills": "スキル",
+  "mySkills": "私のスキル",
+  "resetFilters": "フィルターをリセット",
+  "bestSkills": {
+    "title": "私は...で働くのが好きです。",
+    "react": "React.js",
+    "reactDescription": "サーバーサイドレンダリング、静的サイト生成、および効率的なルーティングに重点を置き、ReactとNext.jsを使用して動的でレスポンシブなウェブアプリケーションを構築する経験があります。",
+    "tailwind": "Tailwind CSS",
+    "tailwindDescription": "ユーティリティファーストスタイリングを使用してクリーンでスケーラブルなUI開発を保証し、カスタムレスポンシブデザインを迅速に作成するためにTailwind CSSを使いこなしています。",
+    "python": "Python",
+    "pythonDescription": "ウェブ開発からデータ操作まで、さまざまなアプリケーションにおけるPythonプログラミングに熟練しており、クリーンなコードと自動化に重点を置いています。"
+  },
+  "bio": {
+    "profilePictureAlt": "ジョーの写真",
+    "yearsOld": "歳",
+    "whoAmI": "私は誰ですか？",
+    "introduction": "私は多才な人間で、しばしば「マルチポテンシャル」と表現されます。さまざまな職業の地平を探求し、今ではさまざまな分野で成長していると言えます。",
+    "skills": "私の組織能力と細部への注意は重要な資産です。すべてのサイズのプロジェクトに取り組み、その質と効率を向上させるために貢献します。",
+    "keyPlayer": "私は働くすべての会社でキープレーヤーになろうと努めており、私のアイデアを押し付けるのではなく、私の仕事の質に頼っています。"
+  },
+  "work": {
+    "title": "私のプロジェクト",
+    "releasedOn": "リリース日",
+    "imageAlt": "表示",
+    "itemAlt": "表示",
+    "privateRepo": "プライベートリポジトリ",
+    "githubRepo": "GitHubリポジトリ"
+  },
+  "contact": {
+    "getInTouch": "連絡を取る",
+    "openToOpportunities": "新しい機会にオープン",
+    "connect": "つながり、実現させましょう！",
+    "contactMe": "私に連絡してください",
+    "invitation": "質問や仕事の機会、プロジェクトがあれば、ぜひご連絡ください。一緒にどうやって働けるか話し合うのを楽しみにしています。",
+    "firstName": "名",
+    "lastName": "姓",
+    "email": "メール",
+    "company": "会社",
+    "yourMessage": "あなたのメッセージ",
+    "messagePlaceholder": "ここにメッセージを入力してください。",
+    "sendButton": "送信"
+  },
+  "statusCard": {
+    "followers": "フォロワー",
+    "connections": "接続"
+  },
+  "education": {
+    "title": "教育"
+  },
+  "certifications": {
+    "title": "認定"
+  },
+  "moreInfo": "詳細情報"
+}
