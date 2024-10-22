@@ -29,7 +29,7 @@ export const WorkViewer = (props: ViewerProps) => {
           <div className={`items-center mt-4`} />
 
           <div className={`my-8`}>
-            <h2 className="text-6xl text-primary mx-auto text-center font-thin">
+            <h2 className="text-6xl text-primary mx-auto text-center font-thin max-md:pt-4">
               {props.title}
             </h2>
             <ul className="flex flex-wrap gap-2 items-center mx-auto my-4 justify-center">
@@ -51,7 +51,7 @@ export const WorkViewer = (props: ViewerProps) => {
               width={1120}
               height={476}
               priority
-              className="w-[70%] h-auto object-contain mx-auto border shadow-lg"
+              className="w-[70%] h-auto object-contain mx-auto border shadow-lg max-md:w-full"
             />
           </div>
           <h3 className="text-sm text-accent-foreground text-center mt-2">

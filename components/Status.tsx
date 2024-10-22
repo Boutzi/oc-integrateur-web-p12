@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Card } from "./ui/card";
 import { Section } from "./Section";
 import { SideProject, SideProjectProps } from "./SideProject";
-import { Work, WORKS } from "./Work";
+import { Work } from "./Work";
 import { CONTACT, ContactCard } from "./ContactCard";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
@@ -12,10 +12,64 @@ import { ArrowUpRight } from "lucide-react";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { getRepositories } from "@/utils/getData";
 import { useTranslations } from "next-intl";
+import { ViewerProps } from "./WorkViewer";
+import { EducationCardProps } from "./EducationCard";
+import { ExperienceCardProps } from "./ExperienceCard";
+import { fetchDataFromBucket } from "@/utils/getBucket";
+import { useLocale } from "next-intl";
 
 export const Status = () => {
   const [repos, setRepos] = useState<SideProjectProps[]>([]);
   const t = useTranslations();
+  const locale = useLocale();
+  const [education, setEducation] = useState<EducationCardProps>();
+  const [experience, setExperience] = useState<ExperienceCardProps>();
+  const [works, setWorks] = useState<ViewerProps>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchDataFromBucket(
+          locale,
+          "education",
+          "education"
+        );
+        setEducation(data[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [locale]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchDataFromBucket(
+          locale,
+          "experience",
+          "experience"
+        );
+        setExperience(data[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [experience, locale]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchDataFromBucket(locale, "work", "projects");
+        setWorks(data[0]);
+        console.log(data[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [locale]);
 
   useEffect(() => {
     const fetchRepositories = async () => {
@@ -25,7 +79,9 @@ export const Status = () => {
 
     fetchRepositories();
   }, []);
-
+  if (!education || !experience || !works) {
+    return <div>Loading...</div>;
+  }
   return (
     <Section className="flex flex-col gap-4">
       <ScrollAnimation animated={true} animationType="fade">
@@ -97,9 +153,27 @@ export const Status = () => {
                 {t("status.LastestJobs")}
               </p>
               <div className="flex flex-col gap-4 py-2">
-                {WORKS.map((work, index) => (
-                  <Work key={index} {...work} />
-                ))}
+                <Work
+                  title={education?.course}
+                  role={education?.school}
+                  date={education?.year}
+                  image={education?.logo}
+                  type={t("aboutNav.education")}
+                />
+                <Work
+                  title={experience?.company}
+                  role={experience?.role}
+                  date={experience?.year}
+                  image={experience?.logo}
+                  type={t("aboutNav.experience")}
+                />
+                <Work
+                  title={works?.title}
+                  role={works?.language}
+                  date={works?.date}
+                  image={works?.image}
+                  type={t("Metadata.layout.work")}
+                />
               </div>
               <Link
                 href={

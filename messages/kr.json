@@ -33,14 +33,14 @@
     "contact": "연락하기",
     "viewOnGitHub": "GitHub에서 보기",
     "downloadCV": "이력서 다운로드",
-    "viewAllExperiences": "LinkedIn에서 모든 경험 보기",
+    "viewAllExperiences": "LinkedIn에서 더 보기",
     "connectWithMe": "연결하기"
   },
   "status": {
     "activity": "활동",
     "LiveStatus": "실시간 상태",
     "StarredRepositories": "즐겨찾기 GitHub 저장소",
-    "LastestJobs": "최신 직업 및 과정"
+    "LastestJobs": "최신 과정, 직업 및 프로젝트"
   },
   "skills": "기술",
   "mySkills": "내 기술",

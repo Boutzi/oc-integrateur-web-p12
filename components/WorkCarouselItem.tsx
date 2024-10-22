@@ -39,7 +39,7 @@ export const WorkCarouselItem = (props: CarouselItem) => {
 
   return (
     <CarouselItem
-      className=" pl-2 md:pl-4 md:basis-1/3 lg:basis-1/5 overflow-visible relative group select-none"
+      className="pl-2 md:pl-4 max-md:basis-2/5 md:basis-[22.5%] lg:basis-[22.5%] overflow-visible relative group select-none"
       onMouseEnter={() => handleMouseEnter(props.id)}
       onMouseLeave={handleMouseLeave}
       onClick={props.clicked}
@@ -57,9 +57,13 @@ export const WorkCarouselItem = (props: CarouselItem) => {
               fill
               priority
               sizes="(max-width: 500px) 100vw, (max-width: 860px) 50vw, 33vw"
-              className="w-full h-auto object-cover hover:opacity-75"
+              className="w-full h-auto object-cover"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-transparent group-hover:bg-foreground/80">
+            <div
+              className={`absolute inset-0 flex items-center justify-center bg-transparent group-hover:bg-foreground/80 ${
+                props.language === "sm" ? "hidden" : ""
+              }`}
+            >
               <div className="opacity-0 group-hover:opacity-100 transition-opacity rounded-full text-foreground/60 hover:bg-none hover:text-foreground">
                 {props.language === "Python" ? (
                   <PythonIcon className="h-16 w-16" />
@@ -80,20 +84,20 @@ export const WorkCarouselItem = (props: CarouselItem) => {
           </div>
         </CardContent>
         {/* <div
-          className={`absolute shadow-md bg-primary-foreground flex rounded-b-sm justify-between z-50 w-full p-2 transition-opacity duration-300 ease-in-out transform ${
-            expandedItem === props.id
-              ? "opacity-100 delay-500"
-              : "opacity-0 duration-75"
-          } group-hover:flex group-hover:opacity-100 group-hover:delay-500`}
-        >
-          <div className="">
-            <h3 className="text-lg font-semibold">{props.title}</h3>
-            <p className="text-sm text-accent-foreground/50">
-              {props.description}
-            </p>
-          </div>
-          
-        </div> */}
+      className={`absolute shadow-md bg-primary-foreground flex rounded-b-sm justify-between z-50 w-full p-2 transition-opacity duration-300 ease-in-out transform ${
+        expandedItem === props.id
+          ? "opacity-100 delay-500"
+          : "opacity-0 duration-75"
+      } group-hover:flex group-hover:opacity-100 group-hover:delay-500`}
+    >
+      <div className="">
+        <h3 className="text-lg font-semibold">{props.title}</h3>
+        <p className="text-sm text-accent-foreground/50">
+          {props.description}
+        </p>
+      </div>
+      
+    </div> */}
       </Card>
     </CarouselItem>
   );

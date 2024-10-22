@@ -32,14 +32,14 @@
     "contact": "Contactez-moi",
     "viewOnGitHub": "Voir sur GitHub",
     "downloadCV": "Télécharger mon CV",
-    "viewAllExperiences": "Découvrez toutes mes expériences sur LinkedIn",
+    "viewAllExperiences": "Voir plus sur LinkedIn",
     "connectWithMe": "Connectez-vous avec moi"
   },
   "status": {
     "activity": "Activités",
     "LiveStatus": "Statut en direct",
     "StarredRepositories": "Dépôts GitHub favoris",
-    "LastestJobs": "Derniers emplois et projets"
+    "LastestJobs": "Dernier diplôme, emploi et projet"
   },
   "skills": "Compétences",
   "mySkills": "Mes compétences",
