@@ -2,12 +2,11 @@
 import { useEffect, useState } from "react";
 import { WorkCarousel } from "./WorkCarousel";
 import { ViewerProps, WorkViewer } from "./WorkViewer";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { SidebarProvider } from "./ui/sidebar";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 
 export const WorkContainer = () => {
-  const t = useTranslations();
   const locale = useLocale();
   const [works, setWorks] = useState<ViewerProps[]>([]);
   const [selectedItem, setSelectedItem] = useState<ViewerProps | null>(null);
@@ -31,7 +30,6 @@ export const WorkContainer = () => {
       <div className="w-full max-w-6xl mx-auto mb-4">
         <div className="flex flex-col gap-4">
           <WorkCarousel
-            category={`${t("work.description")}`}
             data={works}
             setSelectedItem={(id) => setSelectedItem(works[id - 1])}
           />

@@ -12,7 +12,6 @@ import { useTranslations } from "next-intl";
 import { ViewerProps } from "./WorkViewer";
 
 export interface CarouselCategory {
-  category: string;
   data: ViewerProps[];
   setSelectedItem: (id: number) => void;
 }
