@@ -38,7 +38,7 @@ export const WorkContainer = () => {
           <WorkViewer
             id={selectedItem?.id}
             title={selectedItem?.title ?? "Untitled"}
-            date={selectedItem?.date ?? "Unknown date"}
+            date={selectedItem?.date ?? "00-00-0000"}
             image={selectedItem?.image}
             descriptionOne={selectedItem?.descriptionOne ?? ""}
             descriptionTwo={selectedItem?.descriptionTwo ?? ""}
