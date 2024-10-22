@@ -8,16 +8,16 @@ import { useTranslations } from "next-intl";
 
 export interface ViewerProps {
   id: number | undefined;
-  title: string;
-  date: string;
-  descriptionOne?: string;
-  descriptionTwo?: string;
-  descriptionThree?: string;
-  image: string;
-  imageFull: string;
-  language: string;
-  technos: string[];
-  visitOnGithub: string | null;
+  title: string | undefined;
+  date: string | undefined;
+  descriptionOne?: string | undefined;
+  descriptionTwo?: string | undefined;
+  descriptionThree?: string | undefined;
+  image: string | undefined;
+  imageFull: string | undefined;
+  language: string | undefined;
+  technos: string[] | undefined;
+  visitOnGithub: string | null | undefined;
 }
 
 export const WorkViewer = (props: ViewerProps) => {

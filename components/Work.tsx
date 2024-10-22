@@ -6,7 +6,7 @@ export interface WorkProps {
   title: string | undefined;
   role?: string | undefined;
   date: string | undefined;
-  image: string | undefined;
+  image?: string | undefined;
   type?: string | undefined;
 }
 
@@ -15,7 +15,7 @@ export const Work = (props: WorkProps) => {
     <div className="inline-flex items-center gap-3 p-1">
       <div className="w-12 h-12 relative group">
         <Image
-          src={`${props.image}`}
+          src={`${props.image || "/empty.webp"}`}
           alt={`${props.title}`}
           fill
           priority

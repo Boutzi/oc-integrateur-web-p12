@@ -26,9 +26,6 @@ export const WorkContainer = () => {
     fetchData();
   }, [locale]);
 
-  if (!selectedItem) {
-    return <div>Loading...</div>;
-  }
   return (
     <SidebarProvider>
       <div className="w-full max-w-6xl mx-auto mb-4">
@@ -41,7 +38,7 @@ export const WorkContainer = () => {
           <WorkViewer
             id={selectedItem?.id}
             title={selectedItem?.title}
-            date={selectedItem.date}
+            date={selectedItem?.date}
             image={selectedItem?.image}
             descriptionOne={selectedItem?.descriptionOne}
             descriptionTwo={selectedItem?.descriptionTwo}
