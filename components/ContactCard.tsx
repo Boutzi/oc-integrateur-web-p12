@@ -65,8 +65,8 @@ export const ContactCard = (props: ContactProps) => {
           <Image
             src={
               props.name === "GitHub"
-                ? githubUserData?.avatar_url || "/default-avatar.jpg" // Valeur par défaut
-                : props.image || "/default-image.jpg" // Valeur par défaut
+                ? githubUserData?.avatar_url || "/default-avatar.jpg"
+                : props.image || "/default-image.jpg"
             }
             alt={props.name}
             width={40}
@@ -76,12 +76,11 @@ export const ContactCard = (props: ContactProps) => {
           />
           <div className="absolute -bottom-1 -right-1 w-4 h-4">
             {" "}
-            {/* 16px / 4 = 4px (taille relative) */}
             <Image
               src={props.mediumImage}
               alt={props.name}
-              fill // Permet à l'image de remplir son conteneur
-              sizes="16" // Spécifie la taille de l'image
+              fill
+              sizes="16"
               priority
               className="rounded-full object-contain"
             />

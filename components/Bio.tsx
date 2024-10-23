@@ -24,7 +24,7 @@ const calculateAge = (birthDate: string): number => {
 
 export const Bio = () => {
   const { user } = useUser();
-  const t = useTranslations(); // Utilisation de la fonction de traduction
+  const t = useTranslations();
 
   if (!user || !user.birth) {
     return <div>Loading...</div>;
@@ -51,7 +51,7 @@ export const Bio = () => {
                   className="w-32 m-auto max-w-lg rounded-full max-md:w-32"
                   width={128}
                   height={128}
-                  alt={t("bio.profilePictureAlt")} // Traduction pour l'ALT de l'image
+                  alt={t("bio.profilePictureAlt")}
                 />
               </div>
               <div className="flex flex-col items-center text-center justify-center">
@@ -59,7 +59,7 @@ export const Bio = () => {
                   {user?.firstName} {user?.lastName}
                 </h2>
                 <span className="text-xs text-accent-foreground/70">
-                  {age} {t("bio.yearsOld")} {/* Traduction pour "years old" */}
+                  {age} {t("bio.yearsOld")}
                 </span>
                 <div className="w-12 h-1 bg-primary rounded mt-4 mb-4"></div>
                 <p className="text-base text-accent-foreground/60">
@@ -69,17 +69,16 @@ export const Bio = () => {
             </div>
             <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-accent sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
               <h2 className="font-caption text-2xl font-bold leading-relaxed max-md:text-lg">
-                {t("bio.whoAmI")} {/* Traduction pour "Who am I?" */}
+                {t("bio.whoAmI")}
               </h2>
               <p className="leading-relaxed text-lg mb-4">
-                {t("bio.introduction")} {/* Traduction de l'introduction */}
+                {t("bio.introduction")}
                 <br />
                 <br />
-                {t("bio.skills")} {/* Traduction des compétences */}
+                {t("bio.skills")}
                 <br />
                 <br />
                 {t("bio.keyPlayer")}{" "}
-                {/* Traduction de "I strive to become a key player..." */}
               </p>
             </div>
           </div>

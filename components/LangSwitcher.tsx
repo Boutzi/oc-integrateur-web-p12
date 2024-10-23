@@ -35,7 +35,6 @@ const languages: Record<Language, LanguageInfo> = {
 const LangSwitcher: React.FC = () => {
   const locale = useLocale() as Language;
   const router = useRouter();
-  // const pathname = usePathname();
 
   const handleLocaleChange = (newLocale: Language) => {
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/`;

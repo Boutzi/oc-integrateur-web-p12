@@ -9,12 +9,10 @@ import { ScrollAnimation } from "./ScrollAnimation";
 import { usePathname } from "next/navigation";
 import VersionStatus from "./VersionStatus";
 import { useTranslations } from "next-intl";
-// import currentLocation from "@/utils/currentLocation";
 
 export const Footer = () => {
   const pathname = usePathname();
   const t = useTranslations();
-  // const basePath = currentLocation();
 
   return (
     <footer className="relative">

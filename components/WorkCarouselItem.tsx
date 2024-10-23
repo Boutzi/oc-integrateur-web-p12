@@ -83,21 +83,6 @@ export const WorkCarouselItem = (props: CarouselItem) => {
             </div>
           </div>
         </CardContent>
-        {/* <div
-      className={`absolute shadow-md bg-primary-foreground flex rounded-b-sm justify-between z-50 w-full p-2 transition-opacity duration-300 ease-in-out transform ${
-        expandedItem === props.id
-          ? "opacity-100 delay-500"
-          : "opacity-0 duration-75"
-      } group-hover:flex group-hover:opacity-100 group-hover:delay-500`}
-    >
-      <div className="">
-        <h3 className="text-lg font-semibold">{props.title}</h3>
-        <p className="text-sm text-accent-foreground/50">
-          {props.description}
-        </p>
-      </div>
-      
-    </div> */}
       </Card>
     </CarouselItem>
   );

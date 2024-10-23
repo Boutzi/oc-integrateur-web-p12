@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import { Section } from "./Section";
 import { Spacing } from "./Spacing";
@@ -48,9 +47,6 @@ function Hero() {
             className="max-sm:object-right object-cover max-md:opacity-40"
           />
           <div className="w-full h-full relative group">
-            {/* <div className="absolute z-0 w-full h-full flex-[2] ml-auto max-lg:m-auto content-end">
-            <ThreeDModel />
-          </div> */}
             <Section className="z-10 flex max-lg:flex-col items-center justify-between gap-6 min-h-[calc(100vh-400px)] max-lg:pt-8 max-lg:pb-8 max-md:pt-4 max-md:mx-auto">
               <div className="flex-[3] flex flex-col gap-2">
                 <h1 className="drop-shadow-lg font-caption text-7xl font-bold text-primary max-md:text-4xl max-sm:text-3xl max-xl:text-6xl max-lg:text-5xl">

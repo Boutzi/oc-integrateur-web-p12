@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://https://joe.arkaans.com/sitemap.xml
