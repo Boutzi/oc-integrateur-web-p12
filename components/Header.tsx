@@ -24,20 +24,6 @@ export const Header = () => {
     setMenuOpen(false);
   };
 
-  // useEffect(() => {
-  //   const handleClickOutside = (event: MouseEvent) => {
-  //     const target = event.target as HTMLElement;
-  //     if (menuOpen && !target.closest("header")) {
-  //       setMenuOpen(false);
-  //     }
-  //   };
-
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [menuOpen]);
-
   return (
     <header className="sticky top-0 border-b bg-background/80 backdrop-blur z-40">
       <Section className="flex items-center justify-between p-0 max-sm:pt-2 max-sm:pb-2">

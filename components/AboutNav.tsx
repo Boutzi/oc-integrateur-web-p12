@@ -56,7 +56,6 @@ export const AboutNav = () => {
                     className="flex gap-2 max-xl:rounded-full max-xl:h-8 max-xl:bg-accent-foreground max-xl:text-background"
                   >
                     <Download size={16} /> {t("heroSection.downloadCV")}{" "}
-                    {/* Traduction du texte "Download CV" */}
                   </Button>
                 </Link>
               </div>

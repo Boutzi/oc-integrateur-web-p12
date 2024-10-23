@@ -78,14 +78,12 @@ export default async function RootLayout({
                 disableTransitionOnChange
               >
                 <ColorProvider>
-                  {/* <LoaderProvider> */}
                   <GlobalStatus />
                   <Header />
                   <LoaderProvider>
                     {children}
                     <Footer />
                   </LoaderProvider>
-                  {/* </LoaderProvider> */}
                 </ColorProvider>
               </ThemeProvider>
             </UserProvider>

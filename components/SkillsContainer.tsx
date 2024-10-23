@@ -13,8 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { useLocale, useTranslations } from "next-intl";
-// import currentLocation from "@/utils/currentLocation";
-// .sort((a, b) => a.name.localeCompare(b.name));
+
 interface Skill {
   name: string;
   icon: JSX.Element | ReactNode;

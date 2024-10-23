@@ -25,7 +25,6 @@ export default function HomeClient() {
         <Status />
         <Spacing size="md" />
       </div>
-      {/* bg-grid-pattern bg-grid-size */}
       <div className="bg-secondary pt-28 pb-28 max-sm:pt-16 max-sm:pb-16 border-b">
         <Spacing size="md" />
         <BestSkills />
