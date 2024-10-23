@@ -5,24 +5,36 @@ import { ViewerProps, WorkViewer } from "./WorkViewer";
 import { useLocale } from "next-intl";
 import { SidebarProvider } from "./ui/sidebar";
 import { fetchDataFromBucket } from "@/utils/getBucket";
+import { useLoader } from "@/context/LoaderContext";
+import Loading from "@/app/[locale]/work/loading";
 
 export const WorkContainer = () => {
+  const { showLoader, hideLoader } = useLoader();
   const locale = useLocale();
   const [works, setWorks] = useState<ViewerProps[]>([]);
   const [selectedItem, setSelectedItem] = useState<ViewerProps | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      showLoader();
       try {
         const data = await fetchDataFromBucket(locale, "work", "projects");
         setWorks(data);
         setSelectedItem(data[0]);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        hideLoader();
+        setIsLoading(false);
       }
     };
     fetchData();
-  }, [locale]);
+  }, [locale, showLoader, hideLoader]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <SidebarProvider>
@@ -41,7 +53,7 @@ export const WorkContainer = () => {
             descriptionTwo={selectedItem?.descriptionTwo ?? ""}
             descriptionThree={selectedItem?.descriptionThree ?? ""}
             imageFull={selectedItem?.imageFull}
-            visitOnGithub={selectedItem?.visitOnGithub ?? ""}
+            visitOnGithub={selectedItem?.visitOnGithub ?? null}
             technos={selectedItem?.technos ?? []}
             language={selectedItem?.language ?? "Unknown language"}
           />

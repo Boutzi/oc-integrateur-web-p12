@@ -27,7 +27,7 @@ export const Bio = () => {
   const t = useTranslations();
 
   if (!user || !user.birth) {
-    return <div>Loading...</div>;
+    return <div> </div>;
   }
 
   const age = calculateAge(user.birth);
