@@ -19,6 +19,7 @@ export const Work = (props: WorkProps) => {
           alt={`${props.title}`}
           fill
           priority
+          sizes="(max-width: 64px) 100vw, (max-width: 64px) 50vw, 33vw"
           className="object-cover rounded border"
         />
       </div>

@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useLocale } from "next-intl";
-import { useRouter } from "next/navigation"; // Assurez-vous que ça vient de next/navigation
+import { useRouter } from "next/navigation";
 import { Link } from "@/i18n/routing";
 
 type Language = "en" | "fr" | "it" | "kr" | "jp";

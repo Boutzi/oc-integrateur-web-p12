@@ -12,6 +12,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { ColorProvider } from "@/context/ColorContext";
+import { LoaderProvider } from "@/context/LoaderContext";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -78,7 +79,7 @@ export default async function RootLayout({
                   {/* <LoaderProvider> */}
                   <GlobalStatus />
                   <Header />
-                  {children}
+                  <LoaderProvider>{children}</LoaderProvider>
                   <Footer />
                   {/* </LoaderProvider> */}
                 </ColorProvider>

@@ -26,13 +26,15 @@ export const LoaderProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const hideLoader = () => {
-    setIsLoading(false);
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timeout);
   };
 
   return (
     <LoaderContext.Provider value={{ isLoading, showLoader, hideLoader }}>
-      <ProgressBar />
-      {children}
+      {isLoading ? <ProgressBar onComplete={hideLoader} /> : children}
     </LoaderContext.Provider>
   );
 };
