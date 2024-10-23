@@ -5,11 +5,18 @@ import { ViewerProps, WorkViewer } from "./WorkViewer";
 import { useLocale } from "next-intl";
 import { SidebarProvider } from "./ui/sidebar";
 import { fetchDataFromBucket } from "@/utils/getBucket";
+import { useLoader } from "@/context/LoaderContext";
 
 export const WorkContainer = () => {
+  const { showLoader, hideLoader } = useLoader();
   const locale = useLocale();
   const [works, setWorks] = useState<ViewerProps[]>([]);
   const [selectedItem, setSelectedItem] = useState<ViewerProps | null>(null);
+
+  useEffect(() => {
+    showLoader();
+    hideLoader();
+  }, [showLoader, hideLoader]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +48,7 @@ export const WorkContainer = () => {
             descriptionTwo={selectedItem?.descriptionTwo ?? ""}
             descriptionThree={selectedItem?.descriptionThree ?? ""}
             imageFull={selectedItem?.imageFull}
-            visitOnGithub={selectedItem?.visitOnGithub ?? ""}
+            visitOnGithub={selectedItem?.visitOnGithub ?? null}
             technos={selectedItem?.technos ?? []}
             language={selectedItem?.language ?? "Unknown language"}
           />
