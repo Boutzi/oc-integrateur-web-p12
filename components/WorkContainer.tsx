@@ -6,30 +6,35 @@ import { useLocale } from "next-intl";
 import { SidebarProvider } from "./ui/sidebar";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { useLoader } from "@/context/LoaderContext";
+import Loading from "@/app/[locale]/work/loading";
 
 export const WorkContainer = () => {
   const { showLoader, hideLoader } = useLoader();
   const locale = useLocale();
   const [works, setWorks] = useState<ViewerProps[]>([]);
   const [selectedItem, setSelectedItem] = useState<ViewerProps | null>(null);
-
-  useEffect(() => {
-    showLoader();
-    hideLoader();
-  }, [showLoader, hideLoader]);
+  const [isLoading, setIsLoading] = useState<boolean>(true); // État de chargement
 
   useEffect(() => {
     const fetchData = async () => {
+      showLoader();
       try {
         const data = await fetchDataFromBucket(locale, "work", "projects");
         setWorks(data);
         setSelectedItem(data[0]);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        hideLoader();
+        setIsLoading(false); // Changer l'état de chargement
       }
     };
     fetchData();
-  }, [locale]);
+  }, [locale, showLoader, hideLoader]);
+
+  if (isLoading) {
+    return <Loading />; // Affiche le composant de chargement
+  }
 
   return (
     <SidebarProvider>
