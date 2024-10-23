@@ -13,6 +13,7 @@ import { routing } from "@/i18n/routing";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { ColorProvider } from "@/context/ColorContext";
 import { LoaderProvider } from "@/context/LoaderContext";
+import GoogleTagManager from "@/components/GoogleTagManager";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -67,6 +68,7 @@ export default async function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${AnekTelugu.variable} font-sans h-full antialiased bg-gradient-to-r from-backgradient from-20% via-backgradientvia to-80% to-backgradient`}
         >
+          <GoogleTagManager />
           <NextIntlClientProvider messages={messages}>
             <UserProvider>
               <ThemeProvider
