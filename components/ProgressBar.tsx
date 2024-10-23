@@ -20,7 +20,7 @@ export function ProgressBar({ onComplete }: ProgressBarProps) {
       start = performance.now();
 
       const updateProgress = (currentTime: number) => {
-        const elapsed = (currentTime - start) / 1000;
+        const elapsed = (currentTime - start) / 1500;
         const newProgress = Math.min((elapsed / 1) * 100, 100);
         setProgress(newProgress);
 
