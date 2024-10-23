@@ -20,14 +20,18 @@ export const useLoader = (): LoaderContextType => {
 
 export const LoaderProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [hasLoaded, setHasLoaded] = useState<boolean>(false);
 
   const showLoader = () => {
-    setIsLoading(true);
+    if (!hasLoaded) {
+      setIsLoading(true);
+    }
   };
 
   const hideLoader = () => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
+      setHasLoaded(true);
     }, 2000);
     return () => clearTimeout(timeout);
   };

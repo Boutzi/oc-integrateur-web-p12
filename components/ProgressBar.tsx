@@ -29,7 +29,7 @@ export function ProgressBar({ onComplete }: ProgressBarProps) {
         } else {
           setTimeout(() => {
             setVisible(false);
-            onComplete(); // Appeler la fonction de complétion ici
+            onComplete();
           }, 200);
         }
       };
@@ -42,7 +42,7 @@ export function ProgressBar({ onComplete }: ProgressBarProps) {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [onComplete]); // Ajoutez onComplete comme dépendance
+  }, [onComplete]);
 
   return (
     visible && (
