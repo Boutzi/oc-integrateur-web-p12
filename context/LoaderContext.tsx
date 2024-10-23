@@ -28,7 +28,7 @@ export const LoaderProvider = ({ children }: { children: ReactNode }) => {
   const hideLoader = () => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 2000);
     return () => clearTimeout(timeout);
   };
 

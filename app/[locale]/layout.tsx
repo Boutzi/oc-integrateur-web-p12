@@ -79,8 +79,10 @@ export default async function RootLayout({
                   {/* <LoaderProvider> */}
                   <GlobalStatus />
                   <Header />
-                  <LoaderProvider>{children}</LoaderProvider>
-                  <Footer />
+                  <LoaderProvider>
+                    {children}
+                    <Footer />
+                  </LoaderProvider>
                   {/* </LoaderProvider> */}
                 </ColorProvider>
               </ThemeProvider>
