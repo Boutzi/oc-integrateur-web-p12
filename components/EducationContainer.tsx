@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { EducationCard, EducationCardProps } from "./EducationCard";
 import { useLocale, useTranslations } from "next-intl";
+import Loading from "@/app/[locale]/about/(me)/education/loading";
 
 export const EducationContainer = () => {
   const locale = useLocale();
@@ -11,6 +12,7 @@ export const EducationContainer = () => {
   const [certifications, setCertifications] = useState<EducationCardProps[]>(
     []
   );
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +25,8 @@ export const EducationContainer = () => {
         setEducation(data);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -44,6 +48,9 @@ export const EducationContainer = () => {
     fetchData();
   }, [locale]);
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <section className="flex flex-col gap-8">
       <h2 className="text-4xl font-semibold text-center">

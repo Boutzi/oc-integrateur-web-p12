@@ -13,6 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { fetchDataFromBucket } from "@/utils/getBucket";
 import { useLocale, useTranslations } from "next-intl";
+import Loading from "@/app/[locale]/about/(me)/skills/loading";
 
 interface Skill {
   name: string;
@@ -29,6 +30,7 @@ export default function SkillsContainer() {
   const bucketUrl = process.env.NEXT_PUBLIC_S3_BUCKET_URL;
   const [categories, setCategories] = useState<string[]>([]);
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,6 +62,8 @@ export default function SkillsContainer() {
         setSkills(data);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -77,6 +81,10 @@ export default function SkillsContainer() {
   const resetFilters = () => {
     setSelectedCategories([]);
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="container">

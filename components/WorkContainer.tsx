@@ -13,7 +13,7 @@ export const WorkContainer = () => {
   const locale = useLocale();
   const [works, setWorks] = useState<ViewerProps[]>([]);
   const [selectedItem, setSelectedItem] = useState<ViewerProps | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true); // État de chargement
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,14 +26,14 @@ export const WorkContainer = () => {
         console.error("Error fetching data:", error);
       } finally {
         hideLoader();
-        setIsLoading(false); // Changer l'état de chargement
+        setIsLoading(false);
       }
     };
     fetchData();
   }, [locale, showLoader, hideLoader]);
 
   if (isLoading) {
-    return <Loading />; // Affiche le composant de chargement
+    return <Loading />;
   }
 
   return (
