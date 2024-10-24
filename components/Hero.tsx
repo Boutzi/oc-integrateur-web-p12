@@ -44,7 +44,7 @@ function Hero() {
             fill
             priority
             alt="Hero 3D model"
-            className="max-sm:object-right object-cover max-md:opacity-40"
+            className="max-sm:object-right object-cover"
           />
           <div className="w-full h-full relative group">
             <Section className="z-10 flex max-lg:flex-col items-center justify-between gap-6 min-h-[calc(100vh-400px)] max-lg:pt-8 max-lg:pb-8 max-md:pt-4 max-md:mx-auto">
