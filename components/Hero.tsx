@@ -38,13 +38,13 @@ function Hero() {
   return (
     <>
       {hero && (
-        <div className="relative group pt-28 pb-28 border-b max-md:pt-4 max-md:pb-16 overflow-hidden">
+        <div className="relative group pt-28 pb-28 border-b max-md:pt-4 max-md:pb-16 overflow-hidden max-md:bg-black">
           <Image
             src={"/hero-bg-black.webp"}
             fill
             priority
             alt="Hero 3D model"
-            className="max-sm:object-right object-cover"
+            className="max-sm:object-right object-cover max-md:opacity-40"
           />
           <div className="w-full h-full relative group">
             <Section className="z-10 flex max-lg:flex-col items-center justify-between gap-6 min-h-[calc(100vh-400px)] max-lg:pt-8 max-lg:pb-8 max-md:pt-4 max-md:mx-auto">
