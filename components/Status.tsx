@@ -93,10 +93,9 @@ export const Status = () => {
             {t("status.LiveStatus")}
           </h2>
         </div>
-      </ScrollAnimation>
-      <div className="flex max-lg:flex-col items-start justify-between gap-4">
-        <div className="flex-[3] w-full">
-          <ScrollAnimation animated={true} animationType="slide-x">
+        <div className="flex max-lg:flex-col items-start justify-between gap-4">
+          <div className="flex-[3] w-full">
+            {/* <ScrollAnimation animated={true} animationType="slide-x"> */}
             <Card className="w-full p-4 flex flex-col gap-2">
               <p className="text-sm text-muted-foreground">
                 {t("status.StarredRepositories")}
@@ -141,10 +140,10 @@ export const Status = () => {
                 </div>
               </Link>
             </Card>
-          </ScrollAnimation>
-        </div>
-        <div className="flex-[2] w-full h-full flex flex-col gap-4">
-          <ScrollAnimation animated={true} animationType="-slide-x">
+            {/* </ScrollAnimation> */}
+          </div>
+          <div className="flex-[2] w-full h-full flex flex-col gap-4">
+            {/* <ScrollAnimation animated={true} animationType="-slide-x"> */}
             <Card className="flex-1 p-4">
               <p className="text-sm text-muted-foreground">
                 {t("status.LastestJobs")}
@@ -187,8 +186,8 @@ export const Status = () => {
                 </div>
               </Link>
             </Card>
-          </ScrollAnimation>
-          <ScrollAnimation animated={true} animationType="-slide-y">
+            {/* </ScrollAnimation> */}
+            {/* <ScrollAnimation animated={true} animationType="-slide-y"> */}
             <Card className="flex-1 p-4">
               <p className="text-sm text-muted-foreground">
                 {t("heroSection.connectWithMe")}
@@ -199,9 +198,10 @@ export const Status = () => {
                 ))}
               </div>
             </Card>
-          </ScrollAnimation>
+            {/* </ScrollAnimation> */}
+          </div>
         </div>
-      </div>
+      </ScrollAnimation>
     </Section>
   );
 };
