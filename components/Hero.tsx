@@ -38,7 +38,7 @@ function Hero() {
   return (
     <>
       {hero && (
-        <div className="relative group pt-28 pb-28 border-b max-md:pt-4 max-md:pb-16 overflow-hidden">
+        <div className="relative group pt-28 pb-28 border-b max-md:pt-4 max-md:pb-16 overflow-hidden max-md:bg-black">
           <Image
             src={"/hero-bg-black.webp"}
             fill
